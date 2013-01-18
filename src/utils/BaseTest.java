@@ -21,16 +21,13 @@ public class BaseTest {
   }
 
   @AfterClass
-  public void afterClass() {
+  protected void afterClass() {
   }
 
-  @BeforeTest
-  public void beforeTest() {
-	  setLocalWebdriver("firefox", "17", "mac");
-  }
+ 
 
-  @AfterTest
-  public void afterTest() {
+  protected void closeDriver() {
+	driver.quit();
   }
   
   public void setLocalWebdriver(String browser, String version, String platform) {
