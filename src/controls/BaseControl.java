@@ -2,6 +2,7 @@ package controls;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,33 +28,41 @@ public abstract class BaseControl implements Detectable {
 		}
 	}
 	
-	public WebElement findControl(WebDriver driver, String locator) {
-		
+	public WebElement findControl(WebDriver driver, By locator) {
 		try {
-			System.out.println("Looking for WebElement by id");
-			return driver.findElement(By.id(locator));
+			System.out.println("Looking for WebElement: "+locator.toString());
+			return driver.findElement(locator);					
 		}
-		catch (ElementNotVisibleException e) {
-			try {
-				System.out.println("Looking for WebElement by name");
-				return driver.findElement(By.name(locator));
-			}
-			catch (ElementNotVisibleException ee) {
-				try {
-					System.out.println("Looking for WebElement by cssSelector");
-					return driver.findElement(By.cssSelector(locator));
-				}
-				catch (ElementNotVisibleException eee) {
-					try {
-						System.out.println("Looking for WebElement by xpath");
-						return driver.findElement(By.xpath(locator));
-					}
-					catch (ElementNotVisibleException eeee) {
-						System.out.println("Failed looking for WebElement");
-						throw new ElementNotVisibleException(locator);
-					}
-				}
-			}
+		catch (NoSuchElementException e) {
+			System.out.println("Failed looking for WebElement: "+locator.toString());
+			throw new NoSuchElementException(locator.toString());
 		}
+		
+//		try {
+//			System.out.println("Looking for WebElement by id: "+locator);
+//			return driver.findElement(By.id(locator));
+//		}
+//		catch (NoSuchElementException e) {
+//			try {
+//				System.out.println("Looking for WebElement by name: "+locator);
+//				return driver.findElement(By.name(locator));
+//			}
+//			catch (NoSuchElementException ee) {
+//				try {
+//					System.out.println("Looking for WebElement by xpath: "+locator);
+//					return driver.findElement(By.xpath(locator));
+//				}
+//				catch (NoSuchElementException eee) {
+//					try {
+//						System.out.println("Looking for WebElement by cssSelector: "+locator);
+//						return driver.findElement(By.cssSelector(locator));					
+//					}
+//					catch (NoSuchElementException eeee) {
+//						System.out.println("Failed looking for WebElement: "+locator);
+//						throw new NoSuchElementException(locator);
+//					}
+//				}
+//			}
+//		}
 	}
 }

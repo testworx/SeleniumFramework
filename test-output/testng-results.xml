@@ -1,69 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="28848" started-at="2013-01-18T22:23:10Z" finished-at="2013-01-18T22:23:39Z">
+  <suite name="Default suite" duration-ms="9778" started-at="2013-02-10T18:10:17Z" finished-at="2013-02-10T18:10:27Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="28848" started-at="2013-01-18T22:23:10Z" finished-at="2013-01-18T22:23:39Z">
-      <class name="tests.ExampleTests">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:tests.ExampleTests@39117085]" name="beforeClass" is-config="true" duration-ms="8" started-at="2013-01-18T22:23:10Z" finished-at="2013-01-18T22:23:10Z">
+    <test name="Default test" duration-ms="9778" started-at="2013-02-10T18:10:17Z" finished-at="2013-02-10T18:10:27Z">
+      <class name="tests.ControlTests">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:tests.ControlTests@571f0759]" name="beforeClass" is-config="true" duration-ms="8" started-at="2013-02-10T18:10:17Z" finished-at="2013-02-10T18:10:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:tests.ExampleTests@39117085]" name="beforeTest" is-config="true" duration-ms="7645" started-at="2013-01-18T22:23:10Z" finished-at="2013-01-18T22:23:18Z">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:tests.ControlTests@571f0759]" name="beforeTest" is-config="true" duration-ms="7548" started-at="2013-02-10T18:10:17Z" finished-at="2013-02-10T18:10:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="OpenApplicationAndCheckAlertAppears(java.lang.Integer, java.lang.String)[pri:0, instance:tests.ExampleTests@39117085]" name="OpenApplicationAndCheckAlertAppears" duration-ms="10498" started-at="2013-01-18T22:23:18Z" data-provider="urlProvider" finished-at="2013-01-18T22:23:28Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[1]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[http://developer.yahoo.com/yui/examples/layout/adv_layout_source.html]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="PASS" signature="CheckFindLinkByIdAndClick()[pri:0, instance:tests.ControlTests@571f0759]" name="CheckFindLinkByIdAndClick" duration-ms="2128" started-at="2013-02-10T18:10:25Z" finished-at="2013-02-10T18:10:27Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- OpenApplicationAndCheckAlertAppears -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:tests.ExampleTests@39117085]" name="afterTest" is-config="true" duration-ms="89" started-at="2013-01-18T22:23:28Z" finished-at="2013-01-18T22:23:28Z">
+        </test-method> <!-- CheckFindLinkByIdAndClick -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:tests.ControlTests@571f0759]" name="afterTest" is-config="true" duration-ms="80" started-at="2013-02-10T18:10:27Z" finished-at="2013-02-10T18:10:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:tests.ExampleTests@39117085]" name="beforeTest" is-config="true" duration-ms="1515" started-at="2013-01-18T22:23:28Z" finished-at="2013-01-18T22:23:30Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="OpenApplicationAndCheckAlertDisappears(java.lang.Integer, java.lang.String)[pri:0, instance:tests.ExampleTests@39117085]" name="OpenApplicationAndCheckAlertDisappears" duration-ms="8985" started-at="2013-01-18T22:23:30Z" data-provider="urlProvider" finished-at="2013-01-18T22:23:39Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[1]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[http://developer.yahoo.com/yui/examples/layout/adv_layout_source.html]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- OpenApplicationAndCheckAlertDisappears -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:tests.ExampleTests@39117085]" name="afterTest" is-config="true" duration-ms="89" started-at="2013-01-18T22:23:39Z" finished-at="2013-01-18T22:23:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterTest -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:tests.ExampleTests@39117085]" name="afterClass" is-config="true" duration-ms="0" started-at="2013-01-18T22:23:39Z" finished-at="2013-01-18T22:23:39Z">
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:tests.ControlTests@571f0759]" name="afterClass" is-config="true" duration-ms="0" started-at="2013-02-10T18:10:27Z" finished-at="2013-02-10T18:10:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-      </class> <!-- tests.ExampleTests -->
+      </class> <!-- tests.ControlTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

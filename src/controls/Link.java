@@ -3,9 +3,9 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class Button extends BaseControl implements Clickable, Readable {
+public class Link extends BaseControl implements Clickable, Readable {
 
-	public Button(WebDriver driver, By locator) {
+	public Link(WebDriver driver, By locator) {
 		baseWebElement = findControl(driver, locator);
 		System.out.println("WebElement found.");
 	}

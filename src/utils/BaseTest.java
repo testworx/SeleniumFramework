@@ -10,7 +10,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
-public class BaseTest {
+public class Basetest {
 
 	public WebDriver driver = null;
 	private String runLocally;
