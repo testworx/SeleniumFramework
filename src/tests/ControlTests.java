@@ -1,137 +1,245 @@
 package tests;
 
-import java.util.List;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
+import utils.Basetest;
+import utils.ObjectMap;
+import utils.TestHelper;
 import controls.Button;
 import controls.Link;
 import controls.RadioButton;
-import utils.Basetest;
-import utils.TestHelper;
-
-
+import controls.Table;
 
 public class ControlTests extends Basetest {
-  
+
 	TestHelper testHelper;
-	
-	@Test
-	  public void CheckTestPageOpens() { 
-		  Assert.assertEquals(driver.getTitle(), "Controls Page Title");
-	  }
-	  
-	@Test
-	  public void CheckFindButtonByNameAndClick() { 
-		  WebElement message1 = driver.findElement(By.id("pg1")); 
-		  Button button1 = new Button(driver, By.name("button1"));
-		  button1.click();
-		  Assert.assertTrue(message1.isDisplayed());			  
-	  }
-	
-	@Test
-	  public void CheckFindButtonByIdAndClick() { 
-		  WebElement message2 = driver.findElement(By.id("pg2")); 
-		  Button button2 = new Button(driver, By.id("btn2"));
-		  button2.click();
-		  Assert.assertTrue(message2.isDisplayed());			  
-	  }
-	
-	@Test
-	  public void CheckFindButtonByCssAndClick() { 
-		  Button button3 = new Button(driver, By.cssSelector("input#btn3"));
-		  button3.click();
-		  Alert alert = driver.switchTo().alert();
-		  String alertText = alert.getText();
-		  alert.dismiss();
-		  Assert.assertEquals(alertText, "Alert button clicked.");	 
-	  }
+	ObjectMap map;
+	private StringBuffer verificationErrors;
 
 	@Test
-	  public void CheckFindButtonByXpathAndClick() { 
-		WebElement message2 = driver.findElement(By.id("pg2"));   
-		Button button2 = new Button(driver, By.xpath("//*[@id=\"btn2\"]"));
-		button2.click();
-		  Assert.assertTrue(message2.isDisplayed());		
-		  Button button4 = new Button(driver, By.xpath("//*[@id=\"btn4\"]"));
-			button4.click();
-			  Assert.assertFalse(message2.isDisplayed());	
-	  }
-	
-	@Test
-	  public void CheckFindRadioButtonByNameAndClick() { 
-		  WebElement message = driver.findElement(By.id("pg3")); 
-		  RadioButton radiobutton1 = new RadioButton(driver, By.name("sex"));
-		  radiobutton1.click();
-		  Assert.assertTrue(message.isDisplayed());			  
-	  }
-	
-	@Test
-	  public void CheckFindRadioButtonByIdAndClick() { 
-		  WebElement message = driver.findElement(By.id("pg4")); 
-		  RadioButton radiobutton1 = new RadioButton(driver, By.id("rb2"));
-		  radiobutton1.click();
-		  Assert.assertTrue(message.isDisplayed());			  
-	  }
-	
-	@Test
-	  public void CheckFindCheckboxByCssAndClick() { 
-		  WebElement message = driver.findElement(By.id("pg5")); 
-		  RadioButton checkbox = new RadioButton(driver, By.cssSelector("input#cb1"));
-		  checkbox.click();
-		  Assert.assertTrue(message.isDisplayed());			  
-	  }
-	
-	@Test
-	  public void CheckFindCheckboxByXpathAndClick() { 
-		  WebElement message = driver.findElement(By.id("pg6")); 
-		  RadioButton checkbox = new RadioButton(driver, By.xpath("//*[@id=\"cb2\"]"));
-		  checkbox.click();
-		  Assert.assertTrue(message.isDisplayed());			  
-	  }
-	
-	@Test
-	  public void CheckFindLinkByIdAndClick() { 
-		  Link link = new Link(driver, By.id("lnk1"));
-		  link.click();
-		 testHelper.SwitchToWindow("Google");
-		 Assert.assertEquals(driver.getTitle(), "Google");			  
-	  }
-	  
-	
-//	  @Test(dataProvider = "urlProvider")
-//	  public void OpenTestPage(Integer dataRecord, String url) { 
-//		  Assert.assertEquals(driver.getTitle(), "Controls Page Title");
-//	  }
+	public void CheckTestPageOpens() {
+		Assert.assertEquals(driver.getTitle(), "Controls Page Title");
+	}
 
-//  @DataProvider(name = "urlProvider")
-//  public Object[][] dp() {
-//    return new Object[][] {
-//      new Object[] {new Integer(1), "file:///Users/nvonop/Documents/Repos/SeleniumFramework/src/tests/controls_page.html" }
-//    };
-//  }
-  
-  @BeforeMethod
-  public void beforeTest() {
-	  setLocalWebdriver("firefox", "17", "mac");
-	  driver.get("file:///Users/nvonop/Documents/Repos/SeleniumFramework/src/tests/controls_page.html");
-      testHelper = new TestHelper(driver);
-  }
+	@Test
+	public void CheckFindButtonAndClick() {
+		try {
+			WebElement message = driver.findElement(map
+					.getLocator("button_1_click_message"));
+			Button button = new Button(driver, map.getLocator("button_1"));
+			button.click();
+			Assert.assertTrue(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
 
-  @AfterMethod
-  public void afterTest() {
-	  closeDriver();		  
-  }
+	@Test
+	public void CheckFindButton2AndClick() {
+
+		try {
+			WebElement message = driver.findElement(map
+					.getLocator("button_2_click_message"));
+			Button button = new Button(driver, map.getLocator("button_2"));
+			button.click();
+			Assert.assertTrue(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	@Test
+	public void CheckFindAlertAndClose() {
+		try {
+			Button button = new Button(driver, map.getLocator("alert_button"));
+			button.click();
+			Alert alert = driver.switchTo().alert();
+			String alertText = alert.getText();
+			alert.accept();
+			Assert.assertEquals(alertText, "Alert button clicked.");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	@Test
+	public void CheckFindButtonAndClickThenCheckElementDisappears() {
+		try {
+			WebElement message = driver.findElement(map
+					.getLocator("button_2_click_message"));
+			Button button = new Button(driver, map.getLocator("button_2"));
+			button.click();
+			Assert.assertTrue(message.isDisplayed());
+			Button button2 = new Button(driver, map.getLocator("button_4"));
+			button2.click();
+			Assert.assertFalse(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	@Test
+	public void CheckFindRadioButtonAndClick() {
+		try {
+			WebElement message = driver.findElement(map.getLocator("radio_button_1_click_message"));
+			RadioButton radiobutton = new RadioButton(driver, map.getLocator("radio_button_1"));
+			radiobutton.click();
+			Assert.assertTrue(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	@Test
+	public void CheckFindRadioButton2AndClick() {
+		try {
+			WebElement message = driver.findElement(map.getLocator("radio_button_2_click_message"));
+			RadioButton radiobutton = new RadioButton(driver, map.getLocator("radio_button_2"));
+			radiobutton.click();
+			Assert.assertTrue(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	@Test
+	public void CheckFindCheckboxAndClick() {
+		try {
+			WebElement message = driver.findElement(map.getLocator("checkbox_1_click_message"));
+			RadioButton checkbox = new RadioButton(driver, map.getLocator("checkbox_1"));
+			checkbox.click();
+			Assert.assertTrue(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	@Test
+	public void CheckFindCheckbox2AndClick() {
+		try {
+			WebElement message = driver.findElement(map.getLocator("checkbox_2_click_message"));
+			RadioButton checkbox = new RadioButton(driver, map.getLocator("checkbox_2"));
+			checkbox.click();
+			Assert.assertTrue(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	@Test
+	public void CheckFindLinkAndClick() {
+		try {
+			Link link = new Link(driver, map.getLocator("link_google"));
+			link.click();
+			testHelper.SwitchToWindow("Google");
+			Assert.assertEquals(driver.getTitle(), "Google");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindTableAndCountRows() {
+		try {
+			Table table = new Table(driver, map.getLocator("table_1"));
+			Assert.assertEquals(table.countRows(), 3);
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindTableAndCountColumns() {
+		try {
+			Table table = new Table(driver, map.getLocator("table_1"));
+			Assert.assertEquals(table.countColumnsForRow(2), 3);
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindTableAndReadCell() {
+		try {
+			Table table = new Table(driver, map.getLocator("table_1"));
+			Assert.assertEquals(table.readCell(3,3), "row 2, cell 3");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindTableAndReadHeader() {
+		try {
+			Table table = new Table(driver, map.getLocator("table_1"));
+			Assert.assertEquals(table.readHeader(1), "Column 1");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+
+	// @Test(dataProvider = "urlProvider")
+	// public void OpenTestPage(Integer dataRecord, String url) {
+	// Assert.assertEquals(driver.getTitle(), "Controls Page Title");
+	// }
+
+	// @DataProvider(name = "urlProvider")
+	// public Object[][] dp() {
+	// return new Object[][] {
+	// new Object[] {new Integer(1),
+	// "file:///Users/nvonop/Documents/Repos/SeleniumFramework/src/tests/controls_page.html"
+	// }
+	// };
+	// }
+
+	@BeforeMethod
+	public void beforeTest() {
+		verificationErrors = new StringBuffer();
+		verificationErrors.append("");
+		map = new ObjectMap("ControlsPageObjectMap.properties");
+		setLocalWebdriver("firefox", "17", "mac");
+		driver.get("file:///Users/nvonop/Documents/Repos/SeleniumFramework/src/tests/controls_page.html");
+		testHelper = new TestHelper(driver);
+	}
+
+	@AfterMethod
+	public void afterTest() {
+		closeDriver();
+		String verificationErrorString = verificationErrors.toString();
+		if (!"".equals(verificationErrorString)) {
+			
+			//System.out.println(verificationErrorString);
+		}
+	}
 }

@@ -14,4 +14,10 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<variableList>
+		<variable>
+			<name>PROJECT_RESOURCES</name>
+			<value>file:/Users/nvonop/Documents/Repos/SeleniumFramework/Resources</value>
+		</variable>
+	</variableList>
 </projectDescription>
