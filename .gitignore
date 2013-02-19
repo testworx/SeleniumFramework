@@ -1,0 +1,64 @@
+
+.DS_Store
+
+test-output/Default suite/Default test.html
+
+test-output/Default suite/Default test.xml
+
+test-output/Default suite/testng-failed.xml
+
+test-output/Failed suite [Default suite]/Default test(failed).html
+
+test-output/Failed suite [Default suite]/Default test(failed).xml
+
+test-output/emailable-report.html
+
+test-output/index.html
+
+test-output/junitreports/TEST-tests.ControlTests.xml
+
+test-output/old/Default suite/classes.html
+
+test-output/old/Default suite/methods-alphabetical.html
+
+test-output/old/Default suite/methods-not-run.html
+
+test-output/old/Default suite/methods.html
+
+test-output/old/Default suite/testng.xml.html
+
+test-output/old/Default suite/toc.html
+
+test-output/old/Failed suite [Default suite]/classes.html
+
+test-output/old/Failed suite [Default suite]/methods-alphabetical.html
+
+test-output/old/Failed suite [Default suite]/methods-not-run.html
+
+test-output/old/Failed suite [Default suite]/methods.html
+
+test-output/old/Failed suite [Default suite]/testng.xml.html
+
+test-output/old/Failed suite [Default suite]/toc.html
+
+test-output/old/index.html
+
+test-output/testng-failed.xml
+
+test-output/testng-results.xml
+
+test-output/Failed suite [Default suite]/Default test(failed).html
+
+test-output/Failed suite [Default suite]/Default test(failed).xml
+
+test-output/old/Failed suite [Default suite]/classes.html
+
+test-output/old/Failed suite [Default suite]/methods-alphabetical.html
+
+test-output/old/Failed suite [Default suite]/methods-not-run.html
+
+test-output/old/Failed suite [Default suite]/methods.html
+
+test-output/old/Failed suite [Default suite]/testng.xml.html
+
+test-output/old/Failed suite [Default suite]/toc.html
