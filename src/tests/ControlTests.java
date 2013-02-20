@@ -11,9 +11,11 @@ import utils.Basetest;
 import utils.ObjectMap;
 import utils.TestHelper;
 import controls.Button;
+import controls.CheckBox;
 import controls.Link;
 import controls.RadioButton;
 import controls.Table;
+import controls.TextBox;
 
 public class ControlTests extends Basetest {
 
@@ -120,11 +122,11 @@ public class ControlTests extends Basetest {
 	}
 
 	@Test
-	public void CheckFindCheckboxAndClick() {
+	public void CheckFindCheckboxAndSelect() {
 		try {
 			WebElement message = driver.findElement(map.getLocator("checkbox_1_click_message"));
-			RadioButton checkbox = new RadioButton(driver, map.getLocator("checkbox_1"));
-			checkbox.click();
+			CheckBox checkbox = new CheckBox(driver, map.getLocator("checkbox_1"));
+			checkbox.select();
 			Assert.assertTrue(message.isDisplayed());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
@@ -137,7 +139,7 @@ public class ControlTests extends Basetest {
 	public void CheckFindCheckbox2AndClick() {
 		try {
 			WebElement message = driver.findElement(map.getLocator("checkbox_2_click_message"));
-			RadioButton checkbox = new RadioButton(driver, map.getLocator("checkbox_2"));
+			CheckBox checkbox = new CheckBox(driver, map.getLocator("checkbox_2"));
 			checkbox.click();
 			Assert.assertTrue(message.isDisplayed());
 		} catch (Exception e) {
@@ -202,6 +204,31 @@ public class ControlTests extends Basetest {
 		try {
 			Table table = new Table(driver, map.getLocator("table_1"));
 			Assert.assertEquals(table.readHeader(1), "Column 1");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindTextBoxAndTypeText() {
+		try {
+			TextBox firstName = new TextBox(driver, map.getLocator("text_firstname"));
+			firstName.write("Nick");
+			Assert.assertEquals(firstName.readValue(), "Nick");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindTextBoxAndReadValue() {
+		try {
+			TextBox lastName = new TextBox(driver, map.getLocator("text_lastname"));
+			Assert.assertEquals(lastName.readValue(), "");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
