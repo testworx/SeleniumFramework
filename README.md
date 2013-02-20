@@ -1,6 +1,3 @@
-SeleniumFramework
-=================
-
 # Selenium Framework
 
 ## Introduction
