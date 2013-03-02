@@ -1,6 +1,8 @@
 package utils;
 
 import java.util.Set;
+import java.util.StringTokenizer;
+
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,5 +28,22 @@ public class TestHelper {
              }
          }
      }
+	 
+	 public void SwitchToFrame(By locator) {   
+		 String locatorSubString = getLocatorString(locator);
+		 
+         driver.switchTo().frame(locatorSubString);
+     }
+	 
+	private String getLocatorString(By locator) {
+		String[] frameLocator = locator.toString().split("\\s");
+		 String locatorSubString = frameLocator[1];
+		 System.out.println("Parsing locator: "+locator.toString());
+		 System.out.println("Locator String: "+frameLocator[1]);
+//		 for (int i = 0; i<frameLocator.length; i++) {
+//			 System.out.println(frameLocator[i]);
+//		 }
+		return locatorSubString;
+	}
 
 }

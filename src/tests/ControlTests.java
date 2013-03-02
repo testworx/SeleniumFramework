@@ -27,6 +27,23 @@ public class ControlTests extends Basetest {
 	public void CheckTestPageOpens() {
 		Assert.assertEquals(driver.getTitle(), "Controls Page Title");
 	}
+	
+	@Test
+	public void CheckSwitchToFrame() {
+		try {
+			testHelper.SwitchToFrame(map
+					.getLocator("iframe_1"));
+			WebElement message = driver.findElement(map
+					.getLocator("button_1_click_message"));
+			Button button = new Button(driver, map.getLocator("button_1"));
+			button.click();
+			Assert.assertTrue(message.isDisplayed());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
 
 	@Test
 	public void CheckFindButtonAndClick() {

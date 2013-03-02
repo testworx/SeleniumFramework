@@ -37,32 +37,5 @@ public abstract class BaseControl implements Detectable {
 			System.out.println("Failed looking for WebElement: "+locator.toString());
 			throw new NoSuchElementException(locator.toString());
 		}
-		
-//		try {
-//			System.out.println("Looking for WebElement by id: "+locator);
-//			return driver.findElement(By.id(locator));
-//		}
-//		catch (NoSuchElementException e) {
-//			try {
-//				System.out.println("Looking for WebElement by name: "+locator);
-//				return driver.findElement(By.name(locator));
-//			}
-//			catch (NoSuchElementException ee) {
-//				try {
-//					System.out.println("Looking for WebElement by xpath: "+locator);
-//					return driver.findElement(By.xpath(locator));
-//				}
-//				catch (NoSuchElementException eee) {
-//					try {
-//						System.out.println("Looking for WebElement by cssSelector: "+locator);
-//						return driver.findElement(By.cssSelector(locator));					
-//					}
-//					catch (NoSuchElementException eeee) {
-//						System.out.println("Failed looking for WebElement: "+locator);
-//						throw new NoSuchElementException(locator);
-//					}
-//				}
-//			}
-//		}
 	}
 }
