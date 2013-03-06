@@ -5,11 +5,9 @@
     <classes>
       <class name="tests.ControlTests">
         <methods>
-          <include name="afterClass"/>
-          <include name="afterTest"/>
+          <include name="CheckFindTextBoxAndReadValue"/>
           <include name="beforeClass"/>
           <include name="beforeTest"/>
-          <include name="CheckSwitchToFrame"/>
         </methods>
       </class> <!-- tests.ControlTests -->
     </classes>

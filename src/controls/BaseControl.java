@@ -28,7 +28,7 @@ public abstract class BaseControl implements Detectable {
 		}
 	}
 	
-	public WebElement findControl(WebDriver driver, By locator) {
+	protected WebElement findControl(WebDriver driver, By locator) {
 		try {
 			System.out.println("Looking for WebElement: "+locator.toString());
 			return driver.findElement(locator);					

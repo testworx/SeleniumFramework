@@ -14,6 +14,7 @@ import controls.Button;
 import controls.CheckBox;
 import controls.Link;
 import controls.RadioButton;
+import controls.SelectBox;
 import controls.Table;
 import controls.TextBox;
 
@@ -252,6 +253,84 @@ public class ControlTests extends Basetest {
 			Assert.fail(verificationErrors.toString());
 		}
 	}
+	
+	@Test
+	public void CheckFindSelectListAndReadValue() {
+		try {
+			SelectBox cars = new SelectBox(driver, map.getLocator("select_cars"));
+			Assert.assertEquals(cars.readValue(), "Fiat");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindSelectListAndSelectOptionByText() {
+		try {
+			SelectBox cars = new SelectBox(driver, map.getLocator("select_cars"));
+			cars.selectOptionByVisibleText("Volvo");
+			Assert.assertEquals(cars.readValue(), "Volvo");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindSelectListAndSelectOptionByValue() {
+		try {
+			SelectBox cars = new SelectBox(driver, map.getLocator("select_cars"));
+			cars.selectOptionByValue("volvo");
+			Assert.assertEquals(cars.readValue(), "Volvo");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindSelectListAndSelectOptionByIndex() {
+		try {
+			SelectBox cars = new SelectBox(driver, map.getLocator("select_cars"));
+			cars.selectOptionByIndex(3);
+			Assert.assertEquals(cars.readValue(), "Audi");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckFindSubmitButtonAndClick() {
+		try {
+			Button submitButton = new Button(driver, map.getLocator("button_submit"));
+			submitButton.click();
+			Assert.assertEquals(driver.getTitle(), "Submitted Page Title");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
+	
+	@Test
+	public void CheckSubmitForm() {
+		try {
+			Button submitButton = new Button(driver, map.getLocator("button_submit"));
+			WebElement element = submitButton.getUnderlyingWebElement();
+			element.submit();
+			Assert.assertEquals(driver.getTitle(), "Submitted Page Title");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
 
 	// @Test(dataProvider = "urlProvider")
 	// public void OpenTestPage(Integer dataRecord, String url) {
@@ -273,7 +352,7 @@ public class ControlTests extends Basetest {
 		verificationErrors.append("");
 		map = new ObjectMap("ControlsPageObjectMap.properties");
 		setLocalWebdriver("firefox", "17", "mac");
-		driver.get("file:///Users/nvonop/Documents/Repos/SeleniumFramework/src/tests/controls_page.html");
+		driver.get("file:///Users/nvonop/Documents/Repos/SeleniumFramework/resources/controls_page.html");
 		testHelper = new TestHelper(driver);
 	}
 
