@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.seleniumhq.selenium:selenium-java:2.31.0"
+    compile "org.testng:testng:6.3.1"
+}
+
+
+tasks.withType(Test) {
+    useTestNG()
+    systemProperties = System.getProperties()
+    maxParallelForks = 3
+}
+
+task runFrameworkTests(type: Test) {
+    useTestNG() {
+        includeGroups 'frameworkTests'
+    }
+    
+  }
+    
+test {
+     useTestNG()
+  }
