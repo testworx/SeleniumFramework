@@ -1,5 +1,4 @@
 package controls;
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

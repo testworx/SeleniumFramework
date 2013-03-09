@@ -1,9 +1,7 @@
 package utils;
 
 import java.util.Set;
-import java.util.StringTokenizer;
 
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
