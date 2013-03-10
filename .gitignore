@@ -3,14 +3,16 @@
 # Package Files #
 *.war
 *.ear
-
 .DS_Store
-
 test-output/
+build/classes/
+build/dependency-cache/
+build/resources/
+build/test-results/
+build/tmp/
 
 bin/
 .gradle/
-
 *.bin
 
 
