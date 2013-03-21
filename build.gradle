@@ -28,7 +28,7 @@ task runFrameworkTests(type: Test) {
     
   }
     
-task test() {
+test {
 	systemProperties['LOCAL_DRIVER'] = false
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = true
