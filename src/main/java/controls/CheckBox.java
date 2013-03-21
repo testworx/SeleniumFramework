@@ -1,38 +1,39 @@
 package main.java.controls;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CheckBox extends BaseControl implements Clickable, Selectable, Readable {
+public class CheckBox extends BaseControl implements Clickable, Selectable,
+		Readable {
 
 	public CheckBox(WebDriver driver, By locator) {
-		baseWebElement = findControl(driver, locator);
-		System.out.println("WebElement found.");
+		setDriver(driver);
+		setLocator(locator);
 	}
 
 	@Override
 	public Boolean readValue() {
-		return new Boolean(baseWebElement.isSelected());
+		return new Boolean(getUnderlyingWebElement().isSelected());
 	}
 
 	@Override
 	public void click() {
-		baseWebElement.click();	
+		getUnderlyingWebElement().click();
 	}
 
 	@Override
 	public void select() {
-		if (!baseWebElement.isSelected()) {
-			baseWebElement.click();
+		if (!getUnderlyingWebElement().isSelected()) {
+			getUnderlyingWebElement().click();
 		}
-		
+
 	}
 
 	@Override
 	public void deSelect() {
-		if (baseWebElement.isSelected()) {
-			baseWebElement.click();
+		if (getUnderlyingWebElement().isSelected()) {
+			getUnderlyingWebElement().click();
 		}
 	}
 
-	
 }

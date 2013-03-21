@@ -28,6 +28,21 @@ task runFrameworkTests(type: Test) {
     
   }
     
-test {
-     useTestNG()
+task testIE9(type: Test) {
+	systemProperties['LOCAL_DRIVER'] = false
+	systemProperties['REMOTE_DRIVER'] = false
+	systemProperties['SAUCE_DRIVER'] = true
+	systemProperties['BROWSER'] = 'internet explorer'
+	systemProperties['VERSION'] = '9'
+	systemProperties['PLATFORM'] = 'Windows 2008'
+    useTestNG()
+  }
+  
+task testIE6(type: Test) {
+	systemProperties['LOCAL_DRIVER'] = false
+	systemProperties['REMOTE_DRIVER'] = false
+	systemProperties['SAUCE_DRIVER'] = true
+	systemProperties['BROWSER'] = 'chrome'
+	systemProperties['PLATFORM'] = 'Windows 2008'
+    useTestNG()
   }

@@ -8,34 +8,56 @@ import org.openqa.selenium.WebElement;
 
 public abstract class BaseControl implements Detectable {
 
-	WebElement baseWebElement;
-	
+	private WebDriver driver;
+	private WebElement baseWebElement;
+	private By locator;
+
 	public WebElement getUnderlyingWebElement() {
-		return baseWebElement;
+		return findControl(driver, locator);
 	}
-	
-	public void setUnderlyingWebElement(WebElement element) {
+
+	private void setUnderlyingWebElement(WebElement element) {
 		baseWebElement = element;
 	}
-	
+
 	@Override
 	public boolean exists() {
 		try {
 			return baseWebElement.isDisplayed();
-		}
-		catch (ElementNotVisibleException e) {
+		} catch (ElementNotVisibleException e) {
 			return false;
 		}
 	}
-	
-	protected WebElement findControl(WebDriver driver, By locator) {
+
+	protected WebElement findControl(WebDriver theDriver, By theLocator) {
 		try {
-			System.out.println("Looking for WebElement: "+locator.toString());
-			return driver.findElement(locator);					
-		}
-		catch (NoSuchElementException e) {
-			System.out.println("Failed looking for WebElement: "+locator.toString());
+			setDriver(theDriver);
+			setLocator(theLocator);
+			System.out.println("Looking for WebElement: " + locator.toString());
+			return driver.findElement(locator);
+		} catch (NoSuchElementException e) {
+			System.out.println("Failed looking for WebElement: "
+					+ locator.toString());
 			throw new NoSuchElementException(locator.toString());
 		}
+	}
+
+	protected WebElement findControl() {
+		try {
+			System.out.println("Looking for WebElement: " + locator.toString());
+			return driver.findElement(locator);
+		} catch (NoSuchElementException e) {
+			System.out.println("Failed looking for WebElement: "
+					+ locator.toString());
+			throw new NoSuchElementException(locator.toString());
+		}
+	}
+
+	protected void setLocator(By theLocator) {
+		locator = theLocator;
+	}
+
+	protected void setDriver(WebDriver theDriver) {
+		driver = theDriver;
 	}
 }

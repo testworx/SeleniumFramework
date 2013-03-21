@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 public class Alert extends BaseControl {
 
 	public Alert(WebDriver driver, By locator) {
-		baseWebElement = findControl(driver, locator);
-		System.out.println("WebElement found.");
+		setDriver(driver);
+		setLocator(locator);
 	}
-	
-	//TODO Add methods wrap the Selenium Alert methods.
+
+	// TODO Add methods wrap the Selenium Alert methods.
 }
