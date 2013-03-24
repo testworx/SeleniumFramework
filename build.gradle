@@ -1,39 +1,53 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-repositories {
-    mavenCentral()
-}
+	repositories {
+	    mavenCentral()
+	}
 
-dependencies {
-    compile "org.seleniumhq.selenium:selenium-java:2.31.0"
-    compile "org.testng:testng:6.3.1"
-    compile group: 'com.google.inject', name: 'guice', version: '3.0'
-compile("org.uncommons:reportng:1.1.2") {
-    exclude group: "org.testng", module: "testng"
-    }
-}
+	dependencies {
+	    compile "org.seleniumhq.selenium:selenium-java:2.31.0"
+	    compile "org.testng:testng:6.3.1"
+	    compile group: 'com.google.inject', name: 'guice', version: '3.0'
+	compile("org.uncommons:reportng:1.1.2") {
+	    exclude group: "org.testng", module: "testng"
+	    }
+	}
 
+	sourceSets {
+	    main {
+	        java {
+	            srcDir 'src/framework/'
+	        }
+	        resources {
+	            srcDir 'src/framework/resources'
+	        }
+	    }
+	}
+	
+	tasks.withType(Test) {
+	    useTestNG()
+	    systemProperties = System.getProperties()
+	    maxParallelForks = 3
+	}
 
-tasks.withType(Test) {
-    useTestNG()
-    systemProperties = System.getProperties()
-    maxParallelForks = 3
-}
-
-task runFrameworkTests(type: Test) {
-    useTestNG() {
-        includeGroups 'frameworkTests'
-    }
+	task runFrameworkTests(type: Test) {
+	    useTestNG() {
+	        includeGroups 'frameworkTests'
+	    }
+	}
     
+	test {
+		systemProperties['LOCAL_DRIVER'] = false
+		systemProperties['REMOTE_DRIVER'] = false
+		systemProperties['SAUCE_DRIVER'] = true
+		systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+		systemProperties['BROWSER'] = 'internet explorer'
+		systemProperties['VERSION'] = '9'
+		systemProperties['PLATFORM'] = 'Windows 2008'
+	    useTestNG()
   }
-    
-test {
-	systemProperties['LOCAL_DRIVER'] = false
-	systemProperties['REMOTE_DRIVER'] = false
-	systemProperties['SAUCE_DRIVER'] = true
-	systemProperties['BROWSER'] = 'internet explorer'
-	systemProperties['VERSION'] = '9'
-	systemProperties['PLATFORM'] = 'Windows 2008'
-    useTestNG()
+
+  jar {
+  	exclude('src/test')
   }

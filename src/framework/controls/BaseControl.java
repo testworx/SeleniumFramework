@@ -1,10 +1,13 @@
-package main.java.controls;
+package framework.controls;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import framework.controls.Detectable;
 
 public abstract class BaseControl implements Detectable {
 

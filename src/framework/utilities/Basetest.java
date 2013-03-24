@@ -1,4 +1,4 @@
-package main.java.utils;
+package framework.utilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -33,6 +33,8 @@ public class Basetest {
 			"localhost");
 	protected static final int GRID_PORT = Integer.valueOf(System.getProperty(
 			"GRID_PORT", "4444"));
+	protected static final String SAUCE_KEY = System.getProperty(
+			"SAUCE_KEY", "http://USER:TOKEN@ondemand.saucelabs.com:80/wd/hub");
 
 	@BeforeClass
 	public void beforeClass() {
@@ -86,7 +88,7 @@ public class Basetest {
 		try {
 			this.driver = new RemoteWebDriver(
 					new URL(
-							"http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub"),
+							SAUCE_KEY),
 					capabilities);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

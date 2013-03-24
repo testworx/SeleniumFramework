@@ -1,7 +1,10 @@
-package main.java.controls;
+package framework.controls;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import framework.controls.BaseControl;
 
 public class Alert extends BaseControl {
 

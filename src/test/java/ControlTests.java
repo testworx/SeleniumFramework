@@ -2,16 +2,7 @@ package test.java;
 
 import java.io.File;
 
-import main.java.controls.Button;
-import main.java.controls.CheckBox;
-import main.java.controls.Link;
-import main.java.controls.RadioButton;
-import main.java.controls.SelectBox;
-import main.java.controls.Table;
-import main.java.controls.TextBox;
-import main.java.utils.Basetest;
-import main.java.utils.ObjectMap;
-import main.java.utils.TestHelper;
+
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
@@ -19,6 +10,17 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import framework.controls.Button;
+import framework.controls.CheckBox;
+import framework.controls.Link;
+import framework.controls.RadioButton;
+import framework.controls.SelectBox;
+import framework.controls.Table;
+import framework.controls.TextBox;
+import framework.utilities.Basetest;
+import framework.utilities.ObjectMap;
+import framework.utilities.TestHelper;
 
 public class ControlTests extends Basetest {
 

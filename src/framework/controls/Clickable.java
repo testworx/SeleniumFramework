@@ -1,4 +1,4 @@
-package main.java.controls;
+package framework.controls;
 
 public interface Clickable {
 

@@ -1,10 +1,13 @@
-package main.java.controls;
+package framework.controls;
 
 import java.util.List;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import framework.controls.BaseControl;
 
 public class Table extends BaseControl {
 
