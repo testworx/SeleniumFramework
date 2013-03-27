@@ -127,7 +127,7 @@ public class Basetest {
 		}
 	}
 
-	public void SetWebDriver(String browser, String version, String platform) {
+	public void setWebDriver(String browser, String version, String platform) {
 		if (LOCAL_DRIVER) {
 			setLocalWebdriver(browser, version, platform);
 		} else if (REMOTE_DRIVER) {

@@ -1,12 +1,11 @@
 package framework.controls;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class RadioButton extends BaseControl implements Clickable, Readable {
+public class Message extends BaseControl implements Detectable, Readable {
 
-	public RadioButton(WebDriver driver, By locator) {
+	public Message(WebDriver driver, By locator) {
 		setDriver(driver);
 		setLocator(locator);
 	}
@@ -14,11 +13,6 @@ public class RadioButton extends BaseControl implements Clickable, Readable {
 	@Override
 	public Object readValue() {
 		return getUnderlyingWebElement().getText();
-	}
-
-	@Override
-	public void click() {
-		getUnderlyingWebElement().click();
 	}
 
 }

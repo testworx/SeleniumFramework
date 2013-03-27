@@ -1,5 +1,5 @@
 package framework.controls;
 
-public class BasePage {
+public class Page {
 
 }

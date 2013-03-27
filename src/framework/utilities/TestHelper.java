@@ -7,40 +7,38 @@ import org.openqa.selenium.WebDriver;
 
 public class TestHelper {
 
-	private WebDriver driver;
+	public static WebDriver DRIVER;
 
-	public TestHelper(WebDriver passedInDriver) {
-		driver = passedInDriver;
+	public static void setDriver(WebDriver passedInDriver) {
+		DRIVER = passedInDriver;
 	}
 
-	public void SwitchToWindow(String windowTitle) {
-		Set<String> windows = driver.getWindowHandles();
+	public static void switchToWindow(String windowTitle) {
+		Set<String> windows = DRIVER.getWindowHandles();
 
 		for (String window : windows) {
-			driver.switchTo().window(window);
-			if (driver.getTitle().contains(windowTitle)) {
-				System.out.println("Switching to window: " + driver.getTitle());
+			DRIVER.switchTo().window(window);
+			if (DRIVER.getTitle().contains(windowTitle)) {
+				System.out.println("Switching to window: " + DRIVER.getTitle());
 				return;
 			} else {
-				System.out.println("No match for window: " + driver.getTitle());
+				System.out.println("No match for window: " + DRIVER.getTitle());
 			}
 		}
 	}
 
-	public void SwitchToFrame(By locator) {
+	public static void switchToFrame(By locator) {
 		String locatorSubString = getLocatorString(locator);
 
-		driver.switchTo().frame(locatorSubString);
+		DRIVER.switchTo().frame(locatorSubString);
 	}
 
-	private String getLocatorString(By locator) {
-		String[] frameLocator = locator.toString().split("\\s");
-		String locatorSubString = frameLocator[1];
+	public static String getLocatorString(By locator) {
+		String[] locatorArray = locator.toString().split("\\s");
+		String locatorSubString = locatorArray[1];
 		System.out.println("Parsing locator: " + locator.toString());
-		System.out.println("Locator String: " + frameLocator[1]);
-		// for (int i = 0; i<frameLocator.length; i++) {
-		// System.out.println(frameLocator[i]);
-		// }
+		System.out.println("Locator String: " + locatorArray[1]);
+		
 		return locatorSubString;
 	}
 

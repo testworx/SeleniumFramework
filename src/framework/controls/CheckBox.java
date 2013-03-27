@@ -4,11 +4,6 @@ package framework.controls;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import framework.controls.BaseControl;
-import framework.controls.Clickable;
-import framework.controls.Readable;
-import framework.controls.Selectable;
-
 public class CheckBox extends BaseControl implements Clickable, Selectable,
 		Readable {
 
