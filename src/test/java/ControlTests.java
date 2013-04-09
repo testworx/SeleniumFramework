@@ -19,7 +19,8 @@ public class ControlTests extends Basetest {
 	private ControlsPage controlsPage;
 
 	@Test(groups = { "frameworkTests" })
-	public void CheckTestPageOpens() {
+	public void CheckTestPageOpensAndTakeScreenshot() {
+		TestHelper.getScreenshot(TEST_RESULTS_PATH);
 		AssertJUnit.assertEquals(driver.getTitle(), "Controls Page Title");
 	}
 
@@ -289,19 +290,6 @@ public class ControlTests extends Basetest {
 		}
 	}
 
-	// @Test(groups = {"frameworkTests"})(dataProvider = "urlProvider")
-	// public void OpenTestPage(Integer dataRecord, String url) {
-	// Assert.assertEquals(driver.getTitle(), "Controls Page Title");
-	// }
-
-	// @DataProvider(name = "urlProvider")
-	// public Object[][] dp() {
-	// return new Object[][] {
-	// new Object[] {new Integer(1),
-	// "file:///Users/nvonop/Documents/Repos/SeleniumFramework/src/tests/controls_page.html"
-	// }
-	// };
-	// }
 
 	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
@@ -309,7 +297,7 @@ public class ControlTests extends Basetest {
 		verificationErrors.append("");
 		map = new ObjectMap("ControlsPageObjectMap.properties");
 		setWebDriver(BROWSER, VERSION, PLATFORM);
-		TestHelper.setDriver(driver);
+		TestHelper.setDriver(driver, LOCAL_DRIVER, REMOTE_DRIVER, SAUCE_DRIVER);
 		 controlsPage = new ControlsPage(driver, "http://selenium-framework.site44.com/controls_page.html");
 		 controlsPage.get();
 	}

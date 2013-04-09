@@ -22,7 +22,7 @@ public class Basetest {
 			"firefox");
 	protected static final String VERSION = System.getProperty("VERSION", "19");
 	protected static final String PLATFORM = System.getProperty("PLATFORM",
-			"Mac");
+			"MAC");
 	protected static final boolean LOCAL_DRIVER = Boolean.valueOf(System
 			.getProperty("LOCAL_DRIVER", "true"));
 	protected static final boolean REMOTE_DRIVER = Boolean.valueOf(System
@@ -35,6 +35,8 @@ public class Basetest {
 			"GRID_PORT", "4444"));
 	protected static final String SAUCE_KEY = System.getProperty(
 			"SAUCE_KEY", "http://USER:TOKEN@ondemand.saucelabs.com:80/wd/hub");
+	protected static final String TEST_RESULTS_PATH = System.getProperty(
+			"TEST_RESULTS_PATH", "~");
 
 	@BeforeClass
 	public void beforeClass() {
