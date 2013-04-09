@@ -7,6 +7,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import framework.controls.interfaces.Detectable;
+
 public abstract class BaseControl implements Detectable {
 
 	private WebDriver driver;

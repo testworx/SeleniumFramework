@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import framework.controls.interfaces.Clickable;
+import framework.controls.interfaces.Readable;
 
 public class SelectBox extends BaseControl implements Clickable, Readable {
 

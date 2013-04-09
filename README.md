@@ -25,9 +25,9 @@ The intention here is to provide useful functionality that can be used at the "t
 **ObjectMap** class allows WebElement locators to be retrieved from a properties file.  This enables locator information to be stored externally to the tests.  This is based on a recipe from The Selenium Cookbook.
 
 
-###Tests Package
+### Tests Package
 The code in this package is not intended for production use as it contains test to verify framework functionality.  As new functionality is added to the framework, the tests will be expanded.  The tests can also serve as an example of how each Control can be used as well as the methods they offer.
 
-HTML pages containing controls are included within the package.  
+HTML pages containing controls are included in the "resources" folder within the package.  
  
 

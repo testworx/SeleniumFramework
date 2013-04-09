@@ -1,4 +1,4 @@
-package framework.controls;
+package framework.controls.interfaces;
 
 public interface Writeable {
 
