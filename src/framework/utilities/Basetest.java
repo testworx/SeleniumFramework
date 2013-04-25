@@ -16,26 +16,26 @@ import org.testng.annotations.BeforeClass;
 public class Basetest {
 
 	public WebDriver driver = null;
-	protected static final String APPLICATION_URL = System.getProperty(
+	protected static String APPLICATION_URL = System.getProperty(
 			"APPLICATION_URL", "http://www.google.com/");
-	protected static final String BROWSER = System.getProperty("BROWSER",
+	protected static String BROWSER = System.getProperty("BROWSER",
 			"firefox");
-	protected static final String VERSION = System.getProperty("VERSION", "19");
-	protected static final String PLATFORM = System.getProperty("PLATFORM",
+	protected static String VERSION = System.getProperty("VERSION", "19");
+	protected static String PLATFORM = System.getProperty("PLATFORM",
 			"MAC");
-	protected static final boolean LOCAL_DRIVER = Boolean.valueOf(System
+	protected static boolean LOCAL_DRIVER = Boolean.valueOf(System
 			.getProperty("LOCAL_DRIVER", "true"));
-	protected static final boolean REMOTE_DRIVER = Boolean.valueOf(System
+	protected static boolean REMOTE_DRIVER = Boolean.valueOf(System
 			.getProperty("REMOTE_DRIVER", "false"));
-	protected static final boolean SAUCE_DRIVER = Boolean.valueOf(System
+	protected static boolean SAUCE_DRIVER = Boolean.valueOf(System
 			.getProperty("SAUCE_DRIVER", "false"));
-	protected static final String GRID_HOST = System.getProperty("GRID_HOST",
+	protected static String GRID_HOST = System.getProperty("GRID_HOST",
 			"localhost");
-	protected static final int GRID_PORT = Integer.valueOf(System.getProperty(
+	protected static int GRID_PORT = Integer.valueOf(System.getProperty(
 			"GRID_PORT", "4444"));
-	protected static final String SAUCE_KEY = System.getProperty(
+	protected static String SAUCE_KEY = System.getProperty(
 			"SAUCE_KEY", "http://USER:TOKEN@ondemand.saucelabs.com:80/wd/hub");
-	protected static final String TEST_RESULTS_PATH = System.getProperty(
+	protected static String TEST_RESULTS_PATH = System.getProperty(
 			"TEST_RESULTS_PATH", "~");
 
 	@BeforeClass

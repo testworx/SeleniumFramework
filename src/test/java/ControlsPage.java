@@ -7,7 +7,6 @@ import org.testng.Assert;
 
 import framework.controls.Button;
 import framework.controls.CheckBox;
-import framework.controls.Form;
 import framework.controls.Frame;
 import framework.controls.Link;
 import framework.controls.Message;
@@ -15,6 +14,7 @@ import framework.controls.RadioButton;
 import framework.controls.SelectBox;
 import framework.controls.Table;
 import framework.controls.TextBox;
+import framework.controls.interfaces.Form;
 import framework.utilities.ObjectMap;
 
 public class ControlsPage extends LoadableComponent<ControlsPage> implements Form {
