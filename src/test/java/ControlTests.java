@@ -7,11 +7,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import framework.utilities.Basetest;
+import framework.utilities.BaseTest;
 import framework.utilities.ObjectMap;
 import framework.utilities.TestHelper;
 
-public class ControlTests extends Basetest {
+public class ControlTests extends BaseTest {
 
 	TestHelper testHelper;
 	ObjectMap map;

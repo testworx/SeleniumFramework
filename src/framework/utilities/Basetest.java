@@ -13,7 +13,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-public class Basetest {
+public class BaseTest {
 
 	public WebDriver driver = null;
 	protected static String APPLICATION_URL = System.getProperty(
