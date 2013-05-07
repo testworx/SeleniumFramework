@@ -1,8 +1,8 @@
 package test.java;
 
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebElement;
-import org.testng.AssertJUnit;
+import org.testng.Assert;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,7 +21,7 @@ public class ControlTests extends BaseTest {
 	@Test(groups = { "frameworkTests" })
 	public void CheckTestPageOpensAndTakeScreenshot() {
 		TestHelper.getScreenshot(TEST_RESULTS_PATH);
-		AssertJUnit.assertEquals(driver.getTitle(), "Controls Page Title");
+		Assert.assertEquals(driver.getTitle(), "Controls Page Title");
 	}
 
 	@Test(groups = { "frameworkTests" })
@@ -29,11 +29,11 @@ public class ControlTests extends BaseTest {
 		try {
 			controlsPage.frame.switchToFrame();
 			controlsPage.button1.click();
-			AssertJUnit.assertTrue(controlsPage.message1.exists());
+			Assert.assertTrue(controlsPage.message1.exists());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -41,11 +41,11 @@ public class ControlTests extends BaseTest {
 	public void CheckFindButtonAndClick() {
 		try {
 			controlsPage.button1.click();
-			AssertJUnit.assertTrue(controlsPage.message1.exists());
+			Assert.assertTrue(controlsPage.message1.exists());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -54,11 +54,11 @@ public class ControlTests extends BaseTest {
 
 		try {
 			controlsPage.button2.click();
-			AssertJUnit.assertTrue(controlsPage.message2.exists());
+			Assert.assertTrue(controlsPage.message2.exists());
 		} catch (Exception e) {
 		// Capture and append Exceptions/Errors
 		verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -66,14 +66,15 @@ public class ControlTests extends BaseTest {
 	public void CheckFindAlertAndClose() {
 		try {
 			controlsPage.button3.click();
+			//TODO remove native selenium Alert code
 			Alert alert = driver.switchTo().alert();
 			String alertText = alert.getText();
 			alert.accept();
-			AssertJUnit.assertEquals(alertText, "Alert button clicked.");
+			Assert.assertEquals(alertText, "Alert button clicked.");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -81,37 +82,37 @@ public class ControlTests extends BaseTest {
 	public void CheckFindButtonAndClickThenCheckElementDisappears() {
 		try {
 			controlsPage.button2.click();
-			AssertJUnit.assertTrue(controlsPage.message2.exists());
+			Assert.assertTrue(controlsPage.message2.exists());
 			controlsPage.button4.click();
-			AssertJUnit.assertFalse(controlsPage.message2.exists());
+			Assert.assertFalse(controlsPage.message2.exists());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindRadioButtonAndClick() {
-//		try {
+		try {
 			controlsPage.male.click();
-			AssertJUnit.assertTrue(controlsPage.message3.exists());
-//		} catch (Exception e) {
-//			// Capture and append Exceptions/Errors
-//			verificationErrors.append(e.toString());
-//			AssertJUnit.fail(verificationErrors.toString());
-//		}
+			Assert.assertTrue(controlsPage.message3.exists());
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindRadioButton2AndClick() {
 		try {
 			controlsPage.female.click();
-			AssertJUnit.assertTrue(controlsPage.message4.exists());
+			Assert.assertTrue(controlsPage.message4.exists());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -119,11 +120,11 @@ public class ControlTests extends BaseTest {
 	public void CheckFindCheckboxAndSelect() {
 		try {
 			controlsPage.bike.click();
-			AssertJUnit.assertTrue(controlsPage.message5.exists());
+			Assert.assertTrue(controlsPage.message5.exists());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -131,68 +132,68 @@ public class ControlTests extends BaseTest {
 	public void CheckFindCheckbox2AndClick() {
 		try {
 			controlsPage.car.click();
-			AssertJUnit.assertTrue(controlsPage.message6.exists());
+			Assert.assertTrue(controlsPage.message6.exists());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindLinkAndClick() {
-//		try {
+		try {
 			controlsPage.google.click();
 			TestHelper.switchToWindow("Google");
-			AssertJUnit.assertEquals(driver.getTitle(), "Google");
-//		} catch (Exception e) {
-//			// Capture and append Exceptions/Errors
-//			verificationErrors.append(e.toString());
-//			AssertJUnit.fail(verificationErrors.toString());
-//		}
+			Assert.assertEquals(driver.getTitle(), "Google");
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndCountRows() {
 		try {	
-			AssertJUnit.assertEquals(controlsPage.table.countRows(), 3);
+			Assert.assertEquals(controlsPage.table.countRows(), 3);
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndCountColumns() {
 		try {
-			AssertJUnit.assertEquals(controlsPage.table.countColumnsForRow(2), 3);
+			Assert.assertEquals(controlsPage.table.countColumnsForRow(2), 3);
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndReadCell() {
 		try {
-			AssertJUnit.assertEquals(controlsPage.table.readCell(3, 3), "row 2, cell 3");
+			Assert.assertEquals(controlsPage.table.readCell(3, 3), "row 2, cell 3");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndReadHeader() {
 		try {
-			AssertJUnit.assertEquals(controlsPage.table.readHeader(1), "Column 1");
+			Assert.assertEquals(controlsPage.table.readHeader(1), "Column 1");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -200,33 +201,33 @@ public class ControlTests extends BaseTest {
 	public void CheckFindTextBoxAndTypeText() {
 		try {
 			controlsPage.firstName.write("Nick");
-			AssertJUnit.assertEquals(controlsPage.firstName.readValue(), "Nick");
+			Assert.assertEquals(controlsPage.firstName.readValue(), "Nick");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTextBoxAndReadValue() {
 		try {
-			AssertJUnit.assertEquals(controlsPage.lastName.readValue(), "");
+			Assert.assertEquals(controlsPage.lastName.readValue(), "");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindSelectListAndReadValue() {
 		try {
-			AssertJUnit.assertEquals(controlsPage.cars.readValue(), "Fiat");
+			Assert.assertEquals(controlsPage.cars.readValue(), "Fiat");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -234,11 +235,11 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSelectListAndSelectOptionByText() {
 		try {
 			controlsPage.cars.selectOptionByVisibleText("Volvo");
-			AssertJUnit.assertEquals(controlsPage.cars.readValue(), "Volvo");
+			Assert.assertEquals(controlsPage.cars.readValue(), "Volvo");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -246,11 +247,11 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSelectListAndSelectOptionByValue() {
 		try {
 			controlsPage.cars.selectOptionByValue("volvo");
-			AssertJUnit.assertEquals(controlsPage.cars.readValue(), "Volvo");
+			Assert.assertEquals(controlsPage.cars.readValue(), "Volvo");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -258,11 +259,11 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSelectListAndSelectOptionByIndex() {
 		try {
 			controlsPage.cars.selectOptionByIndex(3);
-			AssertJUnit.assertEquals(controlsPage.cars.readValue(), "Audi");
+			Assert.assertEquals(controlsPage.cars.readValue(), "Audi");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -270,11 +271,11 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSubmitButtonAndClick() {
 		try {
 			controlsPage.submit.click();
-			AssertJUnit.assertEquals("Submitted Page Title", driver.getTitle());
+			Assert.assertEquals("Submitted Page Title", driver.getTitle());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 
@@ -282,11 +283,11 @@ public class ControlTests extends BaseTest {
 	public void CheckSubmitForm() {
 		try {
 			SubmittedPage submittedPage = controlsPage.submitForm();
-			AssertJUnit.assertEquals("Submitted Page Title", driver.getTitle());
+			Assert.assertEquals("Submitted Page Title", driver.getTitle());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
-			AssertJUnit.fail(verificationErrors.toString());
+			Assert.fail(verificationErrors.toString());
 		}
 	}
 

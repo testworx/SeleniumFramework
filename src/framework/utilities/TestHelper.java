@@ -3,6 +3,7 @@ package framework.utilities;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -12,7 +13,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.remote.Augmenter;
-import java.util.Date;
 
 public class TestHelper {
 
@@ -63,7 +63,7 @@ public class TestHelper {
 		try {
 			
 			SCREENSHOT_PATH = path;
-			java.util.Date date= new java.util.Date();
+			Date date= new java.util.Date();
 			String timestamp = (new Timestamp(date.getTime())).toString(); 
 			
 			timestamp = timestamp.replaceAll("/", "-");
