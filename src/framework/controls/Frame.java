@@ -9,11 +9,11 @@ public class Frame extends BaseControl {
 		setDriver(driver);
 		setLocator(locator);
 	}
-	
-//	public void switchTo() {
-//		TestHelper.switchToFrame(getLocator());
-//	}
-	
+
+	// public void switchTo() {
+	// TestHelper.switchToFrame(getLocator());
+	// }
+
 	public void switchToFrame() {
 		String locatorSubString = getLocatorString(getLocator());
 
@@ -25,7 +25,7 @@ public class Frame extends BaseControl {
 		String locatorSubString = locatorArray[1];
 		System.out.println("Parsing locator: " + locator.toString());
 		System.out.println("Locator String: " + locatorArray[1]);
-		
+
 		return locatorSubString;
 	}
 }

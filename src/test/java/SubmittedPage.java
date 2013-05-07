@@ -8,24 +8,24 @@ public class SubmittedPage extends LoadableComponent<SubmittedPage> {
 
 	WebDriver driver;
 	String pageUrl;
-	
+
 	public SubmittedPage(WebDriver testDriver, String url) {
 		driver = testDriver;
-		pageUrl = url;		
+		pageUrl = url;
 	}
-	
+
 	public SubmittedPage(WebDriver testDriver) {
 		driver = testDriver;
 	}
-	
+
 	@Override
 	protected void isLoaded() throws Error {
-		Assert.assertEquals(driver.getTitle(), "Submitted Page Title");		
+		Assert.assertEquals(driver.getTitle(), "Submitted Page Title");
 	}
-	
+
 	@Override
 	protected void load() {
-		driver.get(pageUrl);		
+		driver.get(pageUrl);
 	}
-	
+
 }

@@ -56,8 +56,8 @@ public class ControlTests extends BaseTest {
 			controlsPage.button2.click();
 			Assert.assertTrue(controlsPage.message2.exists());
 		} catch (Exception e) {
-		// Capture and append Exceptions/Errors
-		verificationErrors.append(e.toString());
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
 			Assert.fail(verificationErrors.toString());
 		}
 	}
@@ -66,7 +66,7 @@ public class ControlTests extends BaseTest {
 	public void CheckFindAlertAndClose() {
 		try {
 			controlsPage.button3.click();
-			//TODO remove native selenium Alert code
+			// TODO remove native selenium Alert code
 			Alert alert = driver.switchTo().alert();
 			String alertText = alert.getText();
 			alert.accept();
@@ -155,7 +155,7 @@ public class ControlTests extends BaseTest {
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndCountRows() {
-		try {	
+		try {
 			Assert.assertEquals(controlsPage.table.countRows(), 3);
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
@@ -178,7 +178,8 @@ public class ControlTests extends BaseTest {
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndReadCell() {
 		try {
-			Assert.assertEquals(controlsPage.table.readCell(3, 3), "row 2, cell 3");
+			Assert.assertEquals(controlsPage.table.readCell(3, 3),
+					"row 2, cell 3");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -291,7 +292,6 @@ public class ControlTests extends BaseTest {
 		}
 	}
 
-
 	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
 		verificationErrors = new StringBuffer();
@@ -299,8 +299,9 @@ public class ControlTests extends BaseTest {
 		map = new ObjectMap("ControlsPageObjectMap.properties");
 		setWebDriver(BROWSER, VERSION, PLATFORM);
 		TestHelper.setDriver(driver, LOCAL_DRIVER, REMOTE_DRIVER, SAUCE_DRIVER);
-		 controlsPage = new ControlsPage(driver, "http://selenium-framework.site44.com/controls_page.html");
-		 controlsPage.get();
+		controlsPage = new ControlsPage(driver,
+				"http://selenium-framework.site44.com/controls_page.html");
+		controlsPage.get();
 	}
 
 	@AfterMethod(alwaysRun = true)

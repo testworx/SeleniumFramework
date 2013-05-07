@@ -55,7 +55,7 @@ public class BaseTest {
 			String platform) {
 		switch (getBrowserId(browser)) {
 		case 0:
-			throw new WebDriverException("Browser: "+browser+" not found.");
+			throw new WebDriverException("Browser: " + browser + " not found.");
 		case 1:
 			driver = new InternetExplorerDriver();
 			break;
@@ -92,7 +92,7 @@ public class BaseTest {
 
 		switch (getBrowserId(browser)) {
 		case 0:
-			throw new WebDriverException("Browser: "+browser+" not found.");
+			throw new WebDriverException("Browser: " + browser + " not found.");
 		case 1:
 			capabilities = DesiredCapabilities.internetExplorer();
 			capabilities.setCapability("version", version);
@@ -125,7 +125,7 @@ public class BaseTest {
 
 		switch (getBrowserId(browser)) {
 		case 0:
-			throw new WebDriverException("Browser: "+browser+" not found.");
+			throw new WebDriverException("Browser: " + browser + " not found.");
 		case 1:
 			capabilities = DesiredCapabilities.internetExplorer();
 			capabilities.setCapability("version", version);

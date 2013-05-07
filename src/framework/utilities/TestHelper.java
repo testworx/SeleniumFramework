@@ -22,7 +22,8 @@ public class TestHelper {
 	public static boolean SAUCE_DRIVER_HELPER;
 	public static String SCREENSHOT_PATH = null;
 
-	public static void setDriver(WebDriver passedInDriver, boolean local, boolean remote, boolean sauce) {
+	public static void setDriver(WebDriver passedInDriver, boolean local,
+			boolean remote, boolean sauce) {
 		DRIVER = passedInDriver;
 		LOCAL_DRIVER_HELPER = local;
 		REMOTE_DRIVER_HELPER = remote;
@@ -54,40 +55,40 @@ public class TestHelper {
 		String locatorSubString = locatorArray[1];
 		System.out.println("Parsing locator: " + locator.toString());
 		System.out.println("Locator String: " + locatorArray[1]);
-		
+
 		return locatorSubString;
 	}
-	
+
 	public static void getScreenshot(String path) {
-		
+
 		try {
-			
+
 			SCREENSHOT_PATH = path;
-			Date date= new java.util.Date();
-			String timestamp = (new Timestamp(date.getTime())).toString(); 
-			
+			Date date = new java.util.Date();
+			String timestamp = (new Timestamp(date.getTime())).toString();
+
 			timestamp = timestamp.replaceAll("/", "-");
 			timestamp = timestamp.replaceAll(":", ".");
-			
-			String screenshotPath = SCREENSHOT_PATH +"//"+timestamp+".JPG";
-			
+
+			String screenshotPath = SCREENSHOT_PATH + "//" + timestamp + ".JPG";
+
 			File screenshot;
-			
+
 			if (LOCAL_DRIVER_HELPER) {
-				screenshot = ((TakesScreenshot)DRIVER).getScreenshotAs(OutputType.FILE);
-				       FileUtils.copyFile(screenshot, new File(screenshotPath));
-			}
-			else if (REMOTE_DRIVER_HELPER) {
+				screenshot = ((TakesScreenshot) DRIVER)
+						.getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(screenshot, new File(screenshotPath));
+			} else if (REMOTE_DRIVER_HELPER) {
 				DRIVER = new Augmenter().augment(DRIVER);
-				screenshot =
-				     ((TakesScreenshot)DRIVER).getScreenshotAs(OutputType.FILE);
-				   FileUtils.copyFile(screenshot, new File(screenshotPath));
-			}
-			else if (SAUCE_DRIVER_HELPER) {
-				System.out.println("Cannot take screenshot.  Driver is on Sauce.");
-			}
-			else {
-				System.out.println("Cannot take screenshot.  Unable to identify driver type.");
+				screenshot = ((TakesScreenshot) DRIVER)
+						.getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(screenshot, new File(screenshotPath));
+			} else if (SAUCE_DRIVER_HELPER) {
+				System.out
+						.println("Cannot take screenshot.  Driver is on Sauce.");
+			} else {
+				System.out
+						.println("Cannot take screenshot.  Unable to identify driver type.");
 			}
 		} catch (WebDriverException e) {
 			System.out.println("An exception occurred taking the screenshot.");
@@ -96,7 +97,7 @@ public class TestHelper {
 			System.out.println("An exception occurred taking the screenshot.");
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

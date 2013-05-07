@@ -1,6 +1,5 @@
 package framework.controls;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
@@ -33,7 +32,6 @@ public abstract class BaseControl implements Detectable {
 			return false;
 		}
 	}
-	
 
 	protected WebElement findControl(WebDriver theDriver, By theLocator) {
 		try {
@@ -64,7 +62,7 @@ public abstract class BaseControl implements Detectable {
 	protected void setLocator(By theLocator) {
 		locator = theLocator;
 	}
-	
+
 	protected By getLocator() {
 		return locator;
 	}
@@ -72,7 +70,7 @@ public abstract class BaseControl implements Detectable {
 	protected void setDriver(WebDriver theDriver) {
 		driver = theDriver;
 	}
-	
+
 	protected WebDriver getDriver() {
 		return driver;
 	}
