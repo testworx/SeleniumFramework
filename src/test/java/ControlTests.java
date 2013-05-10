@@ -295,7 +295,6 @@ public class ControlTests extends BaseTest {
 	public void beforeTest() {
 		verificationErrors = new StringBuffer();
 		verificationErrors.append("");
-		map = new ObjectMap("ControlsPageObjectMap.properties");
 		setWebDriver(BROWSER, VERSION, PLATFORM);
 		TestHelper.setDriver(driver, LOCAL_DRIVER, REMOTE_DRIVER, SAUCE_DRIVER);
 		controlsPage = new ControlsPage(driver,
