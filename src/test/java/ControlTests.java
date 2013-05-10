@@ -14,7 +14,6 @@ import framework.utilities.TestHelper;
 public class ControlTests extends BaseTest {
 
 	TestHelper testHelper;
-	ObjectMap map;
 	private StringBuffer verificationErrors;
 	private ControlsPage controlsPage;
 

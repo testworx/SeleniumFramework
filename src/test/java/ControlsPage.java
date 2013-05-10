@@ -54,34 +54,34 @@ public class ControlsPage extends LoadableComponent<ControlsPage> implements
 		map = new ObjectMap("ControlsPageObjectMap.properties");
 
 		try {
-			frame = new Frame(driver, map.getLocator("iframe_1"));
-			button1 = new Button(driver, map.getLocator("button_1"));
-			button2 = new Button(driver, map.getLocator("button_2"));
-			button3 = new Button(driver, map.getLocator("alert_button"));
-			button4 = new Button(driver, map.getLocator("button_4"));
-			submit = new Button(driver, map.getLocator("button_submit"));
-			male = new RadioButton(driver, map.getLocator("radio_button_1"));
-			female = new RadioButton(driver, map.getLocator("radio_button_2"));
-			bike = new CheckBox(driver, map.getLocator("checkbox_1"));
-			car = new CheckBox(driver, map.getLocator("checkbox_2"));
-			google = new Link(driver, map.getLocator("link_google"));
-			table = new Table(driver, map.getLocator("table_1"));
-			firstName = new TextBox(driver, map.getLocator("text_firstname"));
-			lastName = new TextBox(driver, map.getLocator("text_lastname"));
-			cars = new SelectBox(driver, map.getLocator("select_cars"));
+			frame = new Frame(driver, map.getLocatorFromMap("iframe_1"));
+			button1 = new Button(driver, map.getLocatorFromMap("button_1"));
+			button2 = new Button(driver, map.getLocatorFromMap("button_2"));
+			button3 = new Button(driver, map.getLocatorFromMap("alert_button"));
+			button4 = new Button(driver, map.getLocatorFromMap("button_4"));
+			submit = new Button(driver, map.getLocatorFromMap("button_submit"));
+			male = new RadioButton(driver, map.getLocatorFromMap("radio_button_1"));
+			female = new RadioButton(driver, map.getLocatorFromMap("radio_button_2"));
+			bike = new CheckBox(driver, map.getLocatorFromMap("checkbox_1"));
+			car = new CheckBox(driver, map.getLocatorFromMap("checkbox_2"));
+			google = new Link(driver, map.getLocatorFromMap("link_google"));
+			table = new Table(driver, map.getLocatorFromMap("table_1"));
+			firstName = new TextBox(driver, map.getLocatorFromMap("text_firstname"));
+			lastName = new TextBox(driver, map.getLocatorFromMap("text_lastname"));
+			cars = new SelectBox(driver, map.getLocatorFromMap("select_cars"));
 
 			message1 = new Message(driver,
-					map.getLocator("button_1_click_message"));
+					map.getLocatorFromMap("button_1_click_message"));
 			message2 = new Message(driver,
-					map.getLocator("button_2_click_message"));
+					map.getLocatorFromMap("button_2_click_message"));
 			message3 = new Message(driver,
-					map.getLocator("radio_button_1_click_message"));
+					map.getLocatorFromMap("radio_button_1_click_message"));
 			message4 = new Message(driver,
-					map.getLocator("radio_button_2_click_message"));
+					map.getLocatorFromMap("radio_button_2_click_message"));
 			message5 = new Message(driver,
-					map.getLocator("checkbox_1_click_message"));
+					map.getLocatorFromMap("checkbox_1_click_message"));
 			message6 = new Message(driver,
-					map.getLocator("checkbox_2_click_message"));
+					map.getLocatorFromMap("checkbox_2_click_message"));
 
 		} catch (Exception e) {
 			e.printStackTrace();
