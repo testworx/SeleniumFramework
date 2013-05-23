@@ -162,6 +162,21 @@ public class ControlTests extends BaseTest {
 			Assert.fail(verificationErrors.toString());
 		}
 	}
+	
+	@Test(groups = { "frameworkTests" })
+	public void CheckFindTableAndSearchForText() {
+		try {
+			int row = 2;
+			int column = 1;
+			int[] tableCellCoordinates = controlsPage.table.searchTableForText("row 1, cell 1");
+			Assert.assertEquals(tableCellCoordinates[0], row);
+			Assert.assertEquals(tableCellCoordinates[1], column);
+		} catch (Exception e) {
+			// Capture and append Exceptions/Errors
+			verificationErrors.append(e.toString());
+			Assert.fail(verificationErrors.toString());
+		}
+	}
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndCountColumns() {
