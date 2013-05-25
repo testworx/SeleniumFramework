@@ -28,7 +28,7 @@ apply plugin: 'eclipse'
 	tasks.withType(Test) {
 	    useTestNG()
 	    systemProperties = System.getProperties()
-	    maxParallelForks = 3
+	    maxParallelForks = 2
 	}
 
 	task runFrameworkTests(type: Test) {
@@ -36,16 +36,46 @@ apply plugin: 'eclipse'
 	        includeGroups 'frameworkTests'
 	    }
 	}
-    
-	test {
-		systemProperties['LOCAL_DRIVER'] = false
+	
+	task runIETests(type: Test) {
+	   systemProperties['LOCAL_DRIVER'] = false
 		systemProperties['REMOTE_DRIVER'] = false
 		systemProperties['SAUCE_DRIVER'] = true
 		systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
 		systemProperties['BROWSER'] = 'internet explorer'
 		systemProperties['VERSION'] = '9'
 		systemProperties['PLATFORM'] = 'Windows 2008'
-	    useTestNG()
+	}
+	
+	task runFirefoxTests(type: Test) {
+	   systemProperties['LOCAL_DRIVER'] = false
+		systemProperties['REMOTE_DRIVER'] = false
+		systemProperties['SAUCE_DRIVER'] = true
+		systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+		systemProperties['BROWSER'] = 'firefox'
+		systemProperties['VERSION'] = '20'
+		systemProperties['PLATFORM'] = 'Windows 2008'
+	}
+	
+	task runChromeTests(type: Test) {
+	   systemProperties['LOCAL_DRIVER'] = false
+		systemProperties['REMOTE_DRIVER'] = false
+		systemProperties['SAUCE_DRIVER'] = true
+		systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+		systemProperties['BROWSER'] = 'chrome'
+		systemProperties['PLATFORM'] = 'Windows 2008'
+	}
+	
+	
+    
+  test {
+	   systemProperties['LOCAL_DRIVER'] = false
+		systemProperties['REMOTE_DRIVER'] = false
+		systemProperties['SAUCE_DRIVER'] = true
+		systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+		systemProperties['BROWSER'] = 'internet explorer'
+		systemProperties['VERSION'] = '9'
+		systemProperties['PLATFORM'] = 'Windows 2008'
   }
 
   jar {
