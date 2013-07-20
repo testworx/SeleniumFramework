@@ -18,24 +18,24 @@ import org.testng.annotations.BeforeClass;
 public class BaseTest {
 
 	public WebDriver driver = null;
-	protected static String APPLICATION_URL = System.getProperty(
+	protected static String applicationUrl = System.getProperty(
 			"APPLICATION_URL", "http://www.google.com/");
-	protected static String BROWSER = System.getProperty("BROWSER", "firefox");
-	protected static String VERSION = System.getProperty("VERSION", "19");
-	protected static String PLATFORM = System.getProperty("PLATFORM", "MAC");
-	protected static boolean LOCAL_DRIVER = Boolean.valueOf(System.getProperty(
+	protected static String browser = System.getProperty("BROWSER", "firefox");
+	protected static String version = System.getProperty("VERSION", "19");
+	protected static String platform = System.getProperty("PLATFORM", "MAC");
+	protected static boolean localDriver = Boolean.valueOf(System.getProperty(
 			"LOCAL_DRIVER", "true"));
-	protected static boolean REMOTE_DRIVER = Boolean.valueOf(System
+	protected static boolean remoteDriver = Boolean.valueOf(System
 			.getProperty("REMOTE_DRIVER", "false"));
-	protected static boolean SAUCE_DRIVER = Boolean.valueOf(System.getProperty(
+	protected static boolean sauceDriver = Boolean.valueOf(System.getProperty(
 			"SAUCE_DRIVER", "false"));
-	protected static String GRID_HOST = System.getProperty("GRID_HOST",
+	protected static String gridHost = System.getProperty("GRID_HOST",
 			"localhost");
-	protected static int GRID_PORT = Integer.valueOf(System.getProperty(
+	protected static int gridPort = Integer.valueOf(System.getProperty(
 			"GRID_PORT", "4444"));
-	protected static String SAUCE_KEY = System.getProperty("SAUCE_KEY",
+	protected static String sauceKey = System.getProperty("SAUCE_KEY",
 			"http://USER:TOKEN@ondemand.saucelabs.com:80/wd/hub");
-	protected static String TEST_RESULTS_PATH = System.getProperty(
+	protected static String testResultsPath = System.getProperty(
 			"TEST_RESULTS_PATH", "~");
 
 	@BeforeClass
@@ -95,25 +95,23 @@ public class BaseTest {
 			throw new WebDriverException("Browser: " + browser + " not found.");
 		case 1:
 			capabilities = DesiredCapabilities.internetExplorer();
-			capabilities.setCapability("version", version);
 			break;
 		case 2:
 			capabilities = DesiredCapabilities.firefox();
-			capabilities.setCapability("version", version);
 			break;
 		case 3:
 			capabilities = DesiredCapabilities.safari();
-			capabilities.setCapability("version", version);
 			break;
 		case 4:
 			capabilities = DesiredCapabilities.chrome();
 			break;
 		}
 
+		capabilities.setCapability("version", version);
 		capabilities.setCapability("platform", platform);
 
 		try {
-			this.driver = new RemoteWebDriver(new URL(SAUCE_KEY), capabilities);
+			this.driver = new RemoteWebDriver(new URL(sauceKey), capabilities);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
@@ -146,19 +144,19 @@ public class BaseTest {
 		capabilities.setCapability("platform", platform);
 
 		try {
-			this.driver = new RemoteWebDriver(new URL("http://" + GRID_HOST
-					+ ":" + GRID_PORT + "/wd/hub"), capabilities);
+			this.driver = new RemoteWebDriver(new URL("http://" + gridHost
+					+ ":" + gridPort + "/wd/hub"), capabilities);
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void setWebDriver(String browser, String version, String platform) {
-		if (LOCAL_DRIVER) {
+		if (localDriver) {
 			setLocalWebdriver(browser, version, platform);
-		} else if (REMOTE_DRIVER) {
+		} else if (remoteDriver) {
 			setRemoteWebdriver(browser, version, platform);
-		} else if (SAUCE_DRIVER) {
+		} else if (sauceDriver) {
 			setSauceWebdriver(browser, version, platform);
 		} else {
 			throw new WebDriverException("Type of driver not specified!!!");

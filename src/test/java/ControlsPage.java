@@ -1,7 +1,6 @@
 package test.java;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
@@ -60,14 +59,18 @@ public class ControlsPage extends LoadableComponent<ControlsPage> implements
 			button3 = new Button(driver, map.getLocatorFromMap("alert_button"));
 			button4 = new Button(driver, map.getLocatorFromMap("button_4"));
 			submit = new Button(driver, map.getLocatorFromMap("button_submit"));
-			male = new RadioButton(driver, map.getLocatorFromMap("radio_button_1"));
-			female = new RadioButton(driver, map.getLocatorFromMap("radio_button_2"));
+			male = new RadioButton(driver,
+					map.getLocatorFromMap("radio_button_1"));
+			female = new RadioButton(driver,
+					map.getLocatorFromMap("radio_button_2"));
 			bike = new CheckBox(driver, map.getLocatorFromMap("checkbox_1"));
 			car = new CheckBox(driver, map.getLocatorFromMap("checkbox_2"));
 			google = new Link(driver, map.getLocatorFromMap("link_google"));
 			table = new Table(driver, map.getLocatorFromMap("table_1"));
-			firstName = new TextBox(driver, map.getLocatorFromMap("text_firstname"));
-			lastName = new TextBox(driver, map.getLocatorFromMap("text_lastname"));
+			firstName = new TextBox(driver,
+					map.getLocatorFromMap("text_firstname"));
+			lastName = new TextBox(driver,
+					map.getLocatorFromMap("text_lastname"));
 			cars = new SelectBox(driver, map.getLocatorFromMap("select_cars"));
 
 			message1 = new Message(driver,

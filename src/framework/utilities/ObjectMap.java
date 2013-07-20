@@ -12,9 +12,6 @@ public class ObjectMap {
 	public ObjectMap(String mapFile) {
 		properties = new Properties();
 		try {
-
-			// properties.load(this.getClass()
-			// .getResourceAsStream(mapFile));
 			FileInputStream in = new FileInputStream(mapFile);
 			properties.load(in);
 			in.close();
@@ -31,78 +28,81 @@ public class ObjectMap {
 		String locatorType = locator.split(">")[0];
 		String locatorValue = locator.split(">")[1];
 		// Return a instance of By class based on type of locator
-		if (locatorType.toLowerCase().equals("id"))
+		if (locatorType.toLowerCase().equals("id")) {
 			return By.id(locatorValue);
-		else if (locatorType.toLowerCase().equals("name"))
+		} else if (locatorType.toLowerCase().equals("name")) {
 			return By.name(locatorValue);
-		else if ((locatorType.toLowerCase().equals("classname"))
-				|| (locatorType.toLowerCase().equals("class")))
+		} else if ((locatorType.toLowerCase().equals("classname"))
+				|| (locatorType.toLowerCase().equals("class"))) {
 			return By.className(locatorValue);
-		else if ((locatorType.toLowerCase().equals("tagname"))
-				|| (locatorType.toLowerCase().equals("tag")))
+		} else if ((locatorType.toLowerCase().equals("tagname"))
+				|| (locatorType.toLowerCase().equals("tag"))) {
 			return By.className(locatorValue);
-		else if ((locatorType.toLowerCase().equals("linktext"))
-				|| (locatorType.toLowerCase().equals("link")))
+		} else if ((locatorType.toLowerCase().equals("linktext"))
+				|| (locatorType.toLowerCase().equals("link"))) {
 			return By.linkText(locatorValue);
-		else if (locatorType.toLowerCase().equals("partiallinktext"))
+		} else if (locatorType.toLowerCase().equals("partiallinktext")) {
 			return By.partialLinkText(locatorValue);
-		else if ((locatorType.toLowerCase().equals("cssselector"))
-				|| (locatorType.toLowerCase().equals("css")))
+		} else if ((locatorType.toLowerCase().equals("cssselector"))
+				|| (locatorType.toLowerCase().equals("css"))) {
 			return By.cssSelector(locatorValue);
-		else if (locatorType.toLowerCase().equals("xpath"))
+		} else if (locatorType.toLowerCase().equals("xpath")) {
 			return By.xpath(locatorValue);
-		else
+		} else {
 			throw new Exception("Locator type '" + locatorType
 					+ "' not defined!!");
+		}
 	}
-	
-	public By getLocatorAndOverride(String logicalElementName, String locatorValue) throws Exception {
+
+	public By getLocatorAndOverride(String logicalElementName,
+			String locatorValue) throws Exception {
 		// Read value using the logical name as Key
 		String locator = properties.getProperty(logicalElementName);
 		// Split the value which contains locator type and locator value
 		String locatorType = locator.split(">")[0];
 
 		// Return a instance of By class based on type of locator
-		if (locatorType.toLowerCase().equals("id"))
+		if (locatorType.toLowerCase().equals("id")) {
 			return By.id(locatorValue);
-		else if (locatorType.toLowerCase().equals("name"))
+		} else if (locatorType.toLowerCase().equals("name")) {
 			return By.name(locatorValue);
-		else if ((locatorType.toLowerCase().equals("classname"))
-				|| (locatorType.toLowerCase().equals("class")))
+		} else if ((locatorType.toLowerCase().equals("classname"))
+				|| (locatorType.toLowerCase().equals("class"))) {
 			return By.className(locatorValue);
-		else if ((locatorType.toLowerCase().equals("tagname"))
-				|| (locatorType.toLowerCase().equals("tag")))
+		} else if ((locatorType.toLowerCase().equals("tagname"))
+				|| (locatorType.toLowerCase().equals("tag"))) {
 			return By.className(locatorValue);
-		else if ((locatorType.toLowerCase().equals("linktext"))
-				|| (locatorType.toLowerCase().equals("link")))
+		} else if ((locatorType.toLowerCase().equals("linktext"))
+				|| (locatorType.toLowerCase().equals("link"))) {
 			return By.linkText(locatorValue);
-		else if (locatorType.toLowerCase().equals("partiallinktext"))
+		} else if (locatorType.toLowerCase().equals("partiallinktext")) {
 			return By.partialLinkText(locatorValue);
-		else if ((locatorType.toLowerCase().equals("cssselector"))
-				|| (locatorType.toLowerCase().equals("css")))
+		} else if ((locatorType.toLowerCase().equals("cssselector"))
+				|| (locatorType.toLowerCase().equals("css"))) {
 			return By.cssSelector(locatorValue);
-		else if (locatorType.toLowerCase().equals("xpath"))
+		} else if (locatorType.toLowerCase().equals("xpath")) {
 			return By.xpath(locatorValue);
-		else
+		} else {
 			throw new Exception("Locator type '" + locatorType
 					+ "' not defined!!");
+		}
 	}
-	
+
 	public String getLocatorString(String logicalElementName) throws Exception {
 		// Read value using the logical name as Key
 		String locator = properties.getProperty(logicalElementName);
 		// Split the value which contains locator type and locator value
 		String locatorValue = locator.split(">")[1];
-	
+
 		return locatorValue;
 	}
-	
+
 	public String getLocatorType(String logicalElementName) throws Exception {
 		// Read value using the logical name as Key
 		String locator = properties.getProperty(logicalElementName);
 		// Split the value which contains locator type and locator value
 		String locatorType = locator.split(">")[0];
-	
+
 		return locatorType;
 	}
 

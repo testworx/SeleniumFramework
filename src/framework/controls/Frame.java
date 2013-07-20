@@ -10,10 +10,6 @@ public class Frame extends BaseControl {
 		setLocator(locator);
 	}
 
-	// public void switchTo() {
-	// TestHelper.switchToFrame(getLocator());
-	// }
-
 	public void switchToFrame() {
 		String locatorSubString = getLocatorString(getLocator());
 

@@ -2,6 +2,7 @@ package framework.controls;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import framework.controls.interfaces.Clickable;
 import framework.controls.interfaces.Readable;
 import framework.controls.interfaces.Selectable;
@@ -15,7 +16,7 @@ public class CheckBox extends BaseControl implements Clickable, Selectable,
 	}
 
 	@Override
-	public Boolean readValue() {
+	public Boolean read() {
 		return new Boolean(getUnderlyingWebElement().isSelected());
 	}
 

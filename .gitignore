@@ -7,7 +7,9 @@
 test-output/
 build/classes/
 build/dependency-cache/
+build/jacoco/
 build/resources/
+build/sonar/
 build/test-results/
 build/tmp/
 
@@ -20,3 +22,5 @@ bin/
 *.JPG
 
 *.JPG
+
+build.gradle.local

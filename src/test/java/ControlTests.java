@@ -2,13 +2,11 @@ package test.java;
 
 import org.openqa.selenium.Alert;
 import org.testng.Assert;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import framework.utilities.BaseTest;
-import framework.utilities.ObjectMap;
 import framework.utilities.TestHelper;
 
 public class ControlTests extends BaseTest {
@@ -19,7 +17,7 @@ public class ControlTests extends BaseTest {
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckTestPageOpensAndTakeScreenshot() {
-		TestHelper.getScreenshot(TEST_RESULTS_PATH);
+		TestHelper.getScreenshot(testResultsPath);
 		Assert.assertEquals(driver.getTitle(), "Controls Page Title");
 	}
 
@@ -162,13 +160,14 @@ public class ControlTests extends BaseTest {
 			Assert.fail(verificationErrors.toString());
 		}
 	}
-	
+
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTableAndSearchForText() {
 		try {
 			int row = 2;
 			int column = 1;
-			int[] tableCellCoordinates = controlsPage.table.searchTableForText("row 1, cell 1");
+			int[] tableCellCoordinates = controlsPage.table
+					.searchTableForText("row 1, cell 1");
 			Assert.assertEquals(tableCellCoordinates[0], row);
 			Assert.assertEquals(tableCellCoordinates[1], column);
 		} catch (Exception e) {
@@ -216,7 +215,7 @@ public class ControlTests extends BaseTest {
 	public void CheckFindTextBoxAndTypeText() {
 		try {
 			controlsPage.firstName.write("Nick");
-			Assert.assertEquals(controlsPage.firstName.readValue(), "Nick");
+			Assert.assertEquals(controlsPage.firstName.read(), "Nick");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -227,7 +226,7 @@ public class ControlTests extends BaseTest {
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindTextBoxAndReadValue() {
 		try {
-			Assert.assertEquals(controlsPage.lastName.readValue(), "");
+			Assert.assertEquals(controlsPage.lastName.read(), "");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -238,7 +237,7 @@ public class ControlTests extends BaseTest {
 	@Test(groups = { "frameworkTests" })
 	public void CheckFindSelectListAndReadValue() {
 		try {
-			Assert.assertEquals(controlsPage.cars.readValue(), "Fiat");
+			Assert.assertEquals(controlsPage.cars.read(), "Fiat");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -250,7 +249,7 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSelectListAndSelectOptionByText() {
 		try {
 			controlsPage.cars.selectOptionByVisibleText("Volvo");
-			Assert.assertEquals(controlsPage.cars.readValue(), "Volvo");
+			Assert.assertEquals(controlsPage.cars.read(), "Volvo");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -262,7 +261,7 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSelectListAndSelectOptionByValue() {
 		try {
 			controlsPage.cars.selectOptionByValue("volvo");
-			Assert.assertEquals(controlsPage.cars.readValue(), "Volvo");
+			Assert.assertEquals(controlsPage.cars.read(), "Volvo");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -274,7 +273,7 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSelectListAndSelectOptionByIndex() {
 		try {
 			controlsPage.cars.selectOptionByIndex(3);
-			Assert.assertEquals(controlsPage.cars.readValue(), "Audi");
+			Assert.assertEquals(controlsPage.cars.read(), "Audi");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -310,8 +309,8 @@ public class ControlTests extends BaseTest {
 	public void beforeTest() {
 		verificationErrors = new StringBuffer();
 		verificationErrors.append("");
-		setWebDriver(BROWSER, VERSION, PLATFORM);
-		TestHelper.setDriver(driver, LOCAL_DRIVER, REMOTE_DRIVER, SAUCE_DRIVER);
+		setWebDriver(browser, version, platform);
+		TestHelper.setDriver(driver, localDriver, remoteDriver, sauceDriver);
 		controlsPage = new ControlsPage(driver,
 				"http://selenium-framework.site44.com/controls_page.html");
 		controlsPage.get();
@@ -325,7 +324,7 @@ public class ControlTests extends BaseTest {
 		String verificationErrorString = verificationErrors.toString();
 		if (!"".equals(verificationErrorString)) {
 
-			// System.out.println(verificationErrorString);
+			System.out.println(verificationErrorString);
 		}
 	}
 }

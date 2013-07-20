@@ -56,32 +56,33 @@ public class Table extends BaseControl {
 
 		return tableCell.getText();
 	}
-	
+
 	public int[] searchTableForText(String searcheableText) {
-        List<WebElement> rows = getUnderlyingWebElement().findElements(
-                    By.tagName("tr"));
-        WebElement tableRow;
-       
-        List<WebElement> columns;
-       
-        int[] cellReference = new int[2];
-       
-        for (int row = 1; row <= rows.size(); row++) {
-              tableRow = rows.get(row-1);
-              columns = tableRow.findElements(By.tagName("td"));
-              for (int column = 1; column <= columns.size(); column++) {
-                    try {
-                          String cellText = readCell(row, column);
-                          if (cellText.contains(searcheableText)) {
-                                cellReference[0] = row;
-                                cellReference[1] = column;
-                          }
-                    } catch (IndexOutOfBoundsException e) {
-                          //We catch the exception caused by trying to read a bad cell
-                    }
-              }
-        }
-        return cellReference;
-  }
+		List<WebElement> rows = getUnderlyingWebElement().findElements(
+				By.tagName("tr"));
+		WebElement tableRow;
+
+		List<WebElement> columns;
+
+		int[] cellReference = new int[2];
+
+		for (int row = 1; row <= rows.size(); row++) {
+			tableRow = rows.get(row - 1);
+			columns = tableRow.findElements(By.tagName("td"));
+			for (int column = 1; column <= columns.size(); column++) {
+				try {
+					String cellText = readCell(row, column);
+					if (cellText.contains(searcheableText)) {
+						cellReference[0] = row;
+						cellReference[1] = column;
+					}
+				} catch (IndexOutOfBoundsException e) {
+					// We catch the exception caused by trying to read a bad
+					// cell
+				}
+			}
+		}
+		return cellReference;
+	}
 
 }

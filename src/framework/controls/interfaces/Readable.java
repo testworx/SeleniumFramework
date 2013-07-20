@@ -2,8 +2,6 @@ package framework.controls.interfaces;
 
 public interface Readable {
 
-	Object readValue();
+	Object read();
 
-	// boolean enabled();
-	// Object[] Read();
 }
