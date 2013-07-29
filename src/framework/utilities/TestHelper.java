@@ -16,18 +16,18 @@ import org.openqa.selenium.remote.Augmenter;
 
 public class TestHelper {
 
-	public static WebDriver driver;
-	public static boolean localDriverHelper;
-	public static boolean remoteDriverHelper;
-	public static boolean sauceDriverHelper;
-	public static String localScreenshotPath = null;
+	public static WebDriver DRIVER;
+	public static boolean LOCAL_DRIVER_HELPER;
+	public static boolean REMOTE_DRIVER_HELPER;
+	public static boolean SAUCE_DRIVER_HELPER;
+	public static String SCREENSHOT_PATH = System.getProperty("TEST_RESULTS_PATH");
 
 	public static void setDriver(WebDriver passedInDriver, boolean local,
 			boolean remote, boolean sauce) {
-		driver = passedInDriver;
-		localDriverHelper = local;
-		remoteDriverHelper = remote;
-		sauceDriverHelper = sauce;
+		DRIVER = passedInDriver;
+		LOCAL_DRIVER_HELPER = local;
+		REMOTE_DRIVER_HELPER = remote;
+		SAUCE_DRIVER_HELPER = sauce;
 	}
 
 	public static void switchToWindow(String windowTitle) {
