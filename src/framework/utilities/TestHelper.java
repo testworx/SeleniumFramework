@@ -92,27 +92,82 @@ public class TestHelper {
 
 		try {
 
-			localScreenshotPath = path;
-			Date date = new java.util.Date();
-			String timestamp = (new Timestamp(date.getTime())).toString();
+			SCREENSHOT_PATH = path;
 
-			timestamp = timestamp.replaceAll("/", "-");
-			timestamp = timestamp.replaceAll(":", ".");
+			String timestamp = getTimestamp();
 
-			String screenshotPath = localScreenshotPath + "//" + timestamp + ".JPG";
+			String screenshotPath = SCREENSHOT_PATH + "//" + timestamp + ".JPG";
 
 			File screenshot;
 
-			if (localDriverHelper) {
-				screenshot = ((TakesScreenshot) driver)
+			if (LOCAL_DRIVER_HELPER) {
+				screenshot = ((TakesScreenshot) DRIVER)
 						.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(screenshot, new File(screenshotPath));
-			} else if (remoteDriverHelper) {
-				driver = new Augmenter().augment(driver);
-				screenshot = ((TakesScreenshot) driver)
+			} else if (REMOTE_DRIVER_HELPER) {
+				DRIVER = new Augmenter().augment(DRIVER);
+				screenshot = ((TakesScreenshot) DRIVER)
 						.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(screenshot, new File(screenshotPath));
-			} else if (sauceDriverHelper) {
+			} else if (SAUCE_DRIVER_HELPER) {
+				System.out
+						.println("Cannot take screenshot.  Driver is on Sauce.");
+			} else {
+				System.out
+						.println("Cannot take screenshot.  Unable to identify driver type.");
+			}
+		} catch (WebDriverException e) {
+			System.out.println("An exception occurred taking the screenshot.");
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("An exception occurred taking the screenshot.");
+			e.printStackTrace();
+		}
+
+	}
+
+	public static String getTimestamp() {
+		
+		Date date = new java.util.Date();
+		String timestamp = (new Timestamp(date.getTime())).toString();
+
+		timestamp = timestamp.replaceAll("/", "-");
+		timestamp = timestamp.replaceAll(":", ".");
+		return timestamp;
+	}
+	
+	public static String getRandomString() {
+	    
+		int length = 10; //String hard coded to length 10 for now
+		String chars = "abcdefghijklmnopqrstuvwxyz";
+		Random rand = new Random();
+		  StringBuilder randomString = new StringBuilder();
+		  for (int i=0; i<length; i++) {
+		    randomString.append(chars.charAt(rand.nextInt(chars.length())));
+		  }
+		  return randomString.toString();
+	}
+	
+	public static void getScreenshot() {
+
+		try {
+
+			String timestamp = getTimestamp();
+
+			String screenshotPath = System.getProperty("TEST_RESULTS_PATH") + "//" + timestamp + ".JPG";
+			
+			File screenshot;
+
+			if (LOCAL_DRIVER_HELPER) {
+				screenshot = ((TakesScreenshot) DRIVER)
+						.getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(screenshot, new File(screenshotPath));
+			} else if (REMOTE_DRIVER_HELPER) {
+				DRIVER = new Augmenter().augment(DRIVER);
+				screenshot = ((TakesScreenshot) DRIVER)
+						.getScreenshotAs(OutputType.FILE);
+				FileUtils.copyFile(screenshot, new File(screenshotPath));
+			} else if (SAUCE_DRIVER_HELPER) {
 				System.out
 						.println("Cannot take screenshot.  Driver is on Sauce.");
 			} else {
