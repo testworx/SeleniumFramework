@@ -82,5 +82,4 @@ apply plugin: 'eclipse'
   jar {
   	exclude('src/test')
   }
-  
-}
+
