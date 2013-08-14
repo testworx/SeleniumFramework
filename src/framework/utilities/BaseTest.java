@@ -53,20 +53,24 @@ public class BaseTest {
 
 	public void setLocalWebdriver(String browser, String version,
 			String platform) {
+		
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setJavascriptEnabled(true);
+		capabilities.setCapability("handlesAlerts", true);
 		switch (getBrowserId(browser)) {
 		case 0:
 			throw new WebDriverException("Browser: " + browser + " not found.");
 		case 1:
-			driver = new InternetExplorerDriver();
+			driver = new InternetExplorerDriver(capabilities);
 			break;
 		case 2:
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(capabilities);
 			break;
 		case 3:
-			driver = new SafariDriver();
+			driver = new SafariDriver(capabilities);
 			break;
 		case 4:
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(capabilities);
 			break;
 		}
 	}
@@ -106,7 +110,7 @@ public class BaseTest {
 			capabilities = DesiredCapabilities.chrome();
 			break;
 		}
-
+		capabilities.setCapability("javascriptEnabled", true);
 		capabilities.setCapability("version", version);
 		capabilities.setCapability("platform", platform);
 
@@ -140,7 +144,7 @@ public class BaseTest {
 			capabilities = DesiredCapabilities.chrome();
 			break;
 		}
-
+		capabilities.setCapability("javascriptEnabled", true);
 		capabilities.setCapability("platform", platform);
 
 		try {

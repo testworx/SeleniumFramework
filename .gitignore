@@ -24,3 +24,15 @@ bin/
 *.JPG
 
 build.gradle.local
+
+build/reports/tests/index.html
+
+build/reports/tests/index.html
+
+build/reports/tests/test.java.ControlTests.html
+
+build/reports/tests/test.java.html
+
+build/reports/tests/test.java.html
+
+*.public

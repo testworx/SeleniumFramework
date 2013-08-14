@@ -1,7 +1,5 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'jacoco'
-apply plugin: 'sonar-runner'
 
 	repositories {
 	    mavenCentral()
@@ -16,10 +14,6 @@ apply plugin: 'sonar-runner'
 	    }
 	}
 	
-	buildscript {
-    repositories { mavenCentral() }
-    dependencies { classpath 'org.ajoberstar:gradle-jacoco:0.1.0' }
-}
 
 	sourceSets {
 	    main {
@@ -76,7 +70,6 @@ apply plugin: 'sonar-runner'
 	
     
   test {
-  	
 	   systemProperties['LOCAL_DRIVER'] = false
 		systemProperties['REMOTE_DRIVER'] = false
 		systemProperties['SAUCE_DRIVER'] = true
@@ -90,16 +83,4 @@ apply plugin: 'sonar-runner'
   	exclude('src/test')
   }
   
-  sonarRunner {
-    sonarProperties {
-      property "sonar.host.url", "http://localhost:9000"
-      property "sonar.jdbc.url", "jdbc:h2:tcp://localhost:9092/sonar"
-      property "sonar.jdbc.driverClassName", "org.h2.Driver"
-      property "sonar.jdbc.username", "sonar"
-      property "sonar.jdbc.password", "sonar"
-      property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
-      property "sonar.sources", 'src'
-      property "sonar.tests", 'src/test'
-      
-    }
 }
