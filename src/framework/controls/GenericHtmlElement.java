@@ -1,55 +1,27 @@
-package fiftyPlus.pages;
+package framework.controls;
 
-
-import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.LoadableComponent;
 
-import framework.controls.Button;
-import framework.controls.GenericHtmlElement;
-import framework.controls.Link;
-import framework.controls.Page;
-import framework.controls.TextBox;
-import framework.controls.interfaces.Form;
-import framework.utilities.ObjectMap;
+import framework.controls.interfaces.Clickable;
+import framework.controls.interfaces.Readable;
+import framework.controls.interfaces.Writeable;
 
-public class Thankyou extends Page {
+public class GenericHtmlElement extends BaseControl implements Clickable, Readable {
 
-	private ObjectMap map;
-
-	private WebDriver driver;
-    private String frameTitle = "Thanks for buying our 50 plus plan";
-	
-	private GenericHtmlElement html_heading;
-	
-	public Thankyou(WebDriver driver) {
-		this.driver = driver;
-	
-		map = new ObjectMap("Thankyou.properties");
-
-		try {
-			html_heading = new GenericHtmlElement(driver, map.getLocatorFromMap("html_heading"));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+	public GenericHtmlElement(WebDriver driver, By locator) {
+		setDriver(driver);
+		setLocator(locator);
 	}
-	
-	public String getTitle() {
-		
-		int i = 0;
-		
-		while (!driver.getPageSource().contains(frameTitle)& i< 10) {
-			try {
-				Thread.sleep(1000);
-				i++;
-				
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		return frameTitle;
+
+	@Override
+	public String read() {
+		return getUnderlyingWebElement().getText();
+	}
+
+	@Override
+	public void click() {
+		getUnderlyingWebElement().click();
 	}
 
 }
