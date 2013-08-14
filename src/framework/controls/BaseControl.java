@@ -34,27 +34,53 @@ public abstract class BaseControl implements Detectable {
 	}
 
 	protected WebElement findControl(WebDriver theDriver, By theLocator) {
-		try {
+	try {
+			int i = 0;
 			setDriver(theDriver);
 			setLocator(theLocator);
 			System.out.println("Looking for WebElement: " + locator.toString());
 			setUnderlyingWebElement(driver.findElement(locator));
+			
+			while (!baseWebElement.isEnabled()|!baseWebElement.isDisplayed()&i<5) {
+				Thread.sleep(500);
+				i++;
+			}
+				
 			return baseWebElement;
 		} catch (NoSuchElementException e) {
 			System.out.println("Failed looking for WebElement: "
 					+ locator.toString());
+			throw new NoSuchElementException(locator.toString());
+		} 
+		catch (InterruptedException e) {
+			System.out.println("Failed looking for WebElement: "
+					+ locator.toString());
+			e.printStackTrace();
 			throw new NoSuchElementException(locator.toString());
 		}
 	}
 
 	protected WebElement findControl() {
 		try {
+			int i = 0;
 			System.out.println("Looking for WebElement: " + locator.toString());
 			setUnderlyingWebElement(driver.findElement(locator));
+			
+			while (!baseWebElement.isEnabled()|!baseWebElement.isDisplayed()&i<5) {
+				Thread.sleep(500);
+				i++;
+			}
+				
 			return baseWebElement;
 		} catch (NoSuchElementException e) {
 			System.out.println("Failed looking for WebElement: "
 					+ locator.toString());
+			throw new NoSuchElementException(locator.toString());
+		} 
+		catch (InterruptedException e) {
+			System.out.println("Failed looking for WebElement: "
+					+ locator.toString());
+			e.printStackTrace();
 			throw new NoSuchElementException(locator.toString());
 		}
 	}
