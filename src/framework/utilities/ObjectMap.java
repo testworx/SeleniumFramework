@@ -26,7 +26,7 @@ public class ObjectMap {
 		String locator = properties.getProperty(elementName);
 		// Split the value which contains locator type and locator value
 		String locatorType = locator.split(">")[0];
-		String locatorValue = locator.split(">")[1];
+		String locatorValue = locator.substring(locator.indexOf(">")+1);
 		// Return a instance of By class based on type of locator
 		if (locatorType.toLowerCase().equals("id")) {
 			return By.id(locatorValue);
