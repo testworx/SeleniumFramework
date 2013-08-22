@@ -3,8 +3,11 @@ package framework.controls;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import framework.controls.interfaces.Detectable;
 
@@ -13,6 +16,7 @@ public abstract class BaseControl implements Detectable {
 	private WebDriver driver;
 	private WebElement baseWebElement;
 	private By locator;
+	private long timeout = 10;
 
 	public WebElement getUnderlyingWebElement() {
 		return findControl(driver, locator);
@@ -31,58 +35,56 @@ public abstract class BaseControl implements Detectable {
 		} catch (ElementNotVisibleException e) {
 			return false;
 		}
+		catch (TimeoutException e) {
+			return false;
+		}
 	}
 
 	protected WebElement findControl(WebDriver theDriver, By theLocator) {
 	try {
-			int i = 0;
 			setDriver(theDriver);
 			setLocator(theLocator);
 			System.out.println("Looking for WebElement: " + locator.toString());
 			setUnderlyingWebElement(driver.findElement(locator));
 			
-			while (!baseWebElement.isEnabled()|!baseWebElement.isDisplayed()&i<5) {
+			WebDriverWait wait = new WebDriverWait(getDriver(), timeout);
+			baseWebElement = wait.until(ExpectedConditions.elementToBeClickable(getLocator()));
+			try {
 				Thread.sleep(500);
-				i++;
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-				
 			return baseWebElement;
+
 		} catch (NoSuchElementException e) {
 			System.out.println("Failed looking for WebElement: "
 					+ locator.toString());
 			throw new NoSuchElementException(locator.toString());
 		} 
-		catch (InterruptedException e) {
-			System.out.println("Failed looking for WebElement: "
-					+ locator.toString());
-			e.printStackTrace();
-			throw new NoSuchElementException(locator.toString());
-		}
 	}
 
 	protected WebElement findControl() {
 		try {
-			int i = 0;
+
 			System.out.println("Looking for WebElement: " + locator.toString());
 			setUnderlyingWebElement(driver.findElement(locator));
 			
-			while (!baseWebElement.isEnabled()|!baseWebElement.isDisplayed()&i<5) {
+			WebDriverWait wait = new WebDriverWait(getDriver(), timeout);
+			baseWebElement = wait.until(ExpectedConditions.elementToBeClickable(getLocator()));
+			try {
 				Thread.sleep(500);
-				i++;
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-				
 			return baseWebElement;
+				
 		} catch (NoSuchElementException e) {
 			System.out.println("Failed looking for WebElement: "
 					+ locator.toString());
 			throw new NoSuchElementException(locator.toString());
 		} 
-		catch (InterruptedException e) {
-			System.out.println("Failed looking for WebElement: "
-					+ locator.toString());
-			e.printStackTrace();
-			throw new NoSuchElementException(locator.toString());
-		}
 	}
 
 	protected void setLocator(By theLocator) {
