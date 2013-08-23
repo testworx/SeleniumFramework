@@ -27,6 +27,8 @@ public class TextBox extends BaseControl implements Clickable, Readable,
 
 	@Override
 	public void write(String value) {
+		getUnderlyingWebElement().sendKeys(Keys.HOME);
+		getUnderlyingWebElement().sendKeys(Keys.SHIFT, Keys.END, Keys.DELETE);
 		getUnderlyingWebElement().sendKeys(value);
 	}
 }
