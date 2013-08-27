@@ -2,7 +2,7 @@ package framework.controls;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.Keys;
 import framework.controls.interfaces.Clickable;
 import framework.controls.interfaces.Readable;
 import framework.controls.interfaces.Writeable;
