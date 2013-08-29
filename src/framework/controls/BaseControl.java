@@ -17,6 +17,7 @@ public abstract class BaseControl implements Detectable {
 	private WebElement baseWebElement;
 	private By locator;
 	private long timeout = 10;
+	private long delay = 500;
 
 	public WebElement getUnderlyingWebElement() {
 		return findControl(driver, locator);
@@ -34,26 +35,32 @@ public abstract class BaseControl implements Detectable {
 			return baseWebElement.isDisplayed();
 		} catch (ElementNotVisibleException e) {
 			return false;
-		}
-		catch (TimeoutException e) {
+		} catch (TimeoutException e) {
 			return false;
 		}
 	}
 
 	protected WebElement findControl(WebDriver theDriver, By theLocator) {
-	try {
+		try {
 			setDriver(theDriver);
 			setLocator(theLocator);
 			System.out.println("Looking for WebElement: " + locator.toString());
 			setUnderlyingWebElement(driver.findElement(locator));
-			
+
 			WebDriverWait wait = new WebDriverWait(getDriver(), timeout);
-			baseWebElement = wait.until(ExpectedConditions.elementToBeClickable(getLocator()));
 			try {
-				Thread.sleep(500);
+				baseWebElement = wait.until(ExpectedConditions
+						.elementToBeClickable(getLocator()));
+				Thread.sleep(delay);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (TimeoutException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (baseWebElement == null) {
+				baseWebElement = driver.findElement(locator);
 			}
 			return baseWebElement;
 
@@ -61,7 +68,7 @@ public abstract class BaseControl implements Detectable {
 			System.out.println("Failed looking for WebElement: "
 					+ locator.toString());
 			throw new NoSuchElementException(locator.toString());
-		} 
+		}
 	}
 
 	protected WebElement findControl() {
@@ -69,22 +76,30 @@ public abstract class BaseControl implements Detectable {
 
 			System.out.println("Looking for WebElement: " + locator.toString());
 			setUnderlyingWebElement(driver.findElement(locator));
-			
+
 			WebDriverWait wait = new WebDriverWait(getDriver(), timeout);
-			baseWebElement = wait.until(ExpectedConditions.elementToBeClickable(getLocator()));
 			try {
-				Thread.sleep(500);
+				baseWebElement = wait.until(ExpectedConditions
+						.elementToBeClickable(getLocator()));
+				Thread.sleep(delay);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} catch (TimeoutException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			if (baseWebElement == null) {
+				baseWebElement = driver.findElement(locator);
+			}
+
 			return baseWebElement;
-				
+
 		} catch (NoSuchElementException e) {
 			System.out.println("Failed looking for WebElement: "
 					+ locator.toString());
 			throw new NoSuchElementException(locator.toString());
-		} 
+		}
 	}
 
 	protected void setLocator(By theLocator) {
