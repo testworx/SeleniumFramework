@@ -70,13 +70,14 @@ apply plugin: 'eclipse'
 	
     
   test {
-	   systemProperties['LOCAL_DRIVER'] = false
+	   	systemProperties['LOCAL_DRIVER'] = false
 		systemProperties['REMOTE_DRIVER'] = false
 		systemProperties['SAUCE_DRIVER'] = true
 		systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
 		systemProperties['BROWSER'] = 'internet explorer'
 		systemProperties['VERSION'] = '9'
 		systemProperties['PLATFORM'] = 'Windows 2008'
+		systemProperties['TEST_RESULTS_PATH'] = '~/Screenshots'
   }
 
   jar {
