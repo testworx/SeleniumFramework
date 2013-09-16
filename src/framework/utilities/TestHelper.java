@@ -18,10 +18,6 @@ import org.openqa.selenium.remote.Augmenter;
 public class TestHelper {
 
 	public static WebDriver driver;
-	public static boolean localDriverHelper;
-	public static boolean remoteDriverHelper;
-	public static boolean sauceDriverHelper;
-	public static String globalScreenshotPath = System.getProperty("TEST_RESULTS_PATH");
 
 	public static String getLocatorString(By locator) {
 		String[] locatorArray = locator.toString().split("\\s");
@@ -54,16 +50,16 @@ public class TestHelper {
 			
 			File screenshot;
 
-			if (localDriverHelper) {
+			if (Boolean.valueOf(System.getProperty("LOCAL_DRIVER"))) {
 				screenshot = ((TakesScreenshot) driver)
 						.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(screenshot, new File(screenshotPath));
-			} else if (remoteDriverHelper) {
+			} else if (Boolean.valueOf(System.getProperty("REMOTE_DRIVER"))) {
 				driver = new Augmenter().augment(driver);
 				screenshot = ((TakesScreenshot) driver)
 						.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(screenshot, new File(screenshotPath));
-			} else if (sauceDriverHelper) {
+			} else if (Boolean.valueOf(System.getProperty("SAUCE_DRIVER"))) {
 				System.out
 						.println("Cannot take screenshot.  Driver is on Sauce.");
 			} else {
@@ -92,16 +88,16 @@ public class TestHelper {
 
 			File screenshot;
 
-			if (localDriverHelper) {
+			if (Boolean.valueOf(System.getProperty("LOCAL_DRIVER"))) {
 				screenshot = ((TakesScreenshot) driver)
 						.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(screenshot, new File(screenshotPath));
-			} else if (remoteDriverHelper) {
+			} else if (Boolean.valueOf(System.getProperty("REMOTE_DRIVER"))) {
 				driver = new Augmenter().augment(driver);
 				screenshot = ((TakesScreenshot) driver)
 						.getScreenshotAs(OutputType.FILE);
 				FileUtils.copyFile(screenshot, new File(screenshotPath));
-			} else if (sauceDriverHelper) {
+			} else if (Boolean.valueOf(System.getProperty("SAUCE_DRIVER"))) {
 				System.out
 						.println("Cannot take screenshot.  Driver is on Sauce.");
 			} else {
@@ -128,14 +124,10 @@ public class TestHelper {
 		return timestamp;
 	}
 
-	public static void setDriver(WebDriver passedInDriver, boolean local,
-			boolean remote, boolean sauce) {
+	public static void setDriver(WebDriver passedInDriver) {
 		driver = passedInDriver;
-		localDriverHelper = local;
-		remoteDriverHelper = remote;
-		sauceDriverHelper = sauce;
 	}
-
+	
 	public static void switchToFrame(By locator) {
 		String locatorSubString = getLocatorString(locator);
 
