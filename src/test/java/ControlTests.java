@@ -17,8 +17,8 @@ public class ControlTests extends BaseTest {
 
 	@Test(groups = { "frameworkTests" })
 	public void CheckTestPageOpensAndTakeScreenshot() {
-		TestHelper.getScreenshot(testResultsPath);
-		Assert.assertEquals(driver.getTitle(), "Controls Page Title");
+		TestHelper.getScreenshot();
+		Assert.assertEquals(driver.get().getTitle(), "Controls Page Title");
 	}
 
 	@Test(groups = { "frameworkTests" })
@@ -64,7 +64,7 @@ public class ControlTests extends BaseTest {
 		try {
 			controlsPage.button3.click();
 			// TODO remove native selenium Alert code
-			Alert alert = driver.switchTo().alert();
+			Alert alert = driver.get().switchTo().alert();
 			String alertText = alert.getText();
 			alert.accept();
 			Assert.assertEquals(alertText, "Alert button clicked.");
@@ -82,7 +82,8 @@ public class ControlTests extends BaseTest {
 			Assert.assertTrue(controlsPage.message2.exists());
 			controlsPage.button4.click();
 			Assert.assertFalse(controlsPage.message2.exists());
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
 			Assert.fail(verificationErrors.toString());
@@ -142,7 +143,7 @@ public class ControlTests extends BaseTest {
 		try {
 			controlsPage.google.click();
 			TestHelper.switchToWindow("Google");
-			Assert.assertEquals(driver.getTitle(), "Google");
+			Assert.assertEquals(driver.get().getTitle(), "Google");
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -285,7 +286,7 @@ public class ControlTests extends BaseTest {
 	public void CheckFindSubmitButtonAndClick() {
 		try {
 			controlsPage.submit.click();
-			Assert.assertEquals("Submitted Page Title", driver.getTitle());
+			Assert.assertEquals("Submitted Page Title", driver.get().getTitle());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -297,7 +298,7 @@ public class ControlTests extends BaseTest {
 	public void CheckSubmitForm() {
 		try {
 			SubmittedPage submittedPage = controlsPage.submitForm();
-			Assert.assertEquals("Submitted Page Title", driver.getTitle());
+			Assert.assertEquals("Submitted Page Title", driver.get().getTitle());
 		} catch (Exception e) {
 			// Capture and append Exceptions/Errors
 			verificationErrors.append(e.toString());
@@ -309,16 +310,16 @@ public class ControlTests extends BaseTest {
 	public void beforeTest() {
 		verificationErrors = new StringBuffer();
 		verificationErrors.append("");
-		setWebDriver(browser, version, platform);
-		TestHelper.setDriver(driver, localDriver, remoteDriver, sauceDriver);
-		controlsPage = new ControlsPage(driver,
+		setWebDriver(System.getProperty("BROWSER"), System.getProperty("VERSION"), System.getProperty("PLATFORM"));
+		TestHelper.setDriver(driver.get());
+		controlsPage = new ControlsPage(driver.get(),
 				"http://selenium-framework.site44.com/controls_page.html");
 		controlsPage.get();
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		if (driver != null) {
+		if (driver.get() != null) {
 			closeWebdriver();
 		}
 		String verificationErrorString = verificationErrors.toString();
