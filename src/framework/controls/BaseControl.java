@@ -11,6 +11,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import framework.controls.interfaces.Detectable;
 
+/**
+ * This abstract class will be extended by various UI control classes.  It simply acts as a container for 
+ * functionality that could be considered common to all UI controls.
+ * @author nvonop
+ *
+ */
 public abstract class BaseControl implements Detectable {
 
 	private WebDriver driver;
@@ -19,6 +25,11 @@ public abstract class BaseControl implements Detectable {
 	private long timeout = 10;
 	private long delay = 500;
 
+	/**
+	 * This method enables a test to gain access to the WebElement object and 
+	 * access the WebDriver API directly.
+	 * @return	The underlying WebElement object.
+	 */
 	public WebElement getUnderlyingWebElement() {
 		return findControl(driver, locator);
 	}
@@ -28,6 +39,9 @@ public abstract class BaseControl implements Detectable {
 		System.out.println("WebElement found.");
 	}
 
+	/* (non-Javadoc)
+	 * @see framework.controls.interfaces.Detectable#exists()
+	 */
 	@Override
 	public boolean exists() {
 		try {
@@ -40,6 +54,11 @@ public abstract class BaseControl implements Detectable {
 		}
 	}
 
+	/*
+	 * This method wraps the findElement method and returns a WebElement using theLocator parameter.
+	 * By default it will attempt to wait for an element to be clickable before returning it.
+	 * If this fails them after 10 seconds it will simply match the element if possible and return it.
+	 */
 	protected WebElement findControl(WebDriver theDriver, By theLocator) {
 		try {
 			setDriver(theDriver);
@@ -71,6 +90,11 @@ public abstract class BaseControl implements Detectable {
 		}
 	}
 
+	/*
+	 * This method wraps the findElement method and returns a WebElement.
+	 * By default it will attempt to wait for an element to be clickable before returning it.
+	 * If this fails them after 10 seconds it will simply match the element if possible and return it.
+	 */
 	protected WebElement findControl() {
 		try {
 

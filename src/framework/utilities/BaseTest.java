@@ -16,6 +16,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 /**
+ * This class contains the base functionality for instantiating a thread safe web 
+ * browser for a test.  Tests should be able to run in parallel with no issues.
  * @author nvonop
  *
  */

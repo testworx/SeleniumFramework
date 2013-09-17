@@ -6,9 +6,23 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 
+/**
+ * This class provides functionality for reading locator information in from a property file.
+ * The file must end with ".properties".  
+ * The file consists of rows of properties.  Each property record has the following syntax:  
+ * PROPERTY_NAME=LOCATOR_TYPE>LOCATOR_VALUE e.g. button_1=id>btn1
+ * @author nvonop
+ *
+ */
 public class ObjectMap {
 	Properties properties;
 
+	/**
+	 * This constructor loads a set of Properties from a file matching the name of mapFile.
+	 * These properties consist of various locator strings to uniquely identify UI controls 
+	 * on a page.
+	 * @param mapFile The name of the properties file containing UI locator strings
+	 */
 	public ObjectMap(String mapFile) {
 		properties = new Properties();
 		try {
@@ -21,6 +35,13 @@ public class ObjectMap {
 
 	}
 
+	/**
+	 * This method returns a new locator object based on the locator type and locator substring 
+	 * values from the property named elementName.
+	 * @param elementName The name of the property containing the relevant locator information
+	 * @return a By object consisting of the locator type and locator string
+	 * @throws Exception To indicate the locator type could not be determined
+	 */
 	public By getLocatorFromMap(String elementName) throws Exception {
 		// Read value using the logical name as Key
 		String locator = properties.getProperty(elementName);
@@ -54,6 +75,14 @@ public class ObjectMap {
 		}
 	}
 
+	/**
+	 * This method returns a new locator object based on the locator type value from the property 
+	 * named elementName and locatorName.  This is useful if the locator value is dynamic but the 
+	 * locator type is known.
+	 * @param elementName The name of the property containing the relevant locator information
+	 * @return a By object consisting of the locator type and locator string
+	 * @throws Exception To indicate the locator type could not be determined
+	 */
 	public By getLocatorAndOverride(String logicalElementName,
 			String locatorValue) throws Exception {
 		// Read value using the logical name as Key
@@ -88,7 +117,14 @@ public class ObjectMap {
 		}
 	}
 
-	public String getLocatorString(String logicalElementName) throws Exception {
+	/**
+	 * This method extracts the locator value from the property matching logicalElementName.  It
+	 * is useful if you want to modify the locator value in some way or add dynamic information 
+	 * using the getLocatorAndOverride method.
+	 * @param logicalElementName
+	 * @return a new String consisting of the locatorValue substring
+	 */
+	public String getLocatorString(String logicalElementName) {
 		// Read value using the logical name as Key
 		String locator = properties.getProperty(logicalElementName);
 		// Split the value which contains locator type and locator value
@@ -97,7 +133,14 @@ public class ObjectMap {
 		return locatorValue;
 	}
 
-	public String getLocatorType(String logicalElementName) throws Exception {
+	/**
+	 * This method extracts the locator type from the property matching logicalElementName.  It
+	 * is useful if you want to modify the locator type in some way or add dynamic information 
+	 * using the getLocatorAndOverride method.
+	 * @param logicalElementName
+	 * @return a new String consisting of the locatorValue substring
+	 */
+	public String getLocatorType(String logicalElementName) {
 		// Read value using the logical name as Key
 		String locator = properties.getProperty(logicalElementName);
 		// Split the value which contains locator type and locator value
