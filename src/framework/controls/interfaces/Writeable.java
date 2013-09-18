@@ -7,9 +7,8 @@ package framework.controls.interfaces;
  */
 public interface Writeable {
 
-	/**
-	 * Implementing this interface will ensure an object has a "write()" method.  
-	 * This method will write "value" into the control.
+	/**  
+	 * This method will write the supplied data into the control.
 	 * @param value
 	 */
 	void write(String value);

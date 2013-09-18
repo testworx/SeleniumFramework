@@ -10,16 +10,14 @@ package framework.controls.interfaces;
 public interface Form {
 
 	/**
-	 * Implementing the interface will provide a "fillForm()" method that takes
-	 * a String[] of data to write into each field within a form.
-	 * @param args
+	 * This method enables data to be written into the form.   
+	 * @param args a String[] of data to write into each field within a form
 	 */
 	void fillForm(String[] args);
 
 	/**
-	 * Implementing the interface will provide a "submitForm()" method that
-	 * would submit the form data in some way.  Typically this would be by 
-	 * clicking the "Submit" button or similar.
+	 * This method enables the form data to be submitted.
+	 * Typically this would be by clicking the "Submit" button or similar.
 	 * @return an Object.  This would typically be another page object
 	 */
 	Object submitForm();

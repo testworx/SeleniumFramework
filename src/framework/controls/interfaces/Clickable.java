@@ -8,7 +8,7 @@ package framework.controls.interfaces;
 public interface Clickable {
 
 	/**
-	 * Implementing the interface will ensure an object has a "click()" method.
+	 * This method simulates a "click" action on the control.
 	 */
 	void click();
 

@@ -8,12 +8,12 @@ package framework.controls.interfaces;
 public interface Selectable {
 
 	/**
-	 * Implementing this interface will ensure an object has an "select()" method.
+	 * This method enables the control to be set as selected.
 	 */
 	void select();
 
 	/**
-	 * Implementing this interface will ensure an object has a "deSelect()" method.
+	 * This method enables the control to be set as deselected.
 	 */
 	void deSelect();
 

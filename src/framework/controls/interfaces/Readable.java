@@ -8,7 +8,7 @@ package framework.controls.interfaces;
 public interface Readable {
 
 	/**
-	 * Implementing this interface will ensure an object has a "read()" method.
+	 * This method enables the text value of the control to be read.
 	 * @return an object representing the text of the control.  Typically this would be a String.
 	 */
 	Object read();

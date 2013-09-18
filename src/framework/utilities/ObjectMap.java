@@ -79,7 +79,8 @@ public class ObjectMap {
 	 * This method returns a new locator object based on the locator type value from the property 
 	 * named elementName and locatorName.  This is useful if the locator value is dynamic but the 
 	 * locator type is known.
-	 * @param elementName The name of the property containing the relevant locator information
+	 * @param logicalElementName The name of the property containing the relevant locator information
+	 * @param locatorValue The locator String value of the property
 	 * @return a By object consisting of the locator type and locator string
 	 * @throws Exception To indicate the locator type could not be determined
 	 */

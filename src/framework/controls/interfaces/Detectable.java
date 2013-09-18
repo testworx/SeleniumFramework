@@ -9,7 +9,7 @@ package framework.controls.interfaces;
 public interface Detectable {
 
 	/**
-	 * Implementing this interface will ensure an object has an "exists()" method.
+	 * This method determines whether or not the control is visible.
 	 * @return true or false
 	 */
 	boolean exists();
