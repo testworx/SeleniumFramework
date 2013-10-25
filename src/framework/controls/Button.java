@@ -38,14 +38,7 @@ public class Button extends BaseControl implements Clickable, Readable {
 	 */
 	@Override
 	public void click() {
-		try {
-			getUnderlyingWebElement().click();
-		} catch (WebDriverException e) {
-			if (e.getMessage().contains("Element is not clickable at point")) {
-				click();
-			}
-			e.printStackTrace();
-		}
+		getUnderlyingWebElement().click();
 	}
 
 }
