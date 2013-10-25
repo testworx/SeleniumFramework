@@ -35,8 +35,13 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 	 */
 	@Override
 	public Object read() {
-		selectBox = new Select(getUnderlyingWebElement());
-		WebElement selectedOption = selectBox.getFirstSelectedOption();
+		Select selectBox = new Select(getUnderlyingWebElement());
+		WebElement selectedOption = null;
+		try { 
+			selectedOption = selectBox.getFirstSelectedOption();
+		} catch (StaleElementReferenceException e) {
+			read();
+		}
 		return selectedOption.getText();
 	}
 
@@ -54,7 +59,12 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 	 */
 	public void selectOptionByValue(String option) {
 		selectBox = new Select(getUnderlyingWebElement());
-		selectBox.selectByValue(option);
+		
+		try {
+			selectBox.selectByValue(option);
+		} catch (StaleElementReferenceException e) {
+			selectOptionByValue(option);
+		}
 	}
 
 	/**
@@ -63,7 +73,12 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 	 */
 	public void selectOptionByVisibleText(String option) {
 		selectBox = new Select(getUnderlyingWebElement());
-		selectBox.selectByVisibleText(option);
+		
+		try {
+			selectBox.selectByVisibleText(option);
+		} catch (StaleElementReferenceException e) {
+			selectOptionByVisibleText(option);
+		}
 	}
 
 	/**
@@ -72,6 +87,10 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 	 */
 	public void selectOptionByIndex(int index) {
 		selectBox = new Select(getUnderlyingWebElement());
-		selectBox.selectByIndex(index);
+		try {
+			selectBox.selectByIndex(index);
+		} catch (StaleElementReferenceException e) {
+			selectOptionByIndex(index);
+		}
 	}
 }
