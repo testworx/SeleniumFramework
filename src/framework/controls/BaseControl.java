@@ -64,13 +64,20 @@ public abstract class BaseControl implements Detectable {
 			setDriver(theDriver);
 			setLocator(theLocator);
 			System.out.println("Looking for WebElement: " + locator.toString());
-			setUnderlyingWebElement(driver.findElement(locator));
 
 			WebDriverWait wait = new WebDriverWait(getDriver(), timeout);
+						
 			try {
 				baseWebElement = wait.until(ExpectedConditions
 						.elementToBeClickable(getLocator()));
+				Point elementStartLocation = baseWebElement.getLocation();
 				Thread.sleep(delay);
+				Point elementCurrentLocation = baseWebElement.getLocation();
+				while (!elementCurrentLocation.equals(elementStartLocation)) {
+					elementStartLocation = elementCurrentLocation;
+					Thread.sleep(delay);
+					elementCurrentLocation = baseWebElement.getLocation();
+			}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -99,13 +106,19 @@ public abstract class BaseControl implements Detectable {
 		try {
 
 			System.out.println("Looking for WebElement: " + locator.toString());
-			setUnderlyingWebElement(driver.findElement(locator));
-
+		
 			WebDriverWait wait = new WebDriverWait(getDriver(), timeout);
 			try {
 				baseWebElement = wait.until(ExpectedConditions
 						.elementToBeClickable(getLocator()));
+				Point elementStartLocation = baseWebElement.getLocation();
 				Thread.sleep(delay);
+				Point elementCurrentLocation = baseWebElement.getLocation();
+				while (!elementCurrentLocation.equals(elementStartLocation)) {
+					elementStartLocation = elementCurrentLocation;
+					Thread.sleep(delay);
+					elementCurrentLocation = baseWebElement.getLocation();
+				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
