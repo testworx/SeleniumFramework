@@ -42,3 +42,7 @@ build/ivy.xml
 *.jar
 
 build/poms/pom-default.xml
+
+build/reports/tests/org.nvonop.selenium.test.java.ControlTests.html
+
+build/reports/tests/org.nvonop.selenium.test.java.html

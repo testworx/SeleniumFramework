@@ -27,7 +27,7 @@ public abstract class BaseControl implements Detectable {
 	private long delay = 500;
 	private WebDriver driver;
 	private By locator;
-	private long timeout = 10;
+	private long timeout = Long.valueOf(System.getProperty("TIMEOUT", "10")).longValue();
 
 	/* (non-Javadoc)
 	 * @see framework.controls.interfaces.Detectable#exists()

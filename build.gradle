@@ -4,7 +4,7 @@ apply plugin: 'eclipse'
 apply plugin: 'groovy'
 
 group = 'org.nvonop.selenium.framework'
-version = '1.4.0'
+version = '1.0.0'
 
 	repositories {
 	    mavenCentral()
@@ -23,10 +23,15 @@ version = '1.4.0'
 	sourceSets {
 	    main {
 	        java {
-	            srcDir 'src/org/nvonop/selenium/framework/'
+	            srcDir 'src/org/nvonop/selenium/framework'
+	        }
+	    }
+	    test {
+	        java {
+	            srcDir 'src/org/nvonop/selenium/test/java'
 	        }
 	        resources {
-	            srcDir 'src/org/nvonop/selenium/framework/resources'
+	            srcDir 'src/org/nvonop/selenium/test/resources'
 	        }
 	    }
 	}
@@ -54,9 +59,9 @@ version = '1.4.0'
 	}
 	
 	task runFirefoxTests(type: Test) {
-	   systemProperties['LOCAL_DRIVER'] = false
+	   systemProperties['LOCAL_DRIVER'] = true
 		systemProperties['REMOTE_DRIVER'] = false
-		systemProperties['SAUCE_DRIVER'] = true
+		systemProperties['SAUCE_DRIVER'] = false
 		systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
 		systemProperties['BROWSER'] = 'firefox'
 		systemProperties['VERSION'] = '20'
@@ -84,6 +89,7 @@ version = '1.4.0'
 		systemProperties['BROWSER'] = 'internet explorer'
 		systemProperties['VERSION'] = '9'
 		systemProperties['PLATFORM'] = 'Windows 2008'
+		systemProperties['TIMEOUT'] = '10'
 		systemProperties['TEST_RESULTS_PATH'] = '~/Screenshots'
   }
   

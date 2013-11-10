@@ -47,8 +47,6 @@ public class BaseTest {
 //			"http://USER:TOKEN@ondemand.saucelabs.com:80/wd/hub");
 //	protected static String testResultsPath = System.getProperty(
 //			"TEST_RESULTS_PATH", "~");
-	
-
 
 	@BeforeClass
 	protected void beforeClass() {
