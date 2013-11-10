@@ -3,5 +3,4 @@ jdk:
   - openjdk6
   - openjdk6
   
-  after_script:
-  - gradle uploadArchives
+after_script: gradle uploadArchives
