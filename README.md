@@ -1,3 +1,5 @@
+##Current Status ![Build Status](https://travis-ci.org/nvonop/SeleniumFramework.png?branch=master)
+
 ## Introduction
 Please refer to the wiki for documentation on how to use the framework:  [Selenium Framework Wiki](https://github.com/nvonop/SeleniumFramework/wiki)
  
