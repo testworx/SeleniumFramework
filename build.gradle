@@ -23,10 +23,10 @@ version = '1.4.0'
 	sourceSets {
 	    main {
 	        java {
-	            srcDir 'src/framework/'
+	            srcDir 'src/org/nvonop/selenium/framework/'
 	        }
 	        resources {
-	            srcDir 'src/framework/resources'
+	            srcDir 'src/org/nvonop/selenium/framework/resources'
 	        }
 	    }
 	}
@@ -93,7 +93,7 @@ version = '1.4.0'
   }
 	
   jar {
-  	exclude('src/test')
+  	exclude('src/org/nvonop/selenium/test')
   }
 
   

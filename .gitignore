@@ -36,3 +36,9 @@ build/reports/tests/test.java.html
 build/reports/tests/test.java.html
 
 *.public
+
+build/ivy.xml
+
+*.jar
+
+build/poms/pom-default.xml
