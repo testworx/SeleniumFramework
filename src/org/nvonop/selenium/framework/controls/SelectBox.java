@@ -1,5 +1,6 @@
 package org.nvonop.selenium.framework.controls;
 
+import java.util.List;
 import org.nvonop.selenium.framework.controls.interfaces.Clickable;
 import org.nvonop.selenium.framework.controls.interfaces.Readable;
 import org.openqa.selenium.By;
@@ -33,6 +34,25 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 	}
 
 	/* (non-Javadoc)
+	 * @see framework.controls.interfaces.Clickable#click()
+	 */
+	@Override
+	public void click() {
+		getUnderlyingWebElement().click();
+	}
+	
+     /**
+     * This method gets all available options in a select list
+     * @return List of all options
+     */
+     public List<WebElement> getAllOptions() {
+    	 Select selectBox = new Select(getUnderlyingWebElement());
+    	 List<WebElement> allOptions = selectBox.getAllSelectedOptions();
+   
+         return allOptions;
+     }
+
+	/* (non-Javadoc)
 	 * @see framework.controls.interfaces.Readable#read()
 	 */
 	@Override
@@ -46,15 +66,7 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 		}
 		return selectedOption.getText();
 	}
-
-	/* (non-Javadoc)
-	 * @see framework.controls.interfaces.Clickable#click()
-	 */
-	@Override
-	public void click() {
-		getUnderlyingWebElement().click();
-	}
-
+	
 	/**
 	 * This method enables a select box option to be selected by it's value.
 	 * @param option The String value of the option to be selected
