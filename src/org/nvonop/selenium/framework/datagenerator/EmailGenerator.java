@@ -10,7 +10,7 @@ public class EmailGenerator {
 	 * This method returns the email address "test@test.com".  
 	 * @return a valid email address
 	 */
-	public String getValidEmailAddress() {
+	public static String getValidEmailAddress() {
 		return "test@test.com";
 	}
 	
@@ -18,7 +18,7 @@ public class EmailGenerator {
 	 * This method returns the invalid email address "test.com" that is missing its local part.  
 	 * @return an invalid email address
 	 */
-	public String getEmailAddressMissingLocalPart() {
+	public static String getEmailAddressMissingLocalPart() {
 		return "@test.com";
 	}
 	
@@ -26,7 +26,7 @@ public class EmailGenerator {
 	 * This method returns the invalid email address "test@" that is missing its domain.  
 	 * @return an invalid email address
 	 */
-	public String getEmailAddressMissingDomain() {
+	public static String getEmailAddressMissingDomain() {
 		return "test@";
 	}
 	
@@ -34,7 +34,7 @@ public class EmailGenerator {
 	 * This method returns the invalid email address "testtest.com" that is missing the ampersand.  
 	 * @return an invalid email address
 	 */
-	public String getEmailAddressMissingAmpersand() {
+	public static String getEmailAddressMissingAmpersand() {
 		return "testtest.com";
 	}
 }
