@@ -24,7 +24,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BaseControl implements Detectable {
 
 	private WebElement baseWebElement;
-	private long delay = 500;
+	private long delay = Long.valueOf(System.getProperty("DELAY", "10")).longValue();
 	private WebDriver driver;
 	private By locator;
 	private long timeout = Long.valueOf(System.getProperty("TIMEOUT", "10")).longValue();
