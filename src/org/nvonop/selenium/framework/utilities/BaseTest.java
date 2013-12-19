@@ -91,6 +91,7 @@ public class BaseTest {
 		case 0:
 			throw new WebDriverException("Browser: " + browser + " not found.");
 		case 1:
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, Boolean.valueOf(System.getProperty("IGNORE_SECURITY_DOMAINS", "false")));
 			driver.set(new InternetExplorerDriver(capabilities));
 			break;
 		case 2:
@@ -134,6 +135,7 @@ public class BaseTest {
 			throw new WebDriverException("Browser: " + browser + " not found.");
 		case 1:
 			capabilities = DesiredCapabilities.internetExplorer();
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, Boolean.valueOf(System.getProperty("IGNORE_SECURITY_DOMAINS", "false")));
 			break;
 		case 2:
 			capabilities = DesiredCapabilities.firefox();
@@ -172,6 +174,7 @@ public class BaseTest {
 		case 1:
 			capabilities = DesiredCapabilities.internetExplorer();
 			capabilities.setCapability("version", version);
+			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, Boolean.valueOf(System.getProperty("IGNORE_SECURITY_DOMAINS", "false")));
 			break;
 		case 2:
 			capabilities = DesiredCapabilities.firefox();
