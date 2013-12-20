@@ -52,4 +52,11 @@ public class TextBox extends BaseControl implements Clickable, Readable,
 		getUnderlyingWebElement().sendKeys(Keys.SHIFT, Keys.END, Keys.DELETE);
 		getUnderlyingWebElement().sendKeys(value);
 	}
+	
+		/* (non-Javadoc)
+	 * @see framework.controls.interfaces.Writeable#write(java.lang.String)
+	 */
+	public void writeWithoutClearingField(String value) {
+		getUnderlyingWebElement().sendKeys(value);
+	}
 }
