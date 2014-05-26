@@ -6,28 +6,31 @@ import org.nvonop.selenium.framework.controls.interfaces.Selectable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
 /**
- * This class comprises of functionality that would be used 
- * when interacting with a typical checkbox control.
+ * This class comprises of functionality that would be used when interacting
+ * with a typical checkbox control.
+ * 
  * @author nvonop
- *
+ * 
  */
 public class CheckBox extends BaseControl implements Clickable, Selectable,
 		Readable {
-	
+
 	/**
-	 * Constructor that takes a WebDriver object and By object.  
-	 * These are then set in the base class.
+	 * Constructor that takes a WebDriver object and By object. These are then
+	 * set in the base class.
+	 * 
 	 * @param driver
 	 * @param locator
 	 */
 	public CheckBox(WebDriver driver, By locator) {
-		setDriver(driver);
+		this.driver = driver;
 		setLocator(locator);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Readable#read()
 	 */
 	@Override
@@ -35,7 +38,9 @@ public class CheckBox extends BaseControl implements Clickable, Selectable,
 		return new Boolean(getUnderlyingWebElement().isSelected());
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Clickable#click()
 	 */
 	@Override
@@ -43,7 +48,9 @@ public class CheckBox extends BaseControl implements Clickable, Selectable,
 		getUnderlyingWebElement().click();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Selectable#select()
 	 */
 	@Override
@@ -54,7 +61,9 @@ public class CheckBox extends BaseControl implements Clickable, Selectable,
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Selectable#deSelect()
 	 */
 	@Override

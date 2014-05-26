@@ -4,126 +4,112 @@ import org.nvonop.selenium.framework.datagenerator.DateGenerator;
 import org.nvonop.selenium.framework.datagenerator.EmailGenerator;
 import org.nvonop.selenium.framework.datagenerator.TextGenerator;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class DataGeneratorTests {
 
-	@BeforeMethod(alwaysRun = true)
-	public void beforeTest() {
-
-	}
-
-	@AfterMethod(alwaysRun = true)
-	public void afterTest() {
-	
-	}
-	
 	/*
 	 * DateGenerator Tests
 	 */
 	@Test
-	public void TestTodaysDateNotNull() {
+	public void checkTodaysDateNotNull() {
 		Assert.assertNotNull(DateGenerator.getTodaysDate());
 	}
-	
+
 	@Test
-	public void TestTodaysDayNotNull() {
+	public void checkTodaysDayNotNull() {
 		Assert.assertNotNull(DateGenerator.getTodaysDay());
 	}
-	
+
 	@Test
-	public void TestTodaysMonthNotNull() {
+	public void checkTodaysMonthNotNull() {
 		Assert.assertNotNull(DateGenerator.getTodaysMonth());
 	}
-	
+
 	@Test
-	public void TestTodaysYearNotNull() {
+	public void checkTodaysYearNotNull() {
 		Assert.assertNotNull(DateGenerator.getTodaysYear());
 	}
-	
+
 	@Test
-	public void TestDateInPastNotNull() {
+	public void checkDateInPastNotNull() {
 		Assert.assertNotNull(DateGenerator.getDateInPast(3000));
 	}
-	
+
 	@Test
-	public void TestPastDayNotNull() {
+	public void checkPastDayNotNull() {
 		Assert.assertNotNull(DateGenerator.getDateInPast(3000));
 	}
-	
+
 	@Test
-	public void TestPastMonthNotNull() {
+	public void checkPastMonthNotNull() {
 		Assert.assertNotNull(DateGenerator.getMonthInPast(3000));
 	}
-	
+
 	@Test
-	public void TestPastYearNotNull() {
+	public void checkPastYearNotNull() {
 		Assert.assertNotNull(DateGenerator.getYearInPast(3000));
 	}
-	
+
 	@Test
-	public void TestDateInFutureNotNull() {
+	public void checkDateInFutureNotNull() {
 		Assert.assertNotNull(DateGenerator.getDateInFuture(3000));
 	}
-	
+
 	@Test
-	public void TestFutureDayNotNull() {
+	public void checkFutureDayNotNull() {
 		Assert.assertNotNull(DateGenerator.getDateInFuture(3000));
 	}
-	
+
 	@Test
-	public void TestFutureMonthNotNull() {
+	public void checkFutureMonthNotNull() {
 		Assert.assertNotNull(DateGenerator.getMonthInFuture(3000));
 	}
-	
+
 	@Test
-	public void TestFutureYearNotNull() {
+	public void checkFutureYearNotNull() {
 		Assert.assertNotNull(DateGenerator.getYearInFuture(3000));
 	}
-	
-	
+
 	/*
 	 * EmailGenerator Tests
 	 */
 	@Test
-	public void TestValidEmailAddressNotNull() {
+	public void checkValidEmailAddressNotNull() {
 		Assert.assertNotNull(EmailGenerator.getValidEmailAddress());
 	}
-	
+
 	@Test
-	public void TestEmailAddressMissingDomainNotNull() {
+	public void checkEmailAddressMissingDomainNotNull() {
 		Assert.assertNotNull(EmailGenerator.getEmailAddressMissingDomain());
 	}
-	
+
 	@Test
-	public void TestEmailAddressMissingLocalPartNotNull() {
+	public void checkEmailAddressMissingLocalPartNotNull() {
 		Assert.assertNotNull(EmailGenerator.getEmailAddressMissingLocalPart());
 	}
-	
+
 	@Test
-	public void TestEmailAddressMissingAmpersandNotNull() {
+	public void checkEmailAddressMissingAmpersandNotNull() {
 		Assert.assertNotNull(EmailGenerator.getEmailAddressMissingAmpersand());
 	}
-	
-	
+
 	/*
 	 * TextGenerator Tests
 	 */
 	@Test
-	public void TestRandomStringOfFixedLengthNotNull() {
+	public void checkRandomStringOfFixedLengthNotNull() {
 		Assert.assertNotNull(TextGenerator.getRandomString());
 	}
-	
+
 	@Test
-	public void TestRandomStringOfVariableLengthNotNull() {
+	public void checkRandomStringOfVariableLengthNotNull() {
 		Assert.assertNotNull(TextGenerator.getRandomString(30));
 	}
-	
+
 	@Test
-	public void TestRandomStringOfVariableLengthCorrect() {
+	public void checkRandomStringOfVariableLengthCorrect() {
 		Assert.assertEquals(TextGenerator.getRandomString(30).length(), 30);
 	}
-	
+
 }

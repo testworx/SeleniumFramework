@@ -1,32 +1,40 @@
 package org.nvonop.selenium.framework.controls;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
- * This class comprises of functionality that would be used 
- * when interacting with a typical HTML table.
+ * This class comprises of functionality that would be used when interacting
+ * with a typical HTML table.
+ * 
  * @author nvonop
- *
+ * 
  */
 public class Table extends BaseControl {
 
+	private static final Logger LOGGER = Logger
+			.getLogger(Table.class.getName());
+
 	/**
-	 * Constructor that takes a WebDriver object and By object.  
-	 * These are then set in the base class.
+	 * Constructor that takes a WebDriver object and By object. These are then
+	 * set in the base class.
+	 * 
 	 * @param driver
 	 * @param locator
 	 */
 	public Table(WebDriver driver, By locator) {
-		setDriver(driver);
+		this.driver = driver;
 		setLocator(locator);
 	}
 
 	/**
 	 * This method counts the rows within the table.
+	 * 
 	 * @return an int for the row count
 	 */
 	public int countRows() {
@@ -38,6 +46,7 @@ public class Table extends BaseControl {
 
 	/**
 	 * This method counts the number of columns within a given row.
+	 * 
 	 * @param row
 	 * @return an int for the column count
 	 */
@@ -54,6 +63,7 @@ public class Table extends BaseControl {
 
 	/**
 	 * This method reads the header for a given column.
+	 * 
 	 * @param column
 	 * @return a String value for the column header
 	 */
@@ -72,6 +82,7 @@ public class Table extends BaseControl {
 
 	/**
 	 * This method reads the contents of a given cell.
+	 * 
 	 * @param row
 	 * @param column
 	 * @return a String value for the cell contents
@@ -90,18 +101,20 @@ public class Table extends BaseControl {
 	}
 
 	/**
-	 * This method iterates through every cell row by row searching for 
-	 * the given String value.  Useful for finding particular values of 
-	 * interest in tables of variable size.
+	 * This method iterates through every cell row by row searching for the
+	 * given String value. Useful for finding particular values of interest in
+	 * tables of variable size.
+	 * 
 	 * @param searcheableText
-	 * @return an int[] containing the coordinates of the cell containing the searcheableText
+	 * @return an int[] containing the coordinates of the cell containing the
+	 *         searcheableText
 	 */
 	public int[] searchTableForText(String searcheableText) {
 		List<WebElement> rows = getUnderlyingWebElement().findElements(
 				By.tagName("tr"));
 		WebElement tableRow;
-
 		List<WebElement> columns;
+		String cellText = "";
 
 		int[] cellReference = new int[2];
 
@@ -110,14 +123,20 @@ public class Table extends BaseControl {
 			columns = tableRow.findElements(By.tagName("td"));
 			for (int column = 1; column <= columns.size(); column++) {
 				try {
-					String cellText = readCell(row, column);
-					if (cellText.contains(searcheableText)) {
-						cellReference[0] = row;
-						cellReference[1] = column;
-					}
+					cellText = readCell(row, column);
 				} catch (IndexOutOfBoundsException e) {
 					// We catch the exception caused by trying to read a bad
 					// cell
+					LOGGER.log(
+							Level.INFO,
+							"IndexOutOfBoundsException in searchTableForText() method",
+							e);
+
+				}
+				if (cellText.contains(searcheableText)) {
+					cellReference[0] = row;
+					cellReference[1] = column;
+					break;
 				}
 			}
 		}

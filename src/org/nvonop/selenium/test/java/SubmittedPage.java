@@ -17,6 +17,11 @@ public class SubmittedPage extends LoadableComponent<SubmittedPage> {
 	public SubmittedPage(WebDriver testDriver) {
 		driver = testDriver;
 	}
+	
+	public String getTitle() {
+		return driver.getTitle();
+	}
+
 
 	@Override
 	protected void isLoaded() throws Error {

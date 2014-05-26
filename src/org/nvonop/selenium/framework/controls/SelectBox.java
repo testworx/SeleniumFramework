@@ -1,109 +1,139 @@
 package org.nvonop.selenium.framework.controls;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.nvonop.selenium.framework.controls.interfaces.Clickable;
 import org.nvonop.selenium.framework.controls.interfaces.Readable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-
 /**
- * This class comprises of functionality that would be used 
- * when interacting with a typical select box control.
+ * This class comprises of functionality that would be used when interacting
+ * with a typical select box control.
+ * 
  * @author nvonop
- *
+ * 
  */
 public class SelectBox extends BaseControl implements Clickable, Readable {
+
+	private static final Logger LOGGER = Logger.getLogger(SelectBox.class
+			.getName());
 
 	Select selectBox;
 
 	/**
-	 * Constructor that takes a WebDriver object and By object.  
-	 * These are then set in the base class.
+	 * Constructor that takes a WebDriver object and By object. These are then
+	 * set in the base class.
+	 * 
 	 * @param driver
 	 * @param locator
 	 */
 	public SelectBox(WebDriver driver, By locator) {
-		setDriver(driver);
+		this.driver = driver;
 		setLocator(locator);
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Clickable#click()
 	 */
 	@Override
 	public void click() {
 		getUnderlyingWebElement().click();
 	}
-	
-     /**
-     * This method gets all available options in a select list
-     * @return List of all options
-     */
-     public List<WebElement> getAllOptions() {
-    	 Select selectBox = new Select(getUnderlyingWebElement());
-    	 List<WebElement> allOptions = selectBox.getAllSelectedOptions();
-   
-         return allOptions;
-     }
 
-	/* (non-Javadoc)
+	/**
+	 * This method gets all available options in a select list
+	 * 
+	 * @return List of all options
+	 */
+	public List<WebElement> getAllOptions() {
+		selectBox = new Select(getUnderlyingWebElement());
+		return selectBox.getAllSelectedOptions();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Readable#read()
 	 */
 	@Override
 	public Object read() {
-		Select selectBox = new Select(getUnderlyingWebElement());
+		selectBox = new Select(getUnderlyingWebElement());
 		WebElement selectedOption = null;
-		try { 
+		try {
 			selectedOption = selectBox.getFirstSelectedOption();
 		} catch (StaleElementReferenceException e) {
+			LOGGER.log(Level.INFO,
+					"StaleElementReferenceException in read() method", e);
 			read();
 		}
 		return selectedOption.getText();
 	}
-	
+
 	/**
 	 * This method enables a select box option to be selected by it's value.
-	 * @param option The String value of the option to be selected
+	 * 
+	 * @param option
+	 *            The String value of the option to be selected
 	 */
 	public void selectOptionByValue(String option) {
 		selectBox = new Select(getUnderlyingWebElement());
-		
+
 		try {
 			selectBox.selectByValue(option);
 		} catch (StaleElementReferenceException e) {
+			LOGGER.log(
+					Level.INFO,
+					"StaleElementReferenceException in selectOptionByValue() method",
+					e);
 			selectOptionByValue(option);
 		}
 	}
 
 	/**
-	 * This method enables a select box option to be selected by it's visible text.
-	 * @param option The String value of the visible text for the option
+	 * This method enables a select box option to be selected by it's visible
+	 * text.
+	 * 
+	 * @param option
+	 *            The String value of the visible text for the option
 	 */
 	public void selectOptionByVisibleText(String option) {
 		selectBox = new Select(getUnderlyingWebElement());
-		
+
 		try {
 			selectBox.selectByVisibleText(option);
 		} catch (StaleElementReferenceException e) {
+			LOGGER.log(
+					Level.INFO,
+					"StaleElementReferenceException in selectOptionByVisibleText() method",
+					e);
 			selectOptionByVisibleText(option);
 		}
 	}
 
 	/**
 	 * This method enables a select box option to be selected by it's index.
-	 * @param index The index of the option to be selected
+	 * 
+	 * @param index
+	 *            The index of the option to be selected
 	 */
 	public void selectOptionByIndex(int index) {
 		selectBox = new Select(getUnderlyingWebElement());
 		try {
 			selectBox.selectByIndex(index);
 		} catch (StaleElementReferenceException e) {
+			LOGGER.log(
+					Level.INFO,
+					"StaleElementReferenceException in selectOptionByIndex() method",
+					e);
 			selectOptionByIndex(index);
 		}
 	}

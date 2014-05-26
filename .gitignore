@@ -5,13 +5,7 @@
 *.ear
 .DS_Store
 test-output/
-build/classes/
-build/dependency-cache/
-build/jacoco/
-build/resources/
-build/sonar/
-build/test-results/
-build/tmp/
+build/*
 
 bin/
 .gradle/
@@ -46,3 +40,15 @@ build/poms/pom-default.xml
 build/reports/tests/org.nvonop.selenium.test.java.ControlTests.html
 
 build/reports/tests/org.nvonop.selenium.test.java.html
+
+build/reports/tests/style.css
+build/reports/tests/report.js
+build/reports/tests/css3-pie-1.0beta3.htc
+build/reports/tests/base-style.css
+.sonar/.sonartmp/caches/persistit_tempvol_5007859253145564213.tmp
+.settings/org.sonar.ide.eclipse.core.prefs
+frameworkProperties.txt
+build/reports/tests/css3-pie-1.0beta3.htc
+build/reports/tests/base-style.css
+build/reports/tests/css3-pie-1.0beta3.htc
+*.project

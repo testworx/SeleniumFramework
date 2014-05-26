@@ -1,9 +1,11 @@
 package org.nvonop.selenium.framework.controls.interfaces;
 
 /**
- * This interface provides functionality for selecting and deselecting a control.
+ * This interface provides functionality for selecting and deselecting a
+ * control.
+ * 
  * @author nvonop
- *
+ * 
  */
 public interface Selectable {
 

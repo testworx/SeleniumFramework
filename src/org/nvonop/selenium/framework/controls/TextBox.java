@@ -8,26 +8,30 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.Keys;
 
 /**
- * This class comprises of functionality that would be used 
- * when interacting with a typical text box control.
+ * This class comprises of functionality that would be used when interacting
+ * with a typical text box control.
+ * 
  * @author nvonop
- *
+ * 
  */
 public class TextBox extends BaseControl implements Clickable, Readable,
 		Writeable {
 
 	/**
-	 * Constructor that takes a WebDriver object and By object.  
-	 * These are then set in the base class.
+	 * Constructor that takes a WebDriver object and By object. These are then
+	 * set in the base class.
+	 * 
 	 * @param driver
 	 * @param locator
 	 */
 	public TextBox(WebDriver driver, By locator) {
-		setDriver(driver);
+		this.driver = driver;
 		setLocator(locator);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Readable#read()
 	 */
 	@Override
@@ -35,7 +39,9 @@ public class TextBox extends BaseControl implements Clickable, Readable,
 		return getUnderlyingWebElement().getAttribute("value");
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Clickable#click()
 	 */
 	@Override
@@ -43,7 +49,9 @@ public class TextBox extends BaseControl implements Clickable, Readable,
 		getUnderlyingWebElement().click();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Writeable#write(java.lang.String)
 	 */
 	@Override
@@ -52,8 +60,10 @@ public class TextBox extends BaseControl implements Clickable, Readable,
 		getUnderlyingWebElement().sendKeys(Keys.SHIFT, Keys.END, Keys.DELETE);
 		getUnderlyingWebElement().sendKeys(value);
 	}
-	
-		/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see framework.controls.interfaces.Writeable#write(java.lang.String)
 	 */
 	public void writeWithoutClearingField(String value) {
