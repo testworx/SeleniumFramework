@@ -238,5 +238,23 @@ public class BaseTest {
 				.implicitlyWait(10, TimeUnit.SECONDS);
 		this.driver.get().manage().window().maximize();
 	}
+	
+	/**
+	 * This method returns a ,ThreadLocal> WebDriver object
+	 * 
+	 * @param browser
+	 *            This can be set to "chrome", "internet explorer" or "firefox"
+	 * @param version
+	 *            This should be set to reflect the browser required. It is only
+	 *            used when matching capabilities for a RemoteWebDriver object
+	 *            however.
+	 * @param platform
+	 *            This should be set to whatever platform the test is required
+	 *            to run on e.g. "WINDOWS", "MAC", "LINUX". It is only used when
+	 *            matching capabilities for a RemoteWebDriver object however.
+	 */
+	public WebDriver getWebDriver() {
+		return driver.get();
+	}
 
 }
