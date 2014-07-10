@@ -22,15 +22,10 @@ public class TextGenerator {
 	 * @return a random String
 	 */
 	public static String getRandomString() {
+
 		// String hard coded to length 10 for now
 		int length = 10;
-		Random rand = new Random();
-		StringBuilder randomString = new StringBuilder();
-		for (int i = 0; i < length; i++) {
-			randomString.append(ALLOWABLE_CHARS.charAt(rand
-					.nextInt(ALLOWABLE_CHARS.length())));
-		}
-		return randomString.toString();
+		return buildRandomString(length);
 	}
 
 	/**
@@ -38,13 +33,17 @@ public class TextGenerator {
 	 * when unique String is required for populating a form. The length of the
 	 * string is determined by stringLength
 	 * 
-	 * @param stringLength
+	 * @param length
 	 *            the length of the String that will be returned
 	 * @return a random String
 	 */
-	public static String getRandomString(int stringLength) {
+	public static String getRandomString(int length) {
 
-		int length = stringLength;
+		return buildRandomString(length);
+	}
+	
+	private static String buildRandomString(int length) {
+
 		Random rand = new Random();
 		StringBuilder randomString = new StringBuilder();
 		for (int i = 0; i < length; i++) {

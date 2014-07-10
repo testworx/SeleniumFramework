@@ -1,4 +1,4 @@
-package org.nvonop.selenium.framework.utilities;
+package org.nvonop.selenium.framework;
 
 import java.io.FileInputStream;
 import java.io.IOException;

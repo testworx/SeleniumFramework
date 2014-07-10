@@ -1,6 +1,9 @@
 package org.nvonop.selenium.test.java;
 
-import org.nvonop.selenium.framework.utilities.BaseTest;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import org.nvonop.selenium.framework.*;
 import org.nvonop.selenium.framework.utilities.TestHelper;
 import org.openqa.selenium.Alert;
 import org.testng.Assert;
@@ -8,28 +11,25 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.logging.*;
-
-public class ControlTests extends BaseTest {
+public class ControlTests {
 
 	private static final Logger LOGGER = Logger.getLogger(ControlTests.class
 			.getName());
 
 	TestHelper testHelper;
-	private StringBuilder verificationErrors;
 	private ControlsPage controlsPage;
 
+	private Browser browser;
+	
 	@Test(groups = { "frameworkTests" })
 	public void checkTestPageOpensAndTakeScreenshot() {
 		try {
-			TestHelper.getScreenshot();
-			Assert.assertEquals(driver.get().getTitle(), "Controls Page Title");
+			browser.getScreenshot();
+			Assert.assertEquals(browser.getPageTitle(), "Controls Page Title");
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkTestPageOpensAndTakeScreenshot Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -41,9 +41,7 @@ public class ControlTests extends BaseTest {
 			Assert.assertTrue(controlsPage.getMessage1().exists());
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Exception in checkSwitchToFrame Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -55,9 +53,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindButtonAndClick Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -70,9 +66,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindButton2AndClick Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -80,16 +74,14 @@ public class ControlTests extends BaseTest {
 	public void checkFindAlertAndClose() {
 		try {
 			controlsPage.getButton3().click();
-			Alert alert = driver.get().switchTo().alert();
+			Alert alert = browser.switchToAlert();
 			String alertText = alert.getText();
 			alert.accept();
 			Assert.assertEquals(alertText, "Alert button clicked.");
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindAlertAndClose Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -105,9 +97,7 @@ public class ControlTests extends BaseTest {
 					Level.SEVERE,
 					"Exception in checkFindButtonAndClickThenCheckElementDisappears Test",
 					e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -119,9 +109,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindRadioButtonAndClick Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -133,9 +121,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindRadioButton2AndClick Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -147,9 +133,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindCheckboxAndSelect Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -161,9 +145,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindCheckbox2AndClick Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -171,14 +153,12 @@ public class ControlTests extends BaseTest {
 	public void checkFindLinkAndClick() {
 		try {
 			controlsPage.getGoogle().click();
-			TestHelper.switchToWindow("Google");
-			Assert.assertEquals(driver.get().getTitle(), "Google");
+			browser.switchToWindow("Google");
+			Assert.assertEquals(browser.getPageTitle(), "Google");
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Exception in checkFindLinkAndClick Test",
 					e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -189,9 +169,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindTableAndCountRows Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -207,9 +185,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindTableAndSearchForText Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -221,9 +197,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindTableAndCountColumns Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -235,9 +209,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindTableAndReadCell Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -249,9 +221,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindTableAndReadHeader Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -263,9 +233,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindTextBoxAndTypeText Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -276,9 +244,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindTextBoxAndReadValue Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -289,9 +255,7 @@ public class ControlTests extends BaseTest {
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindSelectListAndReadValue Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -305,9 +269,7 @@ public class ControlTests extends BaseTest {
 					Level.SEVERE,
 					"Exception in checkFindSelectListAndSelectOptionByText Test",
 					e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -321,9 +283,7 @@ public class ControlTests extends BaseTest {
 					Level.SEVERE,
 					"Exception in checkFindSelectListAndSelectOptionByValue Test",
 					e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -337,9 +297,7 @@ public class ControlTests extends BaseTest {
 					Level.SEVERE,
 					"Exception in checkFindSelectListAndSelectOptionByIndex Test",
 					e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -347,13 +305,11 @@ public class ControlTests extends BaseTest {
 	public void checkFindSubmitButtonAndClick() {
 		try {
 			controlsPage.getSubmit().click();
-			Assert.assertEquals("Submitted Page Title", driver.get().getTitle());
+			Assert.assertEquals(browser.getPageTitle(), "Submitted Page Title");
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE,
 					"Exception in checkFindSubmitButtonAndClick Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
@@ -365,33 +321,28 @@ public class ControlTests extends BaseTest {
 					"Submitted Page Title");
 		} catch (Exception e) {
 			LOGGER.log(Level.SEVERE, "Exception in checkSubmitForm Test", e);
-			// Capture and append Exceptions/Errors
-			verificationErrors.append(e.toString());
-			Assert.fail(verificationErrors.toString());
+			Assert.fail(e.getMessage());
 		}
 	}
 
 	@BeforeMethod(alwaysRun = true)
 	public void beforeTest() {
-		verificationErrors = new StringBuilder();
-		verificationErrors.append("");
-		setWebDriver(System.getProperty("BROWSER"),
-				System.getProperty("VERSION"), System.getProperty("PLATFORM"));
-		TestHelper.setDriver(driver.get());
-		controlsPage = new ControlsPage(driver.get(),
-				"http://selenium-framework.site44.com/controls_page.html");
-		controlsPage.get();
+//		System.setProperty("LOCAL_DRIVER", "true");
+//		System.setProperty("REMOTE_DRIVER", "false");
+//		System.setProperty("SAUCE_DRIVER", "false");
+//		System.setProperty("SAUCE_KEY", "http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub");
+//		System.setProperty("BROWSER", "firefox");
+//		System.setProperty("VERSION", "20");
+//		System.setProperty("PLATFORM", "Windows 2008");
+//		System.setProperty("APPLICATION_URL", "http://selenium-framework.site44.com/controls_page.html");
+		browser = new Browser();
+		browser.open();
+		controlsPage = (ControlsPage) browser.navigate(ControlsPage.class);
+		
 	}
 
 	@AfterMethod(alwaysRun = true)
 	public void afterTest() {
-		if (driver.get() != null) {
-			closeWebdriver();
-		}
-		String verificationErrorString = verificationErrors.toString();
-		if (!"".equals(verificationErrorString)) {
-			LOGGER.log(Level.SEVERE, "There were errors running the test: "
-					+ verificationErrorString);
-		}
+		browser.close();
 	}
 }

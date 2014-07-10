@@ -54,3 +54,5 @@ build/reports/tests/css3-pie-1.0beta3.htc
 *.project
 *.tmp
 .classpath
+
+*.prefs

@@ -12,7 +12,8 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.sonar.ide.eclipse.core.sonarNature</nature>
+		<nature>org.eclipse.jdt.groovy.core.groovyNature</nature>
+		<nature>org.springsource.ide.eclipse.gradle.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 	<variableList>

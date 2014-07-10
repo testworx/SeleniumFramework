@@ -3,22 +3,23 @@ package org.nvonop.selenium.test.java;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.nvonop.selenium.framework.ObjectMap;
 import org.nvonop.selenium.framework.controls.Button;
 import org.nvonop.selenium.framework.controls.CheckBox;
 import org.nvonop.selenium.framework.controls.Frame;
 import org.nvonop.selenium.framework.controls.Link;
 import org.nvonop.selenium.framework.controls.Message;
+import org.nvonop.selenium.framework.controls.Page;
 import org.nvonop.selenium.framework.controls.RadioButton;
 import org.nvonop.selenium.framework.controls.SelectBox;
 import org.nvonop.selenium.framework.controls.Table;
 import org.nvonop.selenium.framework.controls.TextBox;
 import org.nvonop.selenium.framework.controls.interfaces.Form;
-import org.nvonop.selenium.framework.utilities.ObjectMap;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.LoadableComponent;
 import org.testng.Assert;
 
-public class ControlsPage extends LoadableComponent<ControlsPage> implements
+public class ControlsPage extends Page implements
 		Form {
 
 	private static final Logger LOGGER = Logger.getLogger(ControlsPage.class
@@ -26,7 +27,6 @@ public class ControlsPage extends LoadableComponent<ControlsPage> implements
 
 	private ObjectMap map;
 
-	private WebDriver driver;
 	private String pageUrl;
 
 	private Frame frame;
@@ -51,12 +51,11 @@ public class ControlsPage extends LoadableComponent<ControlsPage> implements
 	private Message message4;
 	private Message message5;
 	private Message message6;
-
-	public ControlsPage(WebDriver testDriver, String url) {
-		driver = testDriver;
-		pageUrl = url;
+	
+	public ControlsPage(WebDriver testDriver) {
+		super(testDriver);
 		map = new ObjectMap("ControlsPageObjectMap.properties");
-
+		url = System.getProperty("APPLICATION_URL");
 		try {
 			setFrame(new Frame(driver, map.getLocatorFromMap("iframe_1")));
 			setButton1(new Button(driver, map.getLocatorFromMap("button_1")));
@@ -95,20 +94,6 @@ public class ControlsPage extends LoadableComponent<ControlsPage> implements
 			LOGGER.log(Level.INFO, "Exception in ControlsPage() constructor", e);
 		}
 
-	}
-
-	public ControlsPage(WebDriver testDriver) {
-		driver = testDriver;
-	}
-
-	@Override
-	protected void isLoaded() throws Error {
-		Assert.assertEquals(driver.getTitle(), "Controls Page Title");
-	}
-
-	@Override
-	protected void load() {
-		driver.get(pageUrl);
 	}
 
 	@Override

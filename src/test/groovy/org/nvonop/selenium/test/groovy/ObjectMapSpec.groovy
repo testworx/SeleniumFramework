@@ -1,0 +1,78 @@
+package org.nvonop.selenium.test.groovy
+
+import org.nvonop.selenium.framework.actionbot.ActionBot;
+import org.nvonop.selenium.framework.utilities.BaseTest;
+import org.nvonop.selenium.framework.ObjectMap;
+import org.nvonop.selenium.framework.utilities.TestHelper;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
+
+import spock.lang.*
+
+class ObjectMapSpec  extends Specification {
+
+	ObjectMap objectMap
+
+
+	def setupSpec() {
+		System.setProperty("BROWSER", "Firefox")
+		System.setProperty("VERSION", "")
+		System.setProperty("PLATFORM", "")
+		System.setProperty("LOCAL_DRIVER", "true")
+		System.setProperty("REMOTE_DRIVER", "false")
+		System.setProperty("SAUCE_DRIVER", "false")
+		System.setProperty("webdriver.ie.driver", "C:\\Automation\\lib\\IEDriverServer.exe");
+		System.setProperty("IGNORE_SECURITY_DOMAINS", "true")
+		System.setProperty("TEST_RESULTS_PATH", "./build/Screenshots");
+		System.setProperty("TIMEOUT", "10")
+		System.setProperty("APPLICATION_URL", "http://selenium-framework.site44.com/controls_page.html")
+	}
+
+	def setup() {
+		objectMap = new ObjectMap("ControlsPageObjectMap.properties")
+	}
+
+	def cleanup() {
+	}
+
+
+	def "The getLocatorAndOverride method returns a By object"() {
+
+		when: "I call getLocatorAndOverride"
+		then: "The type of object returned is By"
+		assert objectMap.getLocatorAndOverride("text_firstname", "abc").getClass().toString().contains("org.openqa.selenium.By")
+	}
+
+	def "The getLocatorFromMap method returns a By object"() {
+
+		when: "I call getLocatorFromMap"
+		then: "The type of object returned is By"
+		assert objectMap.getLocatorFromMap("text_firstname").getClass().toString().contains("org.openqa.selenium.By")
+	}
+
+	def "The getLocatorString method returns the correct Locator String"() {
+
+		when: "I call getLocatorString"
+		def locatorString = objectMap.getLocatorString("text_firstname")
+		then: "The correct Locator String is returned"
+		assert locatorString == "input#txt1"
+	}
+
+	def "The getLocatorType method returns the correct Locator Type String"() {
+
+		when: "I call getLocatorString"
+		def locatorType = objectMap.getLocatorType("text_firstname")
+		then: "The correct Locator String is returned"
+		assert locatorType == "css"
+	}
+
+	def "The getLocatorAndOverride method allows a locator String to be overridden"() {
+
+		given: "I choose to modify a locator within the object map"
+		when: "I supply updated locator details of abc"
+		By locator = objectMap.getLocatorAndOverride("text_firstname", "abc")
+		System.out.println("LOCATOR:  :"+ locator.toString())
+		then: "The locator string is updated to abc"
+		assert locator.toString().contains("abc")
+	}
+}
