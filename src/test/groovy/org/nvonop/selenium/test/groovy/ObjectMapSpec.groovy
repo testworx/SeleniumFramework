@@ -15,17 +15,17 @@ class ObjectMapSpec  extends Specification {
 
 
 	def setupSpec() {
-		System.setProperty("BROWSER", "Firefox")
-		System.setProperty("VERSION", "")
-		System.setProperty("PLATFORM", "")
-		System.setProperty("LOCAL_DRIVER", "true")
-		System.setProperty("REMOTE_DRIVER", "false")
-		System.setProperty("SAUCE_DRIVER", "false")
-		System.setProperty("webdriver.ie.driver", "C:\\Automation\\lib\\IEDriverServer.exe");
-		System.setProperty("IGNORE_SECURITY_DOMAINS", "true")
-		System.setProperty("TEST_RESULTS_PATH", "./build/Screenshots");
-		System.setProperty("TIMEOUT", "10")
-		System.setProperty("APPLICATION_URL", "http://selenium-framework.site44.com/controls_page.html")
+	//	System.setProperty("BROWSER", "Firefox")
+	//	System.setProperty("VERSION", "")
+	//	System.setProperty("PLATFORM", "")
+	///	System.setProperty("LOCAL_DRIVER", "true")
+	//	System.setProperty("REMOTE_DRIVER", "false")
+	//	System.setProperty("SAUCE_DRIVER", "false")
+	//	System.setProperty("webdriver.ie.driver", "C:\\Automation\\lib\\IEDriverServer.exe");
+	//	System.setProperty("IGNORE_SECURITY_DOMAINS", "true")
+	//	System.setProperty("TEST_RESULTS_PATH", "./build/Screenshots");
+	//	System.setProperty("TIMEOUT", "10")
+	//	System.setProperty("APPLICATION_URL", "http://selenium-framework.site44.com/controls_page.html")
 	}
 
 	def setup() {
