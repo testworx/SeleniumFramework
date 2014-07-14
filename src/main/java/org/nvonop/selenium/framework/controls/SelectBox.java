@@ -59,7 +59,7 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 		return selectBox.getAllSelectedOptions();
 	}
 
-	/*
+/*
 	 * (non-Javadoc)
 	 * 
 	 * @see framework.controls.interfaces.Readable#read()
@@ -68,16 +68,17 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 	public Object read() {
 		selectBox = new Select(getUnderlyingWebElement());
 		WebElement selectedOption = null;
+		String selectedOptionString = null;
 		try {
 			selectedOption = selectBox.getFirstSelectedOption();
+			selectedOptionString =  selectedOption.getText();
 		} catch (StaleElementReferenceException e) {
 			LOGGER.log(Level.INFO,
 					"StaleElementReferenceException in read() method", e);
 			read();
 		}
-		return selectedOption.getText();
+		return selectedOptionString;
 	}
-
 	/**
 	 * This method enables a select box option to be selected by it's value.
 	 * 
