@@ -101,9 +101,9 @@ task runChromeTests(type: Test) {
 test {
 	systemProperties = System.getProperties()
 	maxParallelForks = 2
-	systemProperties['LOCAL_DRIVER'] = true
+	systemProperties['LOCAL_DRIVER'] = false
 	systemProperties['REMOTE_DRIVER'] = false
-	systemProperties['SAUCE_DRIVER'] = false
+	systemProperties['SAUCE_DRIVER'] = true
 	systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['GRID_HOST'] = 'localhost'
 	systemProperties['GRID_PORT'] = '4444'
