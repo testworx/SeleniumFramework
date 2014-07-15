@@ -45,6 +45,10 @@ public abstract class BaseControl implements Detectable {
 		try {
 			findControl();
 			return baseWebElement.isDisplayed();
+		} catch (NoSuchElementException e) {
+			LOGGER.log(Level.INFO,
+					"NoSuchElementException in exists() method", e);
+			return false;
 		} catch (ElementNotVisibleException e) {
 			LOGGER.log(Level.INFO,
 					"ElementNotVisibleException in exists() method", e);
