@@ -25,29 +25,6 @@ dependencies {
 
 }
 
-
-//	sourceSets {
-//	    main {
-//	        java {
-//	            srcDir 'src/org/nvonop/selenium/framework'
-//	        }
-//	    }
-//	    test {
-//	        java {
-//	            srcDir 'src/org/nvonop/selenium/test/java'
-//	        }
-//	        resources {
-//	            srcDir 'src/org/nvonop/selenium/test/resources'
-//	        }
-//	    }
-//	}
-
-//tasks.withType(Test) {
-//	useTestNG()
-//	systemProperties = System.getProperties()
-//	maxParallelForks = 2
-//}
-
 task runFrameworkTests(type: Test) {
 	useTestNG() { includeGroups 'frameworkTests' }
 }
@@ -118,6 +95,16 @@ test {
 task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
 	from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+	classifier 'javadoc'
+	from javadoc.destinationDir
+}
+
+artifacts {
+	archives sourcesJar
+	archives javadocJar
 }
 
 jar { exclude('src/org/nvonop/selenium/test') }
