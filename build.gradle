@@ -36,7 +36,7 @@ task runIETests(type: Test) {
 	systemProperties['LOCAL_DRIVER'] = false
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = true
-	systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+	systemProperties['SAUCE_KEY'] = 'http://'System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['BROWSER'] = 'internet explorer'
 	systemProperties['VERSION'] = '9'
 	systemProperties['PLATFORM'] = 'Windows 2008'
@@ -51,7 +51,7 @@ task runFirefoxTests(type: Test) {
 	systemProperties['LOCAL_DRIVER'] = true
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = false
-	systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+	systemProperties['SAUCE_KEY'] = 'http://'System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['BROWSER'] = 'firefox'
 	systemProperties['VERSION'] = '20'
 	systemProperties['PLATFORM'] = 'Windows 2008'
@@ -66,7 +66,7 @@ task runChromeTests(type: Test) {
 	systemProperties['LOCAL_DRIVER'] = false
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = true
-	systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+	systemProperties['SAUCE_KEY'] = 'http://'System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['BROWSER'] = 'chrome'
 	systemProperties['PLATFORM'] = 'Windows 2008'
 	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"
@@ -81,7 +81,7 @@ test {
 	systemProperties['LOCAL_DRIVER'] = false
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = true
-	systemProperties['SAUCE_KEY'] = 'http://nvonop:a391bf40-5eb1-44f9-812a-c1ce5492a5c9@ondemand.saucelabs.com:80/wd/hub'
+	systemProperties['SAUCE_KEY'] = 'http://'System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['GRID_HOST'] = 'localhost'
 	systemProperties['GRID_PORT'] = '4444'
 	systemProperties['BROWSER'] = 'firefox'
@@ -117,8 +117,8 @@ uploadArchives {
 					url: 'https://api.bintray.com/maven/nvonop/maven/SeleniumFramework'
 					) {
 						authentication(
-								userName: 'nvonop',
-								password: '1f0da707e9e572d5ec330655d7bb981bcfe8958a'
+								userName: System.getenv('BINTRAY_USERNAME'),
+								password: System.getenv('BINTRAY_ACCESS_KEY')
 								)
 					}
 		}
