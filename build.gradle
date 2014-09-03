@@ -4,7 +4,7 @@ apply plugin: 'eclipse'
 apply plugin: 'groovy'
 
 group = 'org.nvonop.selenium.framework'
-version = '1.2.5'
+version = '1.2.6'
 
 repositories {
 	// Spock releases are available from Maven Central
@@ -77,15 +77,15 @@ task runChromeTests(type: Test) {
 
 test {
 	systemProperties = System.getProperties()
-	maxParallelForks = 2
-	systemProperties['LOCAL_DRIVER'] = false
+	maxParallelForks = 3
+	systemProperties['LOCAL_DRIVER'] = true
 	systemProperties['REMOTE_DRIVER'] = false
-	systemProperties['SAUCE_DRIVER'] = true
+	systemProperties['SAUCE_DRIVER'] = false
 	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['GRID_HOST'] = 'localhost'
 	systemProperties['GRID_PORT'] = '4444'
 	systemProperties['BROWSER'] = 'firefox'
-	systemProperties['VERSION'] = ''
+	systemProperties['VERSION'] = '30'
 	systemProperties['PLATFORM'] = ''
 	systemProperties['TIMEOUT'] = '10'
 	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'

@@ -3,8 +3,7 @@ package org.nvonop.selenium.test.java;
 import org.nvonop.selenium.framework.datagenerator.DateGenerator;
 import org.nvonop.selenium.framework.datagenerator.EmailGenerator;
 import org.nvonop.selenium.framework.datagenerator.TextGenerator;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.*;
 
 public class DataGeneratorTests {
 

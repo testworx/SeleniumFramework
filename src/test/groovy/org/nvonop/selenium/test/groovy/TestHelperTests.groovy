@@ -4,4 +4,5 @@ import spock.lang.*
 
 class TestHelperTests  extends Specification {
 
+	//TODO Write TestHelper tests
 }
