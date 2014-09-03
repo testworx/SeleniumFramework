@@ -10,8 +10,6 @@ import org.nvonop.selenium.test.java.ControlsPage
 import org.nvonop.selenium.test.java.SubmittedPage
 import org.openqa.selenium.Alert
 import org.openqa.selenium.WebDriver
-import org.testng.Assert
-import org.testng.annotations.Test
 
 import spock.lang.*
 
