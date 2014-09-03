@@ -24,67 +24,18 @@ dependencies {
 
 }
 
-task runFrameworkTests(type: Test) {
-	useTestNG() { includeGroups 'frameworkTests' }
-}
-
-task runIETests(type: Test) {
-	useTestNG()
-	systemProperties = System.getProperties()
-	maxParallelForks = 2
-	systemProperties['LOCAL_DRIVER'] = false
-	systemProperties['REMOTE_DRIVER'] = false
-	systemProperties['SAUCE_DRIVER'] = true
-	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
-	systemProperties['BROWSER'] = System.getenv('BROWSER')
-	systemProperties['VERSION'] = System.getenv('VERSION')
-	systemProperties['PLATFORM'] = 'Windows 2008'
-	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"
-	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
-	}
-
-task runFirefoxTests(type: Test) {
-	useTestNG()
-	systemProperties = System.getProperties()
-	maxParallelForks = 2
-	systemProperties['LOCAL_DRIVER'] = true
-	systemProperties['REMOTE_DRIVER'] = false
-	systemProperties['SAUCE_DRIVER'] = false
-	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
-	systemProperties['BROWSER'] = 'firefox'
-	systemProperties['VERSION'] = '20'
-	systemProperties['PLATFORM'] = 'Windows 2008'
-	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"
-	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
-	}
-
-task runChromeTests(type: Test) {
-	useTestNG()
-	systemProperties = System.getProperties()
-	maxParallelForks = 2
-	systemProperties['LOCAL_DRIVER'] = false
-	systemProperties['REMOTE_DRIVER'] = false
-	systemProperties['SAUCE_DRIVER'] = true
-	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
-	systemProperties['BROWSER'] = 'chrome'
-	systemProperties['PLATFORM'] = 'Windows 2008'
-	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"
-	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
-	}
-
-
-
 test {
 	systemProperties = System.getProperties()
 	maxParallelForks = 3
+	systemProperties['BUILD'] = version
 	systemProperties['LOCAL_DRIVER'] = false
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = true
 	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['GRID_HOST'] = 'localhost'
 	systemProperties['GRID_PORT'] = '4444'
-	systemProperties['BROWSER'] = 'firefox'
-	systemProperties['VERSION'] = '31'
+	systemProperties['BROWSER'] = System.getenv('BROWSER')
+	systemProperties['VERSION'] = System.getenv('VERSION')
 	systemProperties['PLATFORM'] = ''
 	systemProperties['TIMEOUT'] = '10'
 	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'

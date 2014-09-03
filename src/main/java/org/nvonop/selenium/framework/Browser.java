@@ -53,6 +53,9 @@ public class Browser {
 	private static final String MESSAGE_CANNOT_TAKE_SCREENSHOT_UNABLE_TO_IDENTIFY_DRIVER_TYPE = "Cannot take screenshot.  Unable to identify driver type.";
 
 	private File screenshot;
+	
+	private DesiredCapabilities capabilities = new DesiredCapabilities();
+	
 	private void writeScreenshotToFileSystem(String screenshotPath)
 			throws IOException {
 		FileUtils.copyFile(screenshot, new File(screenshotPath));
@@ -239,7 +242,6 @@ public class Browser {
 	 * 
 	 */
 	private void setRemoteWebdriver() {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
 
 		switch (getBrowserId(browser)) {
 		case 0:
@@ -359,6 +361,28 @@ public class Browser {
 		this.driver.get().manage().timeouts()
 				.implicitlyWait(10, TimeUnit.SECONDS);
 		this.driver.get().manage().window().maximize();
+	}
+	
+	/**
+	 * This method provides a way of specifying browser capabilities manually
+	 * 
+	 * @param key
+	 * @param value
+	 * 
+	 * @return boolean
+	 */
+	public boolean setBrowserCapability(String key, String value) {
+		if (Boolean.valueOf(System.getProperty("LOCAL_DRIVER"))) {
+			return false;
+		} else if (Boolean.valueOf(System.getProperty("REMOTE_DRIVER"))) {
+			capabilities.setCapability(key, value);
+			return true;
+		} else if (Boolean.valueOf(System.getProperty("SAUCE_DRIVER"))) {
+			capabilities.setCapability(key, value);
+			return true;
+		} else {
+			throw new WebDriverException("Type of driver not specified!!!");
+		}
 	}
 
 	/**
