@@ -9,11 +9,11 @@ env:
   - secure: pe9K5eGNi0qFXILRu3ZiXR/T6iMtNhQHOeOJgg7gcH+CpznAuuC4j15ZSQPFjlU3vSNtooUqoG4SA/fE0ePYqk3Uc8i2UWCz3HAa2CE7JMLVJc1sX7B3LfDh/oHmsXZ6bvUcvytCjw9Med7Z7a851w6/Y4NfjooB1lTHdbozSU8=
 
   matrix:
-  - BROWSER=internet explorer VERSION=8
-  - BROWSER=internet explorer VERSION=9
-  - BROWSER=internet explorer VERSION=10
-  - BROWSER=internet explorer VERSION=11
-  - BROWSER=firefox VERSION=31
-  - BROWSER=chrome VERSION=37
+  - BROWSER="internet explorer" VERSION=8
+  - BROWSER="internet explorer" VERSION=9
+  - BROWSER="internet explorer" VERSION=10
+  - BROWSER="internet explorer" VERSION=11
+  - BROWSER="firefox" VERSION=31
+  - BROWSER="chrome" VERSION=37
 
 after_script: gradle uploadArchives
