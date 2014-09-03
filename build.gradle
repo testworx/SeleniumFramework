@@ -27,7 +27,7 @@ dependencies {
 test {
 	systemProperties = System.getProperties()
 	maxParallelForks = 3
-	systemProperties['BUILD'] = version
+	systemProperties['BUILD'] = version.toString()
 	systemProperties['LOCAL_DRIVER'] = false
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = true

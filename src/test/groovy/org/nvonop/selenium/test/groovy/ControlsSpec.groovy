@@ -25,8 +25,8 @@ class ControlsSpec  extends Specification {
 
 	def setup() {
 		browser = new Browser()
-		browser.setBrowserCapability("build", system.getProperty("BUILD"))
-		browser.setBrowserCapability("tags", system.getProperty("ControlsSpec"))
+		browser.setBrowserCapability("build", System.getProperty("BUILD"))
+		browser.setBrowserCapability("tags", System.getProperty("ControlsSpec"))
 		browser.open()
 		controlsPage = (ControlsPage)browser.navigate(ControlsPage.class)
 	}
