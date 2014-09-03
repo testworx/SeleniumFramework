@@ -285,7 +285,6 @@ public class Browser {
 	 * 
 	 */
 	private void setSauceWebdriver() {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
 
 		switch (getBrowserId(browser)) {
 		case 0:
