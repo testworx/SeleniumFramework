@@ -17,7 +17,7 @@ import org.nvonop.selenium.framework.controls.TextBox;
 import org.nvonop.selenium.framework.controls.interfaces.Form;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.LoadableComponent;
-import org.testng.Assert;
+import org.junit.*;
 
 public class ControlsPage extends Page implements
 		Form {

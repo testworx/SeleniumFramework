@@ -2,7 +2,7 @@ package org.nvonop.selenium.test.java;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.LoadableComponent;
-import org.testng.Assert;
+import org.junit.*;
 
 public class SubmittedPage extends LoadableComponent<SubmittedPage> {
 
