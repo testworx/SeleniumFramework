@@ -17,7 +17,6 @@ dependencies {
 	compile "org.codehaus.groovy:groovy-all:2.1.5"
 	testCompile "org.spockframework:spock-core:1.0-groovy-2.0-SNAPSHOT"
 	compile "org.seleniumhq.selenium:selenium-java:2.+"
-	compile "org.testng:testng:6.3.1"
 	compile group: 'com.google.inject', name: 'guice', version: '3.0'
 	compile("org.uncommons:reportng:1.1.2") {
 		exclude group: "org.testng", module: "testng"
@@ -37,8 +36,8 @@ task runIETests(type: Test) {
 	systemProperties['REMOTE_DRIVER'] = false
 	systemProperties['SAUCE_DRIVER'] = true
 	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
-	systemProperties['BROWSER'] = 'internet explorer'
-	systemProperties['VERSION'] = '9'
+	systemProperties['BROWSER'] = System.getenv('BROWSER')
+	systemProperties['VERSION'] = System.getenv('VERSION')
 	systemProperties['PLATFORM'] = 'Windows 2008'
 	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"
 	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
