@@ -19,7 +19,7 @@ class ActionBotSpec  extends Specification {
 	def setup() {
 		browser = new Browser()
 		browser.setBrowserCapability("build", System.getProperty("BUILD"))
-		browser.setBrowserCapability("tags", System.getProperty("ActionBot"))
+		browser.setBrowserCapability("tags", "ActionBotSpec")
 		browser.open()
 		browser.navigate(System.getProperty("APPLICATION_URL"))
 		actionBot = new ActionBot(browser.getWebdriver())
