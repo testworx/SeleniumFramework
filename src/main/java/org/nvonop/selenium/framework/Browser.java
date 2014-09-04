@@ -54,7 +54,8 @@ public class Browser {
 
 	private File screenshot;
 	
-	private DesiredCapabilities capabilities = new DesiredCapabilities();
+	private DesiredCapabilities extraCapabilities = new DesiredCapabilities();
+	private DesiredCapabilities capabilities;
 	
 	private void writeScreenshotToFileSystem(String screenshotPath)
 			throws IOException {
@@ -246,17 +247,14 @@ public class Browser {
 		switch (getBrowserId(browser)) {
 		case 0:
 			capabilities = DesiredCapabilities.internetExplorer();
-			capabilities.setCapability("version", version);
 			capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
 			Boolean.valueOf(System.getProperty("IGNORE_SECURITY_DOMAINS", "false")));
 			break;
 		case 1:
 			capabilities = DesiredCapabilities.firefox();
-			capabilities.setCapability("version", version);
 			break;
 		case 2:
 			capabilities = DesiredCapabilities.safari();
-			capabilities.setCapability("version", version);
 			break;
 		case 3:
 			capabilities = DesiredCapabilities.chrome();
@@ -266,6 +264,8 @@ public class Browser {
 		}
 		capabilities.setCapability("javascriptEnabled", true);
 		capabilities.setCapability("platform", platform);
+		capabilities.setCapability("version", version);
+		capabilities.merge(extraCapabilities);
 
 		try {
 			this.driver.set(new RemoteWebDriver(new URL("http://"
@@ -304,9 +304,10 @@ public class Browser {
 		default:
 			throw new WebDriverException("Browser not found: "+browser);
 		}
+		capabilities.merge(extraCapabilities);
 		capabilities.setCapability("javascriptEnabled", true);
-		capabilities.setCapability("version", version);
 		capabilities.setCapability("platform", platform);
+		capabilities.setCapability("version", version);
 
 		try {
 			this.driver.set(new RemoteWebDriver(new URL(System
@@ -374,10 +375,10 @@ public class Browser {
 		if (Boolean.valueOf(System.getProperty("LOCAL_DRIVER"))) {
 			return false;
 		} else if (Boolean.valueOf(System.getProperty("REMOTE_DRIVER"))) {
-			capabilities.setCapability(key, value);
+			extraCapabilities.setCapability(key, value);
 			return true;
 		} else if (Boolean.valueOf(System.getProperty("SAUCE_DRIVER"))) {
-			capabilities.setCapability(key, value);
+			extraCapabilities.setCapability(key, value);
 			return true;
 		} else {
 			throw new WebDriverException("Type of driver not specified!!!");
