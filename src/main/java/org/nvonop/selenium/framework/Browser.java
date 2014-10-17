@@ -187,14 +187,37 @@ public class Browser {
 //			driver.get().navigate().to(System.getProperty("APPLICATION_URL"));
 			return page;
 			
-		} catch (InstantiationException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException
-				| NoSuchMethodException | SecurityException e) {
+		} catch (InstantiationException e) {
 			LOGGER.log(Level.SEVERE,
 					"ERROR loading pageObject", e);
 			return null;
 		}
-		
+		catch (IllegalAccessException e) {
+			LOGGER.log(Level.SEVERE,
+					"ERROR loading pageObject", e);
+			return null;
+		}
+		catch (IllegalArgumentException e) {
+			LOGGER.log(Level.SEVERE,
+					"ERROR loading pageObject", e);
+			return null;
+		}
+		catch (InvocationTargetException
+				e) {
+			LOGGER.log(Level.SEVERE,
+					"ERROR loading pageObject", e);
+			return null;
+		}
+		catch (NoSuchMethodException e) {
+			LOGGER.log(Level.SEVERE,
+					"ERROR loading pageObject", e);
+			return null;
+		}
+		catch (SecurityException e) {
+			LOGGER.log(Level.SEVERE,
+					"ERROR loading pageObject", e);
+			return null;
+		}
 	}
 	
 	/**
