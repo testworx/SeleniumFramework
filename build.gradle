@@ -36,7 +36,7 @@ test {
 	systemProperties['GRID_PORT'] = '4444'
 	systemProperties['BROWSER'] = System.getenv('BROWSER')
 	systemProperties['VERSION'] = System.getenv('VERSION')
-	systemProperties['PLATFORM'] = ''
+	systemProperties['PLATFORM'] = 'WINDOWS'
 	systemProperties['TIMEOUT'] = '10'
 	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
 	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"
@@ -60,6 +60,7 @@ task testLocal(type: Test){
 	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
 	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"
 }
+
 
 task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
