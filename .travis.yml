@@ -1,7 +1,6 @@
 language: java
 jdk:
 - openjdk6
-- openjdk7
 env:
   global:
   - secure: O4VrA8kvfODwfdJ4blIbW1wR4LZfFDJTpshN/ubmsnhyQKaj8cadi+6qNR+TqDjsrVWWErZtgvro4XRCqS2XgFkVDah0lcw7ZgzgkIEdIM0MegBw1aH8dZ8LDG8WbdBWlLT/EeDAyfIQ8ahlhDmFSqeuOHLsNZWg+Z5sV5/8GiY=
