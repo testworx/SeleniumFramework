@@ -17,3 +17,6 @@ env:
   #- BROWSER="chrome" VERSION=37
 
 after_script: gradle uploadArchives
+
+addons:
+  sauce_connect: true
