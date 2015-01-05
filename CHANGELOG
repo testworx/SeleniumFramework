@@ -1,0 +1,5 @@
+v1.2.8
+======
+Changes made to SelectBox.java:
+  Fixed and renamed getAllOptions method to getOptions.
+  Added a new method called getSelectedOptions.
