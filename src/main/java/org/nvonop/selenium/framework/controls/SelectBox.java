@@ -50,13 +50,23 @@ public class SelectBox extends BaseControl implements Clickable, Readable {
 	}
 
 	/**
+	 * This method gets all selected options in a select list
+	 * 
+	 * @return List of all selected options
+	 */
+	public List<WebElement> getSelectedOptions() {
+		selectBox = new Select(getUnderlyingWebElement());
+		return selectBox.getAllSelectedOptions();
+	}
+	
+	/**
 	 * This method gets all available options in a select list
 	 * 
 	 * @return List of all options
 	 */
-	public List<WebElement> getAllOptions() {
+	public List<WebElement> getOptions() {
 		selectBox = new Select(getUnderlyingWebElement());
-		return selectBox.getAllSelectedOptions();
+		return selectBox.getOptions();
 	}
 
 /*
