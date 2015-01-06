@@ -14,59 +14,50 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Seleniumframework</h1>
-        <p></p>
+     <header>
+			<h1>Selenium Framework</h1>
+			<p></p>
 
-        <p class="view"><a href="https://github.com/nvonop/SeleniumFramework">View the Project on GitHub <small>nvonop/SeleniumFramework</small></a></p>
+			<p class="view">
+				<a href="https://github.com/nvonop/SeleniumFramework">View the
+					Project on GitHub <small>nvonop/SeleniumFramework</small>
+				</a>
+			</p>
+			<ul class="github">
+				<li><a
+					href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
+						<strong>ZIP File</strong>
+				</a></li>
+				<li><a
+					href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
+						<strong>TAR Ball</strong>
+				</a></li>
+				<li><a href="https://github.com/nvonop/SeleniumFramework">View
+						On <strong>GitHub</strong>
+				</a></li>
+			</ul>
 
-
-        <ul>
-          <li><a href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/nvonop/SeleniumFramework">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
+			<h2>Contents</h2>
+			<ol class="contents">
+				<li><a href="./index.html">Index</a></li>
+				<li><a href="./framework-overview.html">Framework Overview</a></li>
+				<li><a href="./configuration.html">Framwork Configuration</a></li>
+				<li><a href="./examples.html">Examples</a></li>
+				<li><a href="./browser.html">Browser</a></li>
+				<li><a href="./actionbot.html">The Action Bot</a></li>
+				<li><a href="./controls.html">UI Controls</a></li>
+				<li><a href="./datagenerator.html">The Data Generator</a></li>
+				<li><a href="./objectmap.html">The Object Map</a></li>
+				<li><a href="./utilities.html">Framework Utilities</a></li>
+				<li><a href="./doc/index.html">Javadocs</a></li>
+			</ol>
+		</header>
       <section>
         <h1>Selenium Framework</h1>
+        <h1>Welcome to Selenium Framework</h1>
 
-<h2>Introduction</h2>
-
-<p>This framework is intended to provide a simple way of writing tests in Selenium by wrapping common Selenium features in an easier to use package.</p>
-<p>The goal is to abstract away the lower level Selenium API so that the less technical users who may want to write tests can do so.</p>
-<p>The selenium <i>WebDriver</i> object is wrapped in what the framework has called a <i>Browser</i> with commands such as <i>open</i>, <i>close</i> and <i>takeScreenshot</i>.
-
-
-<h2>Overview</h2>
-<h3>actionbot Package</h3>
-<p>This package provides access to an "actionbot" claas.  Using this actionbot gives access to a command based "bot" that enables a user to quickly write tests without having to define every UI element within a page object.</p>
-<p>The bot provides access to <i>click</i>, <i>type</i> and <i>read</i> methods.</p>
-
-<h3>Controls Package</h3>
-
-<p>This package models key UI controls and provides access to methods that interact with these controls.  The idea is to offer a sub set of the WebElement API in encapsulated methods to make UI interaction easier.</p>
-
-<p>A number of classes have been created to model common elements.  The intention is for all common types of UI control to be modelled along with more complex custom controls such as calendars etc.  Some of these classes make use of various interface classes.</p>
-
-<p>The interface classes have been created (with more to follow) to allow controls to be modelled based on how we would want to interact with them.  E.g. we might want to click on a particular control.  Therefore we would make use of the <strong>Clickable</strong> interface.  Likewise we might want to read the text of a control.  Therefore we would use the <strong>Readable</strong> interface.</p>
-
-<p>In this way it is hoped that we can quickly create UI controls with standard ways if interaction by plugging in the interfaces we want to use.</p>
-
-<h3>Utilities Package</h3>
-
-<p>The intention here is to provide useful functionality that can be used at the "test" level.</p>
-
-<p><strong>TestHelper</strong> class that facilitates switching browser windows and will shortly facilitate switching frames and DB connectivity.</p>
-
-<p><strong>BaseTest</strong> class enables instantiation of both local and remote driver instances.  It will shortly include screenshot functionality to take local and remote screenshots and to write them to a directory.</p>
-
-<p><strong>ObjectMap</strong> class allows WebElement locators to be retrieved from a properties file.  This enables locator information to be stored externally to the tests.  This is based on a recipe from The Selenium Cookbook.</p>
-
-<h3>Tests Package</h3>
-
-<p>The code in this package is not intended for production use as it contains test to verify framework functionality.  As new functionality is added to the framework, the tests will be expanded.  The tests can also serve as an example of how each Control can be used as well as the methods they offer.</p>
-
-<p>HTML pages containing controls are included in the "resources" folder within the package.  </p>
+<h2>Examples</h2>
+<p>This is a work in progress...</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/nvonop">nvonop</a></p>
