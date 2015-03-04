@@ -34,43 +34,42 @@ import org.openqa.selenium.WebDriver;
  * with a typical HTML element. It is used in cases where you might have a UI
  * element that you only want to read or click but shouldn't strictly be
  * identified as a Button.
- * 
+ *
  * @author nvonop
- * 
  */
 public class GenericHtmlElement extends BaseControl implements Clickable,
-		Readable {
+        Readable {
 
-	/**
-	 * Constructor that takes a WebDriver object and By object. These are then
-	 * set in the base class.
-	 * 
-	 * @param driver
-	 * @param locator
-	 */
-	public GenericHtmlElement(WebDriver driver, By locator) {
-		this.driver = driver;
-		setLocator(locator);
-	}
+    /**
+     * Constructor that takes a WebDriver object and By object. These are then
+     * set in the base class.
+     *
+     * @param driver
+     * @param locator
+     */
+    public GenericHtmlElement(WebDriver driver, By locator) {
+        this.driver = driver;
+        setLocator(locator);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see framework.controls.interfaces.Readable#read()
-	 */
-	@Override
-	public String read() {
-		return getUnderlyingWebElement().getText();
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see framework.controls.interfaces.Readable#read()
+     */
+    @Override
+    public String read() {
+        return getUnderlyingWebElement().getText();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see framework.controls.interfaces.Clickable#click()
-	 */
-	@Override
-	public void click() {
-		getUnderlyingWebElement().click();
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see framework.controls.interfaces.Clickable#click()
+     */
+    @Override
+    public void click() {
+        getUnderlyingWebElement().click();
+    }
 
 }

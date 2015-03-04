@@ -30,46 +30,46 @@ package org.nvonop.selenium.framework.datagenerator;
  */
 public class EmailGenerator {
 
-	private EmailGenerator() {
+    private EmailGenerator() {
 
-	}
+    }
 
-	/**
-	 * This method returns the email address "test@test.com".
-	 * 
-	 * @return a valid email address
-	 */
-	public static String getValidEmailAddress() {
-		return "test@test.com";
-	}
+    /**
+     * This method returns the email address "test@test.com".
+     *
+     * @return a valid email address
+     */
+    public static String getValidEmailAddress() {
+        return "test@test.com";
+    }
 
-	/**
-	 * This method returns the invalid email address "test.com" that is missing
-	 * its local part.
-	 * 
-	 * @return an invalid email address
-	 */
-	public static String getEmailAddressMissingLocalPart() {
-		return "@test.com";
-	}
+    /**
+     * This method returns the invalid email address "test.com" that is missing
+     * its local part.
+     *
+     * @return an invalid email address
+     */
+    public static String getEmailAddressMissingLocalPart() {
+        return "@test.com";
+    }
 
-	/**
-	 * This method returns the invalid email address "test@" that is missing its
-	 * domain.
-	 * 
-	 * @return an invalid email address
-	 */
-	public static String getEmailAddressMissingDomain() {
-		return "test@";
-	}
+    /**
+     * This method returns the invalid email address "test@" that is missing its
+     * domain.
+     *
+     * @return an invalid email address
+     */
+    public static String getEmailAddressMissingDomain() {
+        return "test@";
+    }
 
-	/**
-	 * This method returns the invalid email address "testtest.com" that is
-	 * missing the ampersand.
-	 * 
-	 * @return an invalid email address
-	 */
-	public static String getEmailAddressMissingAmpersand() {
-		return "testtest.com";
-	}
+    /**
+     * This method returns the invalid email address "testtest.com" that is
+     * missing the ampersand.
+     *
+     * @return an invalid email address
+     */
+    public static String getEmailAddressMissingAmpersand() {
+        return "testtest.com";
+    }
 }

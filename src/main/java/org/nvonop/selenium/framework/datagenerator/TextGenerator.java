@@ -33,47 +33,46 @@ import java.util.Random;
  */
 public class TextGenerator {
 
-	private static String ALLOWABLE_CHARS = "abcdefghijklmnopqrstuvwxyz";
+    private static String ALLOWABLE_CHARS = "abcdefghijklmnopqrstuvwxyz";
 
-	private TextGenerator() {
+    private TextGenerator() {
 
-	}
+    }
 
-	/**
-	 * This method is used to obtain a string of random characters. It is useful
-	 * when unique String is required for populating a form.
-	 * 
-	 * @return a random String
-	 */
-	public static String getRandomString() {
+    /**
+     * This method is used to obtain a string of random characters. It is useful
+     * when unique String is required for populating a form.
+     *
+     * @return a random String
+     */
+    public static String getRandomString() {
 
-		// String hard coded to length 10 for now
-		int length = 10;
-		return buildRandomString(length);
-	}
+        // String hard coded to length 10 for now
+        int length = 10;
+        return buildRandomString(length);
+    }
 
-	/**
-	 * This method is used to obtain a string of random characters. It is useful
-	 * when unique String is required for populating a form. The length of the
-	 * string is determined by stringLength
-	 * 
-	 * @param length
-	 *            the length of the String that will be returned
-	 * @return a random String
-	 */
-	public static String getRandomString(int length) {
+    /**
+     * This method is used to obtain a string of random characters. It is useful
+     * when unique String is required for populating a form. The length of the
+     * string is determined by stringLength
+     *
+     * @param length the length of the String that will be returned
+     * @return a random String
+     */
+    public static String getRandomString(int length) {
 
-		return buildRandomString(length);
-	}
-	
-	private static String buildRandomString(int length) {
+        return buildRandomString(length);
+    }
 
-		Random rand = new Random();
-		StringBuilder randomString = new StringBuilder();
-		for (int i = 0; i < length; i++) {
-			randomString.append(ALLOWABLE_CHARS.charAt(rand
-					.nextInt(ALLOWABLE_CHARS.length())));
-		}
-		return randomString.toString();
-	}
+    private static String buildRandomString(int length) {
+
+        Random rand = new Random();
+        StringBuilder randomString = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            randomString.append(ALLOWABLE_CHARS.charAt(rand
+                    .nextInt(ALLOWABLE_CHARS.length())));
+        }
+        return randomString.toString();
+    }
 }

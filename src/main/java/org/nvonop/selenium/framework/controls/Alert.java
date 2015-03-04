@@ -30,23 +30,22 @@ import org.openqa.selenium.WebDriver;
 /**
  * This class provides access to functionality for Alert popups. IT IS STILL A
  * WORK IN PROGRESS.
- * 
+ *
  * @author nvonop
- * 
  */
 public class Alert extends BaseControl {
 
-	/**
-	 * Constructor that takes a WebDriver object and By object. These are then
-	 * set in the base class.
-	 * 
-	 * @param driver
-	 * @param locator
-	 */
-	public Alert(WebDriver driver, By locator) {
-		this.driver = driver;
-		setLocator(locator);
-	}
+    /**
+     * Constructor that takes a WebDriver object and By object. These are then
+     * set in the base class.
+     *
+     * @param driver
+     * @param locator
+     */
+    public Alert(WebDriver driver, By locator) {
+        this.driver = driver;
+        setLocator(locator);
+    }
 
-	// TODO Add methods wrap the Selenium Alert methods.
+    // TODO Add methods wrap the Selenium Alert methods.
 }
