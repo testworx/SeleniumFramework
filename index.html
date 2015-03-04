@@ -1,92 +1,111 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<title>Seleniumframework by nvonop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Seleniumframework by nvonop</title>
 
-<link rel="stylesheet" href="stylesheets/styles.css">
-<link rel="stylesheet" href="stylesheets/pygment_trac.css">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no">
-<!--[if lt IE 9]>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 <body>
-	<div class="wrapper">
-		<header>
-			<h1>Selenium Framework</h1>
-			<p></p>
+<div class="wrapper">
+    <header>
+        <h1>Selenium Framework</h1>
 
-			<p class="view">
-				<a href="https://github.com/nvonop/SeleniumFramework">View the
-					Project on GitHub <small>nvonop/SeleniumFramework</small>
-				</a>
-			</p>
-			<ul class="github">
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
-						<strong>ZIP File</strong>
-				</a></li>
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
-						<strong>TAR Ball</strong>
-				</a></li>
-				<li><a href="https://github.com/nvonop/SeleniumFramework">View
-						On <strong>GitHub</strong>
-				</a></li>
-			</ul>
+        <p></p>
 
-			<h2>Contents</h2>
-			<ol class="contents">
-				<li><a href="./index.html">Index</a></li>
-				<li><a href="./framework-overview.html">Framework Overview</a></li>
-				<li><a href="./configuration.html">Framwork Configuration</a></li>
-				<li><a href="./examples.html">Examples</a></li>
-				<li><a href="./browser.html">Browser</a></li>
-				<li><a href="./actionbot.html">The Action Bot</a></li>
-				<li><a href="./controls.html">UI Controls</a></li>
-				<li><a href="./datagenerator.html">The Data Generator</a></li>
-				<li><a href="./objectmap.html">The Object Map</a></li>
-				<li><a href="./utilities.html">Framework Utilities</a></li>
-				<li><a href="./doc/index.html">Javadocs</a></li>
-			</ol>
-		</header>
-		<section>
-			<h1>Welcome to Selenium Framework</h1>
+        <p class="view">
+            <a href="https://github.com/nvonop/SeleniumFramework">View the
+                Project on GitHub
+                <small>nvonop/SeleniumFramework</small>
+            </a>
+        </p>
+        <ul class="github">
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
+                <strong>ZIP File</strong>
+            </a></li>
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
+                <strong>TAR Ball</strong>
+            </a></li>
+            <li><a href="https://github.com/nvonop/SeleniumFramework">View
+                On <strong>GitHub</strong>
+            </a></li>
+        </ul>
 
-			<h2>Introduction</h2>
+        <h2>Contents</h2>
+        <ol class="contents">
+            <li><a href="./index.html">Index</a></li>
+            <li><a href="./framework-overview.html">Framework Overview</a></li>
+            <li><a href="./configuration.html">Framwork Configuration</a></li>
+            <li><a href="./examples.html">Examples</a></li>
+            <li><a href="./browser.html">Browser</a></li>
+            <li><a href="./actionbot.html">The Action Bot</a></li>
+            <li><a href="./controls.html">UI Controls</a></li>
+            <li><a href="./datagenerator.html">The Data Generator</a></li>
+            <li><a href="./objectmap.html">The Object Map</a></li>
+            <li><a href="./utilities.html">Framework Utilities</a></li>
+            <li><a href="./doc/index.html">Javadocs</a></li>
+        </ol>
+    </header>
+    <section>
+        <h1>Welcome to Selenium Framework</h1>
 
-			<p>This framework is intended to provide a simple way of writing
-				tests in Selenium by wrapping common Selenium features in an easier
-				to use package.</p>
-			<p>The goal is to abstract away the lower level Selenium API so
-				that the less technical users who may want to write tests can do so.</p>
-				<p>The documentation here is constantly evolving.  If you have questions that these pages don't answer then please ask.  
-				If you wish to help out volunteers are always welcome.</p>
-				
-			<h2>Why Use The Framework?</h2>
-			<p>It is lightweight and hopefully makes writing tests easier, leaving you to focus on the automation.  The frameowrk provides full access to the underlying Selenium API 
-			for all objects it wraps so if the framework hasn't implemented something you can still work with Selenium directly.</p>
-			<p>It helps with alot of synchronisation issues you might find when trying to automate a web application.</p>
-			<p>It is easy to run your tests against a different web browser with a single line change.  In fact it is easy to point your tests at a completely different URL (test environment), 
-			control the speed of the tests, or to choose to run them remotely, on your local machine, or on Sauce Labs, with single parameter changes.  This is done through the use of system properties which are set when the tests are run.  
-			I would recommend running the tests through a build tool such as Jenkins and/or Gradle and passing the parameters into the test, rather than having them hard coded.</p>
-			<p>The framework also enables you to take screenshots when your tests are running and store these for later analysis.</p>
-			<p>The longer term plan is to provide database connectivity and the ability to read PDF files, providing a holistic, end to end framework for your automation needs.</p>
-		</section>
-		<footer>
-			<p>
-				This project is maintained by <a href="https://github.com/nvonop">nvonop</a>
-			</p>
-			<p>
-				<small>Hosted on GitHub Pages &mdash; Theme by <a
-					href="https://github.com/orderedlist">orderedlist</a></small>
-			</p>
-		</footer>
-	</div>
-	<script src="javascripts/scale.fix.js"></script>
+        <h2>Introduction</h2>
+
+        <p>This framework is intended to provide a simple way of writing
+            tests in Selenium by wrapping common Selenium features in an easier
+            to use package.</p>
+
+        <p>The goal is to abstract away the lower level Selenium API so
+            that the less technical users who may want to write tests can do so.</p>
+
+        <p>The documentation here is constantly evolving. If you have questions that these pages don't answer then
+            please ask.
+            If you wish to help out volunteers are always welcome.</p>
+
+        <h2>Why Use The Framework?</h2>
+
+        <p>It is lightweight and hopefully makes writing tests easier, leaving you to focus on the automation. The
+            frameowrk provides full access to the underlying Selenium API
+            for all objects it wraps so if the framework hasn't implemented something you can still work with Selenium
+            directly.</p>
+
+        <p>It helps with alot of synchronisation issues you might find when trying to automate a web application.</p>
+
+        <p>It is easy to run your tests against a different web browser with a single line change. In fact it is easy to
+            point your tests at a completely different URL (test environment),
+            control the speed of the tests, or to choose to run them remotely, on your local machine, or on Sauce Labs,
+            with single parameter changes. This is done through the use of system properties which are set when the
+            tests are run.
+            I would recommend running the tests through a build tool such as Jenkins and/or Gradle and passing the
+            parameters into the test, rather than having them hard coded.</p>
+
+        <p>The framework also enables you to take screenshots when your tests are running and store these for later
+            analysis.</p>
+
+        <p>The longer term plan is to provide database connectivity and the ability to read PDF files, providing a
+            holistic, end to end framework for your automation needs.</p>
+    </section>
+    <footer>
+        <p>
+            This project is maintained by <a href="https://github.com/nvonop">nvonop</a>
+        </p>
+
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a
+                    href="https://github.com/orderedlist">orderedlist</a></small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
 
 </body>
 </html>

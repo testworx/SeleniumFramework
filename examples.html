@@ -1,124 +1,139 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="chrome=1">
-<title>Seleniumframework by nvonop</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Seleniumframework by nvonop</title>
 
-<link rel="stylesheet" href="stylesheets/styles.css">
-<link rel="stylesheet" href="stylesheets/pygment_trac.css">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, user-scalable=no">
-<!--[if lt IE 9]>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
 <body>
-	<div class="wrapper">
-		<header>
-			<h1>Selenium Framework</h1>
-			<p></p>
+<div class="wrapper">
+    <header>
+        <h1>Selenium Framework</h1>
 
-			<p class="view">
-				<a href="https://github.com/nvonop/SeleniumFramework">View the
-					Project on GitHub <small>nvonop/SeleniumFramework</small>
-				</a>
-			</p>
-			<ul class="github">
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
-						<strong>ZIP File</strong>
-				</a></li>
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
-						<strong>TAR Ball</strong>
-				</a></li>
-				<li><a href="https://github.com/nvonop/SeleniumFramework">View
-						On <strong>GitHub</strong>
-				</a></li>
-			</ul>
+        <p></p>
 
-			<h2>Contents</h2>
-			<ol class="contents">
-				<li><a href="./index.html">Index</a></li>
-				<li><a href="./framework-overview.html">Framework Overview</a></li>
-				<li><a href="./configuration.html">Framwork Configuration</a></li>
-				<li><a href="./examples.html">Examples</a></li>
-				<li><a href="./browser.html">Browser</a></li>
-				<li><a href="./actionbot.html">The Action Bot</a></li>
-				<li><a href="./controls.html">UI Controls</a></li>
-				<li><a href="./datagenerator.html">The Data Generator</a></li>
-				<li><a href="./objectmap.html">The Object Map</a></li>
-				<li><a href="./utilities.html">Framework Utilities</a></li>
-				<li><a href="./doc/index.html">Javadocs</a></li>
-			</ol>
-		</header>
-		<section>
-			<p>This is a work in progress...</p>
-			<h1>Framework Examples</h1>
-			<p>These examples have been taken from the framework tests to
-				show how easy it is to initialise the framework and start automating
-				tests</p>
-			<h3>Set System Properties</h3>
-			<p>
-				This example shows how to set the system properties in Groovy using
-				Spock.<br>
-				<code>
-					def setupSpec() {<br> System.setProperty("BROWSER", "Internet
-					Explorer")<br> System.setProperty("VERSION", "8")<br>
-					System.setProperty("PLATFORM", "WINDOWS")<br>
-					System.setProperty("LOCAL_DRIVER", "true")<br>
-					System.setProperty("REMOTE_DRIVER", "false")<br>
-					System.setProperty("SAUCE_DRIVER", "false")<br>
-					System.setProperty("webdriver.ie.driver",
-					"C:\\Automation\\lib\\IEDriverServer.exe")<br>
-					System.setProperty("IGNORE_SECURITY_DOMAINS", "true")<br> }
-				</code>
-			</p>
-			<h3>Initialise a browser and open a page</h3>
-			<p>
-				This example shows how to initialise a web browser in Groovy using
-				Spock. The browser is initialised using the system properties above.<br>
-				<code>
-					Browser browser;<br> def setup() {<br> browser = new
-					Browser();<br> browser.open();<br> controlsPage =
-					(ControlsPage)browser.navigate(ControlsPage.class);<br> }<br>
-				</code>
-				The browser navigates to the URL contained within the ControlsPage
-				class and returns a page object corresponding to that page.
-			</p>
-			<h3>Close a browser</h3>
-			<p>
-				This example shows how to close a web browser in Groovy using Spock.<br>
-				<code>
-					def cleanup() {<br> browser.close()<br> }<br>
-				</code>
-			</p>
-			<h3>Take a screenshot</h3>
-			<p>
-				This example shows how to take a screenshot<br>
-				<code>
-					browser.getScreenshot()<br>
-				</code>
-				Simply include this line at any point where you want to take a
-				screenshot of the current browser window.
-			</p>
-			<h3>Click a button</h3>
-<p>This example shows how to click a button that has been modelled within a page object<br>
-<code>Button button = new Button(driver, By.cssSelector("#buttonId"));<br>
-    button.click()<br></code></p>
-		</section>
-		<footer>
-			<p>
-				This project is maintained by <a href="https://github.com/nvonop">nvonop</a>
-			</p>
-			<p>
-				<small>Hosted on GitHub Pages &mdash; Theme by <a
-					href="https://github.com/orderedlist">orderedlist</a></small>
-			</p>
-		</footer>
-	</div>
-	<script src="javascripts/scale.fix.js"></script>
+        <p class="view">
+            <a href="https://github.com/nvonop/SeleniumFramework">View the
+                Project on GitHub
+                <small>nvonop/SeleniumFramework</small>
+            </a>
+        </p>
+        <ul class="github">
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
+                <strong>ZIP File</strong>
+            </a></li>
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
+                <strong>TAR Ball</strong>
+            </a></li>
+            <li><a href="https://github.com/nvonop/SeleniumFramework">View
+                On <strong>GitHub</strong>
+            </a></li>
+        </ul>
+
+        <h2>Contents</h2>
+        <ol class="contents">
+            <li><a href="./index.html">Index</a></li>
+            <li><a href="./framework-overview.html">Framework Overview</a></li>
+            <li><a href="./configuration.html">Framwork Configuration</a></li>
+            <li><a href="./examples.html">Examples</a></li>
+            <li><a href="./browser.html">Browser</a></li>
+            <li><a href="./actionbot.html">The Action Bot</a></li>
+            <li><a href="./controls.html">UI Controls</a></li>
+            <li><a href="./datagenerator.html">The Data Generator</a></li>
+            <li><a href="./objectmap.html">The Object Map</a></li>
+            <li><a href="./utilities.html">Framework Utilities</a></li>
+            <li><a href="./doc/index.html">Javadocs</a></li>
+        </ol>
+    </header>
+    <section>
+        <p>This is a work in progress...</p>
+
+        <h1>Framework Examples</h1>
+
+        <p>These examples have been taken from the framework tests to
+            show how easy it is to initialise the framework and start automating
+            tests</p>
+
+        <h3>Set System Properties</h3>
+
+        <p>
+            This example shows how to set the system properties in Groovy using
+            Spock.<br>
+            <code>
+                def setupSpec() {<br> System.setProperty("BROWSER", "Internet
+                Explorer")<br> System.setProperty("VERSION", "8")<br>
+                System.setProperty("PLATFORM", "WINDOWS")<br>
+                System.setProperty("LOCAL_DRIVER", "true")<br>
+                System.setProperty("REMOTE_DRIVER", "false")<br>
+                System.setProperty("SAUCE_DRIVER", "false")<br>
+                System.setProperty("webdriver.ie.driver",
+                "C:\\Automation\\lib\\IEDriverServer.exe")<br>
+                System.setProperty("IGNORE_SECURITY_DOMAINS", "true")<br> }
+            </code>
+        </p>
+
+        <h3>Initialise a browser and open a page</h3>
+
+        <p>
+            This example shows how to initialise a web browser in Groovy using
+            Spock. The browser is initialised using the system properties above.<br>
+            <code>
+                Browser browser;<br> def setup() {<br> browser = new
+                Browser();<br> browser.open();<br> controlsPage =
+                (ControlsPage)browser.navigate(ControlsPage.class);<br> }<br>
+            </code>
+            The browser navigates to the URL contained within the ControlsPage
+            class and returns a page object corresponding to that page.
+        </p>
+
+        <h3>Close a browser</h3>
+
+        <p>
+            This example shows how to close a web browser in Groovy using Spock.<br>
+            <code>
+                def cleanup() {<br> browser.close()<br> }<br>
+            </code>
+        </p>
+
+        <h3>Take a screenshot</h3>
+
+        <p>
+            This example shows how to take a screenshot<br>
+            <code>
+                browser.getScreenshot()<br>
+            </code>
+            Simply include this line at any point where you want to take a
+            screenshot of the current browser window.
+        </p>
+
+        <h3>Click a button</h3>
+
+        <p>This example shows how to click a button that has been modelled within a page object<br>
+            <code>Button button = new Button(driver, By.cssSelector("#buttonId"));<br>
+                button.click()<br></code></p>
+    </section>
+    <footer>
+        <p>
+            This project is maintained by <a href="https://github.com/nvonop">nvonop</a>
+        </p>
+
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a
+                    href="https://github.com/orderedlist">orderedlist</a></small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
 
 </body>
 </html>

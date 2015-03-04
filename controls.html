@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Seleniumframework by nvonop</title>
@@ -11,60 +11,113 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
+</head>
+<body>
+<div class="wrapper">
     <header>
-			<h1>Selenium Framework</h1>
-			<p></p>
+        <h1>Selenium Framework</h1>
 
-			<p class="view">
-				<a href="https://github.com/nvonop/SeleniumFramework">View the
-					Project on GitHub <small>nvonop/SeleniumFramework</small>
-				</a>
-			</p>
-			<ul class="github">
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
-						<strong>ZIP File</strong>
-				</a></li>
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
-						<strong>TAR Ball</strong>
-				</a></li>
-				<li><a href="https://github.com/nvonop/SeleniumFramework">View
-						On <strong>GitHub</strong>
-				</a></li>
-			</ul>
+        <p></p>
 
-			<h2>Contents</h2>
-			<ol class="contents">
-				<li><a href="./index.html">Index</a></li>
-				<li><a href="./framework-overview.html">Framework Overview</a></li>
-				<li><a href="./configuration.html">Framwork Configuration</a></li>
-				<li><a href="./examples.html">Examples</a></li>
-				<li><a href="./browser.html">Browser</a></li>
-				<li><a href="./actionbot.html">The Action Bot</a></li>
-				<li><a href="./controls.html">UI Controls</a></li>
-				<li><a href="./datagenerator.html">The Data Generator</a></li>
-				<li><a href="./objectmap.html">The Object Map</a></li>
-				<li><a href="./utilities.html">Framework Utilities</a></li>
-				<li><a href="./doc/index.html">Javadocs</a></li>
-			</ol>
-		</header>
-      <section>
+        <p class="view">
+            <a href="https://github.com/nvonop/SeleniumFramework">View the
+                Project on GitHub
+                <small>nvonop/SeleniumFramework</small>
+            </a>
+        </p>
+        <ul class="github">
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
+                <strong>ZIP File</strong>
+            </a></li>
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
+                <strong>TAR Ball</strong>
+            </a></li>
+            <li><a href="https://github.com/nvonop/SeleniumFramework">View
+                On <strong>GitHub</strong>
+            </a></li>
+        </ul>
+
+        <h2>Contents</h2>
+        <ol class="contents">
+            <li><a href="./index.html">Index</a></li>
+            <li><a href="./framework-overview.html">Framework Overview</a></li>
+            <li><a href="./configuration.html">Framwork Configuration</a></li>
+            <li><a href="./examples.html">Examples</a></li>
+            <li><a href="./browser.html">Browser</a></li>
+            <li><a href="./actionbot.html">The Action Bot</a></li>
+            <li><a href="./controls.html">UI Controls</a></li>
+            <li><a href="./datagenerator.html">The Data Generator</a></li>
+            <li><a href="./objectmap.html">The Object Map</a></li>
+            <li><a href="./utilities.html">Framework Utilities</a></li>
+            <li><a href="./doc/index.html">Javadocs</a></li>
+        </ol>
+    </header>
+    <section>
         <h1>Welcome to Selenium Framework</h1>
 
-<h2>Controls</h2>
-<p>This is a work in progress...</p>
+        <h2>UI Controls</h2>
 
-      </section>
-      <footer>
+        <p>The intention here is to model UI controls and provide access to methods that interact with these controls.
+            The idea is to offer a sub set of the WebElement API in encapsulated methods to make UI interaction
+            easier.</p>
+
+        <p>It is hoped that this will enable people to create UI controls with standard ways of interaction by utilising
+            the interfaces that provide the functionality required. This will also ensure a consistent naming convention
+            throughout tests.</p>
+
+        <h3>Interfaces</h3>
+
+        <p>The interface classes have been created (with more to follow) to allow controls to be modelled based on how
+            we would want to interact with them. E.g. we might want to click on a particular control. Therefore we would
+            make use of the **Clickable** interface. Likewise we might want to read the text of a control. Therefore we
+            would use the **Readable** interface.</p>
+
+        <p>It is worth noting that not all interfaces are applicable to all types of control. The currently implemented
+            interfaces are as follows:</p>
+        <ul>
+            <li><b>Clickable</b> - Providing a standard way of clicking on a visible control.</li>
+            <li><b>Detectable</b> - Providing a standard way of determining if a control is present.</li>
+            <li><b>Form</b> - Providing a standard way of completing a form and submitting it.</li>
+            <li><b>Readable</b> - Providing a standard way of reading the contents control.</li>
+            <li><b>Selectable</b> - Providing a standard way of selecting or deselecting a control.</li>
+            <li><b>Writable</b> - Providing a standard way of writing a value into a control.</li>
+        </ul>
+        <h3>Controls</h3>
+
+        <p>A number of classes have been created to model common UI elements such as buttons and text boxes. The
+            intention is for all common types of UI control to be modelled along with more complex custom controls such
+            as calendars etc. These classes make use of the interface classes above.</p>
+
+        <p>The currently implemented controls are as follows:</p>
+        <ul>
+            <li><b>Alert</b> - Contains methods for interacting with an Alert control.</li>
+            <li><b>BaseControl</b> - The base class from which the other controls are extended.</li>
+            <li><b>Button</b> - Contains methods for interacting with a Button control.</li>
+            <li><b>CheckBox</b> - Contains methods for interacting with a CheckBox control.</li>
+            <li><b>Frame</b> - Contains methods for interacting with a Frame control.</li>
+            <li><b>Link</b> - Contains methods for interacting with a Link control.</li>
+            <li><b>Message</b> - Contains methods for interacting with a Message control. E.g. a validation message on a
+                page.
+            </li>
+            <li><b>Page</b> - Contains methods for interacting with a Page control.</li>
+            <li><b>RadioButton</b> - Contains methods for interacting with a RadioButton control.</li>
+            <li><b>SelectBox</b> - Contains methods for interacting with a SelectBox control.</li>
+            <li><b>Table</b> - Contains methods for interacting with a Table control.</li>
+            <li><b>TextBox</b> - Contains methods for interacting with a TextBox control.</li>
+        </ul>
+    </section>
+    <footer>
         <p>This project is maintained by <a href="https://github.com/nvonop">nvonop</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>
+            </small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
+
+</body>
 </html>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Seleniumframework by nvonop</title>
@@ -11,60 +11,123 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
+</head>
+<body>
+<div class="wrapper">
     <header>
-			<h1>Selenium Framework</h1>
-			<p></p>
+        <h1>Selenium Framework</h1>
 
-			<p class="view">
-				<a href="https://github.com/nvonop/SeleniumFramework">View the
-					Project on GitHub <small>nvonop/SeleniumFramework</small>
-				</a>
-			</p>
-			<ul class="github">
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
-						<strong>ZIP File</strong>
-				</a></li>
-				<li><a
-					href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
-						<strong>TAR Ball</strong>
-				</a></li>
-				<li><a href="https://github.com/nvonop/SeleniumFramework">View
-						On <strong>GitHub</strong>
-				</a></li>
-			</ul>
+        <p></p>
 
-			<h2>Contents</h2>
-			<ol class="contents">
-				<li><a href="./index.html">Index</a></li>
-				<li><a href="./framework-overview.html">Framework Overview</a></li>
-				<li><a href="./configuration.html">Framwork Configuration</a></li>
-				<li><a href="./examples.html">Examples</a></li>
-				<li><a href="./browser.html">Browser</a></li>
-				<li><a href="./actionbot.html">The Action Bot</a></li>
-				<li><a href="./controls.html">UI Controls</a></li>
-				<li><a href="./datagenerator.html">The Data Generator</a></li>
-				<li><a href="./objectmap.html">The Object Map</a></li>
-				<li><a href="./utilities.html">Framework Utilities</a></li>
-				<li><a href="./doc/index.html">Javadocs</a></li>
-			</ol>
-		</header>
-      <section>
+        <p class="view">
+            <a href="https://github.com/nvonop/SeleniumFramework">View the
+                Project on GitHub
+                <small>nvonop/SeleniumFramework</small>
+            </a>
+        </p>
+        <ul class="github">
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/zipball/master">Download
+                <strong>ZIP File</strong>
+            </a></li>
+            <li><a
+                    href="https://github.com/nvonop/SeleniumFramework/tarball/master">Download
+                <strong>TAR Ball</strong>
+            </a></li>
+            <li><a href="https://github.com/nvonop/SeleniumFramework">View
+                On <strong>GitHub</strong>
+            </a></li>
+        </ul>
+
+        <h2>Contents</h2>
+        <ol class="contents">
+            <li><a href="./index.html">Index</a></li>
+            <li><a href="./framework-overview.html">Framework Overview</a></li>
+            <li><a href="./configuration.html">Framwork Configuration</a></li>
+            <li><a href="./examples.html">Examples</a></li>
+            <li><a href="./browser.html">Browser</a></li>
+            <li><a href="./actionbot.html">The Action Bot</a></li>
+            <li><a href="./controls.html">UI Controls</a></li>
+            <li><a href="./datagenerator.html">The Data Generator</a></li>
+            <li><a href="./objectmap.html">The Object Map</a></li>
+            <li><a href="./utilities.html">Framework Utilities</a></li>
+            <li><a href="./doc/index.html">Javadocs</a></li>
+        </ol>
+    </header>
+    <section>
         <h1>Welcome to Selenium Framework</h1>
-        <h1>Welcome to Selenium Framework</h1>
 
-<h2>The Object Map</h2>
-<p>This is a work in progress...</p>
-      </section>
-      <footer>
+        <h2>The Object Map</h2>
+
+        <p>This class enables By locators to be retrieved from a properties file. This enables locator information to be
+            stored externally to the tests. This is taken from a recipe in The Selenium Cookbook (a highly recommended
+            purchase!).</p>
+
+        <p>The following methods are provided:</p>
+
+        <ul>
+            <li><code>getLocatorFromMap(String logicalElementName)</code> - returns a By object used to locate a
+                WebElement.
+            </li>
+            <li><code>getLocatorLocatorAndOverride(String logicalElementName, String locatorValue)</code> - returns a By
+                object used to locate a WebElement. This method can be used to override locator details stored within an
+                object map. Useful for cases where a locator id (or other attribute) is dynamic.
+            </li>
+            <li><code>getLocatorString(String logicalElementName)</code> - returns the type of locator stored in the
+                map.
+            </li>
+            <li><code>getLocatorValue(String logicalElementName)</code> - returns the value of the locator string.</li>
+        </ul>
+
+
+        <p>It can be used as follows:</p>
+
+        <p><code>private ObjectMap map = new ObjectMap("ControlsPageObjectMap.properties");<br>
+            public Button button1 = new
+        Button(driver, map.getLocator("button_1"));</code></p>
+
+        <p>Note: The Button object is from the Controls package. Refer to <code>ControlsPage.java</code> within the Tests package for
+        further details of how to use this class.</p>
+
+        <h2>The Properties File</h2>
+        <p>The properties files read by the ObjectMap class are in a defined format.  This format is as follows:<br>
+            <i>PROPERTY_NAME=LOCATOR_TYPE>LOCATOR_STRING</i>
+        </p>
+
+        <p>In the code example above, we referenced <i>ControlsPageObjectMap.properties</i>:<br><code>
+            button_1_click_message=id>pg1<br>
+            button_2_click_message=id>pg2<br>
+            radio_button_1_click_message=id>pg3<br>
+            radio_button_2_click_message=id>pg4<br>
+            checkbox_1_click_message=id>pg5<br>
+            checkbox_2_click_message=id>pg6<br>
+            iframe_1=name>iframe_1<br>
+            button_1=name>button1<br>
+            button_2=id>btn2<br>
+            alert_button=css>input#btn3<br>
+            button_4=xpath>//*[@id=\"btn4\"]<br>
+            radio_button_1=name>sex<br>
+            radio_button_2=id>rb2<br>
+            checkbox_1=css>input#cb1<br>
+            checkbox_2=xpath>//*[@id=\"cb2\"]<br>
+            link_google=id>lnk1<br>
+            table_1=name>table1<br>
+            text_firstname=css>input#txt1<br>
+            text_lastname=xpath>//*[@id=\"txt2\"]<br>
+            select_cars=id>ddl1<br>
+            button_submit=id>sbmt<br>
+        </code></p>
+    </section>
+    <footer>
         <p>This project is maintained by <a href="https://github.com/nvonop">nvonop</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a>
+            </small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
+
+</body>
 </html>
