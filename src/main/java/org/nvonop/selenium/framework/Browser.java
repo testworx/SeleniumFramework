@@ -116,6 +116,7 @@ public class Browser {
             return 5;
         } else if (browser.toLowerCase().contains("android")) {
             return 6;
+        }
         else {
             return 10;
         }
@@ -331,12 +332,12 @@ public class Browser {
                 capabilities = DesiredCapabilities.chrome();
                 break;
             case 4:
-                capabilities = DesiredCapabilities.iPhone();
+                capabilities = DesiredCapabilities.iphone();
                 capabilities.setCapability("deviceName","iPhone Simulator");
                 capabilities.setCapability("device-orientation", "portrait");
                 break;
             case 5:
-                capabilities = DesiredCapabilities.iPhone();
+                capabilities = DesiredCapabilities.iphone();
                 capabilities.setCapability("deviceName","iPad Simulator");
                 capabilities.setCapability("device-orientation", "portrait");
                 break;
