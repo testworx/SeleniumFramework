@@ -113,7 +113,7 @@ public class Browser {
             return 3;
         } else if (browser.toLowerCase().contains("iphone")) {
             return 4;
-        } else if (browser.toLowerCase().contains("iPad")) {
+        } else if (browser.toLowerCase().contains("ipad")) {
             return 5;
         } else if (browser.toLowerCase().contains("android")) {
             return 6;
