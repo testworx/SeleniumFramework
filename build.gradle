@@ -10,12 +10,12 @@ repositories {
 	// Spock releases are available from Maven Central
 	mavenCentral()
 	// Spock snapshots are available from the Sonatype OSS snapshot repository
-	maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
+	//maven { url "http://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
 	compile "org.codehaus.groovy:groovy-all:2.1.5"
-	testCompile "org.spockframework:spock-core:1.0-groovy-2.0-SNAPSHOT"
+	testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 	compile "org.seleniumhq.selenium:selenium-java:2.+"
 	compile group: 'com.google.inject', name: 'guice', version: '3.0'
 	compile("org.uncommons:reportng:1.1.2") {
