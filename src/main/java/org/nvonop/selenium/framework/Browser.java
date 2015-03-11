@@ -29,6 +29,7 @@ import org.nvonop.selenium.framework.controls.Page;
 import org.nvonop.selenium.framework.utilities.TestHelper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Augmenter;
@@ -110,7 +111,13 @@ public class Browser {
             return 2;
         } else if (browser.toLowerCase().contains("chrome")) {
             return 3;
-        } else {
+        } else if (browser.toLowerCase().contains("iphone")) {
+            return 4;
+        } else if (browser.toLowerCase().contains("iPad")) {
+            return 5;
+        } else if (browser.toLowerCase().contains("android")) {
+            return 6;
+        else {
             return 10;
         }
     }
@@ -323,6 +330,21 @@ public class Browser {
                 break;
             case 3:
                 capabilities = DesiredCapabilities.chrome();
+                break;
+            case 4:
+                capabilities = DesiredCapabilities.iPhone();
+                capabilities.setCapability("deviceName","iPhone Simulator");
+                capabilities.setCapability("device-orientation", "portrait");
+                break;
+            case 5:
+                capabilities = DesiredCapabilities.iPhone();
+                capabilities.setCapability("deviceName","iPad Simulator");
+                capabilities.setCapability("device-orientation", "portrait");
+                break;
+            case 6:
+                capabilities = DesiredCapabilities.android();
+                capabilities.setCapability("deviceName","Android Emulator");
+                capabilities.setCapability("device-orientation", "portrait");
                 break;
             default:
                 throw new WebDriverException("Browser not found: " + browser);
