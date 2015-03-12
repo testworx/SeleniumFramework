@@ -1,3 +1,7 @@
+v1.3.1
+======
+Added a fix to ensure that only desktop browser windows are maximised.  Trying to maximse a device browser is currently unsupported.
+
 v1.3
 ======
 Added ability to run tests on iOS and Android devices on Sauce Labs.  Simply define BROWSER to be "iphone", "ipad" or "android" along with a valid version number and you're good to go!
