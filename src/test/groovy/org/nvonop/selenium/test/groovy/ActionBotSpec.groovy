@@ -12,9 +12,9 @@ class ActionBotSpec  extends Specification {
 	Browser browser
 	WebDriver driver
 
-	def setupSpec() {
-		
-	}
+//	def setupSpec() {
+//
+//	}
 
 	def setup() {
 		browser = new Browser()

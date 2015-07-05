@@ -24,6 +24,7 @@ THE SOFTWARE.
 
 package org.nvonop.selenium.framework.actionbot;
 
+import org.nvonop.selenium.framework.controls.BaseControl;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,7 +39,7 @@ import java.util.logging.Logger;
  *
  * @author nvonop
  */
-public abstract class BaseBot {
+public abstract class BaseBot extends BaseControl {
 
     private static final Logger LOGGER = Logger.getLogger(BaseBot.class
             .getName());
@@ -50,61 +51,61 @@ public abstract class BaseBot {
             .longValue();
     private By locator;
 
-    /*
-     * This method wraps the findElement method and returns a WebElement using
-     * locator parameter. By default it will attempt to wait for an element to
-     * be clickable and stationary before returning it. If this fails then after
-     * 10 seconds it will simply match the element if possible and return it.
-     */
-    protected WebElement findControl(By theLocator) {
-        try {
+//    /*
+//     * This method wraps the findElement method and returns a WebElement using
+//     * locator parameter. By default it will attempt to wait for an element to
+//     * be clickable and stationary before returning it. If this fails then after
+//     * 10 seconds it will simply match the element if possible and return it.
+//     */
+//    protected WebElement findControl(By theLocator) {
+//        try {
+//
+//            setLocator(theLocator);
+//            LOGGER.log(Level.FINEST,
+//                    "Looking for WebElement: " + locator.toString());
+//
+//            waitForElementThenInitialise();
+//            return baseWebElement;
+//
+//        } catch (NoSuchElementException e) {
+//            LOGGER.log(Level.SEVERE,
+//                    "NoSuchElementException in findControl() method for: "
+//                            + locator.toString(), e);
+//            throw new NoSuchElementException(locator.toString());
+//        }
+//    }
 
-            setLocator(theLocator);
-            LOGGER.log(Level.FINEST,
-                    "Looking for WebElement: " + locator.toString());
+//    private void setLocator(By theLocator) {
+//        locator = theLocator;
+//    }
 
-            waitForElementThenInitialise();
-            return baseWebElement;
+//    private void waitForElementThenInitialise() {
+//        WebDriverWait wait = new WebDriverWait(driver, timeout);
+//
+//        try {
+//            baseWebElement = wait.until(ExpectedConditions
+//                    .elementToBeClickable(locator));
+//            waitForControlToStopMoving();
+//        } catch (InterruptedException e) {
+//            LOGGER.log(Level.INFO,
+//                    "InterruptedException in findControl() method", e);
+//        } catch (TimeoutException e) {
+//            LOGGER.log(Level.INFO, "TimeoutException in findControl() method",
+//                    e);
+//        }
+//        if (baseWebElement == null) {
+//            baseWebElement = driver.findElement(locator);
+//        }
+//    }
 
-        } catch (NoSuchElementException e) {
-            LOGGER.log(Level.SEVERE,
-                    "NoSuchElementException in findControl() method for: "
-                            + locator.toString(), e);
-            throw new NoSuchElementException(locator.toString());
-        }
-    }
-
-    private void setLocator(By theLocator) {
-        locator = theLocator;
-    }
-
-    private void waitForElementThenInitialise() {
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
-
-        try {
-            baseWebElement = wait.until(ExpectedConditions
-                    .elementToBeClickable(locator));
-            waitForControlToStopMoving();
-        } catch (InterruptedException e) {
-            LOGGER.log(Level.INFO,
-                    "InterruptedException in findControl() method", e);
-        } catch (TimeoutException e) {
-            LOGGER.log(Level.INFO, "TimeoutException in findControl() method",
-                    e);
-        }
-        if (baseWebElement == null) {
-            baseWebElement = driver.findElement(locator);
-        }
-    }
-
-    private void waitForControlToStopMoving() throws InterruptedException {
-        Point elementStartLocation = baseWebElement.getLocation();
-        Thread.sleep(delay);
-        Point elementCurrentLocation = baseWebElement.getLocation();
-        while (!elementCurrentLocation.equals(elementStartLocation)) {
-            elementStartLocation = elementCurrentLocation;
-            Thread.sleep(delay);
-            elementCurrentLocation = baseWebElement.getLocation();
-        }
-    }
+//    private void waitForControlToStopMoving() throws InterruptedException {
+//        Point elementStartLocation = baseWebElement.getLocation();
+//        Thread.sleep(delay);
+//        Point elementCurrentLocation = baseWebElement.getLocation();
+//        while (!elementCurrentLocation.equals(elementStartLocation)) {
+//            elementStartLocation = elementCurrentLocation;
+//            Thread.sleep(delay);
+//            elementCurrentLocation = baseWebElement.getLocation();
+//        }
+//    }
 }
