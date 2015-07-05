@@ -43,13 +43,13 @@ public abstract class BaseBot extends BaseControl {
 
     private static final Logger LOGGER = Logger.getLogger(BaseBot.class
             .getName());
-    protected WebDriver driver;
-    WebElement baseWebElement;
-    private long delay = Long.valueOf(System.getProperty("DELAY", "10"))
-            .longValue();
-    private long timeout = Long.valueOf(System.getProperty("TIMEOUT", "10"))
-            .longValue();
-    private By locator;
+//    protected WebDriver driver;
+//    WebElement baseWebElement;
+//    private long delay = Long.valueOf(System.getProperty("DELAY", "10"))
+//            .longValue();
+//    private long timeout = Long.valueOf(System.getProperty("TIMEOUT", "10"))
+//            .longValue();
+//    private By locator;
 
 //    /*
 //     * This method wraps the findElement method and returns a WebElement using
