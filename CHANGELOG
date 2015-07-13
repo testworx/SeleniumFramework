@@ -1,3 +1,7 @@
+v1.3.2
+======
+
+
 v1.3.1
 ======
 Added a fix to ensure that only desktop browser windows are maximised.  Trying to maximse a device browser is currently unsupported.

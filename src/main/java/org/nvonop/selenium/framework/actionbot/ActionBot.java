@@ -24,12 +24,13 @@ THE SOFTWARE.
 
 package org.nvonop.selenium.framework.actionbot;
 
+import org.nvonop.selenium.framework.controls.BaseControl;
 import org.openqa.selenium.*;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ActionBot extends BaseBot {
+public class ActionBot extends BaseControl {
 
     private static final Logger LOGGER = Logger.getLogger(ActionBot.class
             .getName());
