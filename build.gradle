@@ -59,9 +59,9 @@ task testLocal(type: Test){
 	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['GRID_HOST'] = 'localhost'
 	systemProperties['GRID_PORT'] = '4444'
-	systemProperties['BROWSER'] = 'chrome'
-	systemProperties['VERSION'] = '43'
-	systemProperties['PLATFORM'] = 'WINDOWS'
+	systemProperties['BROWSER'] = 'firefox'
+	systemProperties['VERSION'] = '41'
+	systemProperties['PLATFORM'] = 'MAC'
 	systemProperties['TIMEOUT'] = '10'
 	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
 	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"

@@ -36,6 +36,7 @@ public class ActionBot extends BaseControl {
             .getName());
 
     public ActionBot(WebDriver driver) {
+
         super.driver = driver;
     }
 
@@ -83,6 +84,7 @@ public class ActionBot extends BaseControl {
      * @param locator
      */
     public String readText(By locator) {
+
         return findControl(locator).getText();
     }
 
@@ -93,6 +95,7 @@ public class ActionBot extends BaseControl {
      * @param attribute
      */
     public String readAttribute(By locator, String attribute) {
+
         return findControl(locator).getAttribute("value");
     }
 
@@ -105,7 +108,7 @@ public class ActionBot extends BaseControl {
      * @param locator
      */
     public void type(By locator, String text) {
-        WebElement element = findControl(locator);
-        element.sendKeys(text);
+
+        findControl(locator).sendKeys(text);
     }
 }
