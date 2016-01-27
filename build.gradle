@@ -1,10 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'groovy'
 
 group = 'org.nvonop.selenium.framework'
-version = '1.3.1'
+version = '1.3.2'
 
 repositories {
 	// Spock releases are available from Maven Central
@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-	compile "org.codehaus.groovy:groovy-all:2.1.5"
+	compile "org.codehaus.groovy:groovy-all:2.4.0"
 	testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
 	compile "org.seleniumhq.selenium:selenium-java:2.+"
 	compile group: 'com.google.inject', name: 'guice', version: '3.0'
@@ -45,19 +45,23 @@ test {
 
 //#######Local gradle test task#######
 task testLocal(type: Test){
-	systemProperties = System.getProperties()
+
+    systemProperties = System.getProperties()
 	maxParallelForks = 3
 	forkEvery = 1
+
+//    systemProperties['webdriver.ie.driver'] = "C:\\Automation\\lib\\IEDriverServer.exe"
+//    systemProperties['webdriver.chrome.driver'] = "C:\\Automation\\lib\\chromedriver.exe"
 	systemProperties['BUILD'] = version.toString()
-	systemProperties['LOCAL_DRIVER'] = true
-	systemProperties['REMOTE_DRIVER'] = false
+	systemProperties['LOCAL_DRIVER'] = false
+	systemProperties['REMOTE_DRIVER'] = true
 	systemProperties['SAUCE_DRIVER'] = false
 	systemProperties['SAUCE_KEY'] = 'http://'+System.getenv('SAUCE_USERNAME')+':'+System.getenv('SAUCE_ACCESS_KEY')+'@ondemand.saucelabs.com:80/wd/hub'
 	systemProperties['GRID_HOST'] = 'localhost'
 	systemProperties['GRID_PORT'] = '4444'
 	systemProperties['BROWSER'] = 'firefox'
-	systemProperties['VERSION'] = '31'
-	systemProperties['PLATFORM'] = ''
+	systemProperties['VERSION'] = '41'
+	systemProperties['PLATFORM'] = 'MAC'
 	systemProperties['TIMEOUT'] = '10'
 	systemProperties['TEST_RESULTS_PATH'] = './build/Screenshots'
 	systemProperties['APPLICATION_URL'] = "http://selenium-framework.site44.com/controls_page.html"

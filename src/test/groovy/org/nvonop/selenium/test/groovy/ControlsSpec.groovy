@@ -1,11 +1,7 @@
 package org.nvonop.selenium.test.groovy
 
-import java.util.logging.Level
-import java.util.logging.Logger
-
 import org.nvonop.selenium.framework.Browser
 import org.nvonop.selenium.framework.ObjectMap
-import org.nvonop.selenium.framework.utilities.TestHelper
 import org.nvonop.selenium.test.java.ControlsPage
 import org.nvonop.selenium.test.java.SubmittedPage
 import org.openqa.selenium.Alert
@@ -15,20 +11,19 @@ import spock.lang.*
 
 class ControlsSpec  extends Specification {
 
-	ObjectMap objectMap
 	Browser browser
 	WebDriver driver
 
-	def setupSpec() {
-		//		System.setProperty("BROWSER", "Internet Explorer")
-		//		System.setProperty("VERSION", "")
-		//		System.setProperty("PLATFORM", "")
-		//		System.setProperty("LOCAL_DRIVER", "true")
-		//		System.setProperty("REMOTE_DRIVER", "false")
-		//		System.setProperty("SAUCE_DRIVER", "false")
-		//		System.setProperty("webdriver.ie.driver", "C:\\Automation\\lib\\IEDriverServer.exe");
-		//		System.setProperty("IGNORE_SECURITY_DOMAINS", "true")
-	}
+//	def setupSpec() {
+//				System.setProperty("BROWSER", "Internet Explorer")
+//				System.setProperty("VERSION", "")
+//				System.setProperty("PLATFORM", "")
+//				System.setProperty("LOCAL_DRIVER", "true")
+//				System.setProperty("REMOTE_DRIVER", "false")
+//				System.setProperty("SAUCE_DRIVER", "false")
+//				System.setProperty("webdriver.ie.driver", "C:\\Automation\\lib\\IEDriverServer.exe");
+//				System.setProperty("IGNORE_SECURITY_DOMAINS", "true")
+//	}
 
 	def setup() {
 		browser = new Browser()
