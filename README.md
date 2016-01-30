@@ -1,4 +1,5 @@
-##Current Status ![Build Status](https://travis-ci.org/nvonop/SeleniumFramework.png?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/testworx/SeleniumFramework/badge.svg?branch=master)](https://coveralls.io/github/testworx/SeleniumFramework?branch=master)
+[![Build Status](https://travis-ci.org/testworx/SeleniumFramework.svg?branch=master)](https://travis-ci.org/testworx/SeleniumFramework)
 
 ## Introduction
 Please refer to the new documentation [here](http://nvonop.github.io/SeleniumFramework/) or whilst the new documentation is being updated, the old wiki, on how to use the framework:  [Selenium Framework Wiki](https://github.com/nvonop/SeleniumFramework/wiki)
