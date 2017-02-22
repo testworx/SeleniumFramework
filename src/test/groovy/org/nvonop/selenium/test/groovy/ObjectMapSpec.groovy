@@ -6,9 +6,10 @@ import org.nvonop.selenium.framework.ObjectMap;
 import org.nvonop.selenium.framework.utilities.TestHelper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
-
 import spock.lang.*
+import spock.lang.Ignore;
 
+@Ignore()
 class ObjectMapSpec  extends Specification {
 
 	ObjectMap objectMap
