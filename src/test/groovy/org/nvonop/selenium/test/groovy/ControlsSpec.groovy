@@ -6,9 +6,10 @@ import org.nvonop.selenium.test.java.ControlsPage
 import org.nvonop.selenium.test.java.SubmittedPage
 import org.openqa.selenium.Alert
 import org.openqa.selenium.WebDriver
-
 import spock.lang.*
+import spock.lang.Ignore;
 
+@Ignore()
 class ControlsSpec  extends Specification {
 
 	Browser browser
