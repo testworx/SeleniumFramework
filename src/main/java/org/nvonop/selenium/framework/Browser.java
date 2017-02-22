@@ -26,6 +26,7 @@ import org.nvonop.selenium.framework.utilities.TestHelper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -278,6 +279,8 @@ public class Browser {
                         Boolean.valueOf(System.getProperty("IGNORE_SECURITY_DOMAINS", "false")));
                 break;
             case 1:
+		FirefoxProfile profile = new FirefoxProfile();
+        	profile.setEnableNativeEvents(true);
                 capabilities = DesiredCapabilities.firefox();
 		capabilities.setCapability(FirefoxDriver.PROFILE, profile);
         	capabilities.setJavascriptEnabled(true);
