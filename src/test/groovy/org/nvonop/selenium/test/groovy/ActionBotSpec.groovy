@@ -4,7 +4,9 @@ import spock.lang.*
 import org.nvonop.selenium.framework.actionbot.*
 import org.nvonop.selenium.framework.*
 import org.openqa.selenium.WebDriver;
+import spock.lang.Ignore;
 
+@Ignore()
 class ActionBotSpec  extends Specification {
 
 	ActionBot actionBot
