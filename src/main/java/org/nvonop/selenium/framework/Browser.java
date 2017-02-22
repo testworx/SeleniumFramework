@@ -279,6 +279,10 @@ public class Browser {
                 break;
             case 1:
                 capabilities = DesiredCapabilities.firefox();
+		capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+        	capabilities.setJavascriptEnabled(true)
+        	capabilities.setCapability("marionette", false)
+        	capabilities.setCapability("acceptInsecureCerts", true)
                 break;
             case 2:
                 capabilities = DesiredCapabilities.safari();
